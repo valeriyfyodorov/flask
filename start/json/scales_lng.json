@@ -1,0 +1,465 @@
+﻿{
+  "en": {
+    "first-00choice.aspx": {
+      "arrivalButtonText": "Arrival. Initial Weighing",
+      "departureButtonText": "Departure. Final Weighing",
+      "backButtonText": "Back"
+    },
+    "00scales.aspx": {
+      "instructionText": "Choose the right scale",
+      "backButtonText": "Back"
+    },
+    "first-01scan.aspx": {
+      "instructionText": "Please scan your delivery note (CMR). Insert your delivery note (faced-down) into the scanner, press and hold the red button <span class=\"colorRed\"> till you hear the signal </span>",
+      "backButtonText": "Back"
+    },
+    "first-03factory.aspx": {
+      "instructionText": "Please click on the name of the farm/company as shown in your delivery note (CMR).",
+      "factoryLisrHeaderText": "Company/Farm",
+      "chosenFactoryText": "You have chosen following Company",
+      "goButtonText": "Continue",
+      "backButtonText": "Back"
+    },
+    "first-02lists.aspx": {
+      "instructionText": "Please choose the name of the Receiver as per waybill:",
+      "backButtonText": "Start again"
+    },
+    "first-03cargo.aspx": {
+      "instructionText": "Please choose the name of cargo/goods below:",
+      "backButtonText": "Back"
+    },
+    "first-04adata.aspx": {
+      "instructionText": "Please enter your vehicle and trailer registration number",
+      "frontPlateLabelText": "Front vehicle number Nr",
+      "rearPlateLabelText": "Rear trailer number Nr",
+      "goButtonText": "Continue",
+      "backButtonText": "Start again"
+    },
+    "first-04bdata.aspx": {
+      "instructionText": "Please enter your delivery note (CMR) number and gross cargo weight in kilos as stated on your delivery note (CMR).",
+      "cmrLabelText": "Delivery note (CMR) number",
+      "weightLabelText": "Cargo weight in kilos",
+      "weightNotAvailableButtonText": "No weight info",
+      "goButtonText": "To Weigh!",
+      "backButtonText": "Start again"
+    },
+    "first-success.aspx": {
+      "instructionText": "Thank you! Please wait, take the print-out and drive on the terminal site for cargo unloading.",
+      "backButtonText": "Start again"
+    },
+    "second-01scanqr.aspx": {
+      "instructionText": "Please put the code (shown on your print-out) in front of the camera and wait till <span class=\"colorRed\"> you hear the signal</span>",
+      "backButtonText": "Start again"
+    },
+    "notready.aspx": {
+      "instructionText": "No cargo expected. Please call the stevedore via the intercom for further instructions.",
+      "backButtonText": "Start again"
+    },
+    "second-notready.aspx": {
+      "instructionText": "Error. Please try again or call the stevedore via the intercom for further instructions.",
+      "tryAgainButtonText": "Try again",
+      "backButtonText": "Start again"
+    },
+    "second-repeat.aspx": {
+      "instructionText": "Scales error. Try again.",
+      "tryAgainButtonText": "Confirm and try again",
+      "truckDetailInfo1": "Weight as stated in your delivery note/CMR: ",
+      "truckDetailInfo2": " kg. <br> Vehicle gross weight: ",
+      "backButtonText": "Start again"
+    },
+    "second-success.aspx": {
+      "instructionText": "Please wait for the print-out and take it to the security office for further processing.",
+      "backButtonText": "Start again"
+    },
+    "wait-print.aspx": {
+      "instructionText": "Please wait for the print-out!",
+      "backButtonText": "Start again"
+    }
+  },
+
+  "ru": {
+    "first-00choice.aspx": {
+      "arrivalButtonText": "Arrival. Initial Weighing",
+      "departureButtonText": "Departure. Final Weighing",
+      "backButtonText": "Back"
+    },
+    "00scales.aspx": {
+      "instructionText": "Choose the right scale",
+      "backButtonText": "Back"
+    },
+    "first-01scan.aspx": {
+      "instructionText": "Положите накладную в сканер (лицевой стороной вниз), нажмите и удерживайте красную кнопку <span class=\"colorRed\"> до звукового сигнала </span>",
+      "backButtonText": "Назад"
+    },
+    "first-03factory.aspx": {
+      "instructionText": "Нажмите на название хозяйства/отправителя как указано в документах.",
+      "factoryLisrHeaderText": "Отправитель/Хозяйство",
+      "chosenFactoryText": "Вы выбрали отправителя: ",
+      "goButtonText": "Продолжить",
+      "backButtonText": "Назад"
+    },
+    "first-02lists.aspx": {
+      "instructionText": "Выберите Получателя по накладной из списка:",
+      "backButtonText": "Начать заново"
+    },
+    "first-03cargo.aspx": {
+      "instructionText": "Выберите груз из списка:",
+      "backButtonText": "Назад"
+    },
+    "first-04adata.aspx": {
+      "instructionText": "Введите гос.номер транспортного средства и прицепа",
+      "frontPlateLabelText": "Передний номер транспортного средства №",
+      "rearPlateLabelText": "Номер прицепа №",
+      "goButtonText": "Продолжить",
+      "backButtonText": "Назад"
+    },
+    "first-04bdata.aspx": {
+      "instructionText": "Введите данные накладной/CMR : ее номер и указанный на ней вес в кг",
+      "cmrLabelText": "Номер накладной/ CMR",
+      "weightLabelText": "Вес груза в кг",
+      "weightNotAvailableButtonText": "Не указан вес",
+      "goButtonText": "Взвесить транспортное средство!",
+      "backButtonText": "Начать заново"
+    },
+    "first-success.aspx": {
+      "instructionText": "Спасибо! Подождите распечатки с инструкцией и следуйте на выгрузку.",
+      "backButtonText": "Начать заново"
+    },
+    "second-01scanqr.aspx": {
+      "instructionText": "Расположите правильно под камерой код, указанный на вашей инструкции и ожидайте <span class=\"colorRed\"> звуковой сигнал </span>",
+      "backButtonText": "Начать заново"
+    },
+    "notready.aspx": {
+      "instructionText": "Терминал не готов к приемке товара. Обращайтесь за помощью к стивидору.",
+      "backButtonText": "Начать заново"
+    },
+    "second-notready.aspx": {
+      "instructionText": "Произошла ошибка. Попробуйте еще раз или обращайтесь за помощью к стивидору.",
+      "tryAgainButtonText": "Повторить попытку взвешивания",
+      "backButtonText": "Начать заново"
+    },
+    "second-repeat.aspx": {
+      "instructionText": "Произошел сбой весов. Повторите попытку.",
+      "tryAgainButtonText": "Подтвердить и повторить попытку",
+      "truckDetailInfo1": "Вес согласно CMR/накладной: ",
+      "truckDetailInfo2": " кг. <br> Брутто вес полного транспортного средства: ",
+      "backButtonText": "Начать заново"
+    },
+    "second-success.aspx": {
+      "instructionText": "Подождите распечатки акта и подпишите все документы у охраны.",
+      "backButtonText": "Начать заново"
+    },
+    "wait-print.aspx": {
+      "instructionText": "Ждите распечатку!",
+      "backButtonText": "Начать заново"
+    }
+  },
+  "lv": {
+    "first-00choice.aspx": {
+      "arrivalButtonText": "Arrival. Initial Weighing",
+      "departureButtonText": "Departure. Final Weighing",
+      "backButtonText": "Back"
+    },
+    "00scales.aspx": {
+      "instructionText": "Choose the right scale",
+      "backButtonText": "Back"
+    },
+    "first-01scan.aspx": {
+      "instructionText": "Lūdzu, noskenējiet pavadzīmi (CMR). Ievietojiet pavadzīmi (ar virspusi uz leju) skenerī, nospiediet un turiet sarkano pogu <span class = \"colorRed\">, līdz sadzirdat signālu </span>",
+      "backButtonText": "Atpakaļ"
+    },
+    "first-03factory.aspx": {
+      "instructionText": "Lūdzu, noklikšķiniet uz saimniecības / uzņēmuma nosaukuma, kā norādīts pavadzīmē (CMR).",
+      "factoryLisrHeaderText": "Uzņēmums/Saimniecība",
+      "chosenFactoryText": "Jūs izvēlējāties sekojošu uzņēmumu",
+      "goButtonText": "Turpināt",
+      "backButtonText": "Atpakaļ"
+    },
+    "first-02lists.aspx": {
+      "instructionText": "Lūdzu, izvēlieties zemāk Saņēmēja / klienta vārdu:",
+      "backButtonText": "Sākt no jauna"
+    },
+    "first-03cargo.aspx": {
+      "instructionText": "Lūdzu, izvēlieties zemāk preču nosaukumu:",
+      "backButtonText": "Atpakaļ"
+    },
+    "first-04adata.aspx": {
+      "instructionText": "Lūdzu, ievadiet transportlīdzekļa un piekabes reģistrācijas numurus",
+      "frontPlateLabelText": "Priekšējais transportlīdzekļa numurs Nr",
+      "rearPlateLabelText": "Aizmugurējais piekabes numurs Nr",
+      "goButtonText": "Turpināt",
+      "backButtonText": "Atpakaļ"
+    },
+    "first-04bdata.aspx": {
+      "instructionText": "Lūdzu, ievadiet piegādes pavadzīmes (CMR) numuru un bruto kravas svaru kilogramos, kā norādīts pavadzīmē (CMR).",
+      "cmrLabelText": "Pavadzīmes (CMR) numurs",
+      "weightLabelText": "Kravas svars kilogramos",
+      "weightNotAvailableButtonText": "Nav informācijas par svaru",
+      "goButtonText": "Svērt!",
+      "backButtonText": "Sākt no jauna"
+    },
+    "first-success.aspx": {
+      "instructionText": "Paldies! Lūdzu, uzgaidiet, paņemiet izdruku un brauciet uz terminālu kravas izkraušanai.",
+      "backButtonText": "Sākt no jauna"
+    },
+    "second-01scanqr.aspx": {
+      "instructionText": "Lūdzu, novietojiet kodu (parādīts uz izdrukas) kameras priekšā un pagaidiet, līdz <span class = \"colorRed\"> jūs sadzirdat signālu </span>",
+      "backButtonText": "Sākt no jauna"
+    },
+    "notready.aspx": {
+      "instructionText": "Krava nav gaidāma. Lūdzu, sazinieties ar stividoru, izmantojot interkomu, lai saņemtu papildu instrukcijas.",
+      "backButtonText": "Sākt no jauna"
+    },
+    "second-notready.aspx": {
+      "instructionText": "Kļūda. Lūdzu, mēģiniet vēlreiz vai piezvaniet stividoram, izmantojot interkomu, lai iegūtu papildu instrukcijas.",
+      "tryAgainButtonText": "Mēģināt vēlreiz",
+      "backButtonText": "Sākt no jauna"
+    },
+    "second-repeat.aspx": {
+      "instructionText": "Svaru kļūda. Mēģināt vēlreiz.",
+      "tryAgainButtonText": "Apstiprināt un mēģināt vēlreiz",
+      "truckDetailInfo1": "Svars kā norādīts Jūsu pavadzīmē/CMR: ",
+      "truckDetailInfo2": " kg. <br> Transportlīdzekļa bruto svars: ",
+      "backButtonText": "Sākt no jauna"
+    },
+    "second-success.aspx": {
+      "instructionText": "Lūdzu, uzgaidiet izdruku un nogādājiet to apsardzes birojā turpmākai apstrādei.",
+      "backButtonText": "Sākt no jauna"
+    },
+    "wait-print.aspx": {
+      "instructionText": "Lūdzu, uzgaidiet izdruku!",
+      "backButtonText": "Sākt no jauna"
+    }
+  },
+  "lt": {
+    "first-00choice.aspx": {
+      "arrivalButtonText": "Arrival. Initial Weighing",
+      "departureButtonText": "Departure. Final Weighing",
+      "backButtonText": "Back"
+    },
+    "00scales.aspx": {
+      "instructionText": "Choose the right scale",
+      "backButtonText": "Back"
+    },
+     "first-01scan.aspx": {
+      "instructionText": "Prašome nuskaityti savo važtaraštį (CMR). Įdėkite pristatymo važtaraštį (nukreipta žemyn) į skaitytuvą, paspauskite ir palaikykite raudoną mygtuką <span class = \"colorRed\">, kol išgirsite signalą </span>",
+      "backButtonText": "Atgal"
+    },
+    "first-03factory.aspx": {
+      "instructionText": "Spustelėkite ūkio / įmonės pavadinimą, kaip parodyta jūsų važtaraštyje (CMR).",
+      "factoryLisrHeaderText": "Įmonė / ūkis",
+      "chosenFactoryText": "Jūs pasirinkote šią įmonę",
+      "goButtonText": "Tęsti",
+      "backButtonText": "Atgal"
+    },
+    "first-02lists.aspx": {
+      "instructionText": "Prašome pasirinkti kliento vardą:",
+      "backButtonText": "Atgal"
+    },
+    "first-03cargo.aspx": {
+      "instructionText": "Prašome pasirinkti prekių pavadinimą:",
+      "backButtonText": "Atgal"
+    },
+    "first-04adata.aspx": {
+      "instructionText": "Įveskite savo transporto priemonės ir priekabos registracijos numerį",
+      "frontPlateLabelText": "Priekinės transporto priemonės numeris Nr",
+      "rearPlateLabelText": "Galinės priekabos numeris Nr",
+      "goButtonText": "Tęsti",
+      "backButtonText": "Atgal"
+    },
+    "first-04bdata.aspx": {
+      "instructionText": "Prašome įrašyti savo važtaraščio (CMR) numerį ir bendrą krovinio svorį kilogramais, kaip nurodyta jūsų važtaraštyje (CMR).",
+      "cmrLabelText": "Važtaraščio (CMR) numeris",
+      "weightLabelText": "Krovinio svoris kilogramais",
+      "weightNotAvailableButtonText": "Nėra informacijos apie svorį",
+      "goButtonText": "Sverti!",
+      "backButtonText": "Pradėti iš naujo"
+    },
+    "first-success.aspx": {
+      "instructionText": "Ačiū! Palaukite spausdinimo, ir važiuokite į terminalo vietą iškrauti krovinio.",
+      "backButtonText": "Pradėti iš naujo"
+    },
+    "second-01scanqr.aspx": {
+      "instructionText": "Padėkite kodą (nurodyta ant spausdinimo) prieš kamerą ir palaukite, kol <span class = \"colorRed\"> išgirsite signalą </span>",
+      "backButtonText": "Pradėti iš naujo"
+    },
+    "notready.aspx": {
+      "instructionText": "Nesitikima jokio krovinio. Norėdami gauti daugiau instrukcijų, paskambinkite stividorui per interkomą.",
+      "backButtonText": "Pradėti iš naujo"
+    },
+    "second-notready.aspx": {
+      "instructionText": "Klaida. Bandykite dar kartą arba paskambinkite stividorui per interkomą, kad gautumėte daugiau instrukcijų.",
+      "tryAgainButtonText": "Bandyti iš naujo",
+      "backButtonText": "Pradėti iš naujo"
+    },
+    "second-repeat.aspx": {
+      "instructionText": "Svarstyklių klaida. Bandyti iš naujo.",
+      "tryAgainButtonText": "Patvirtinti ir bandyti iš naujo",
+      "truckDetailInfo1": "Svoris, nurodytas jūsų važtaraštyje / CMR:",
+      "truckDetailInfo2": " kg. <br> Transporto priemonės bendrasis svoris: ",
+      "backButtonText": "Pradėti iš naujo"
+    },
+    "second-success.aspx": {
+      "instructionText": "Palaukite spausdinimo ir nuneškite į apsaugos tarnybą tolimesniam apdorojimui.",
+      "backButtonText": "Pradėti iš naujo"
+    },
+    "wait-print.aspx": {
+      "instructionText": "Palaukite spausdinimo!",
+      "backButtonText": "Pradėti iš naujo"
+    }
+  },
+  "pl": {
+    "first-00choice.aspx": {
+      "arrivalButtonText": "Arrival. Initial Weighing",
+      "departureButtonText": "Departure. Final Weighing",
+      "backButtonText": "Back"
+    },
+    "00scales.aspx": {
+      "instructionText": "Choose the right scale",
+      "backButtonText": "Back"
+    },
+    "first-01scan.aspx": {
+      "instructionText": "Proszę zeskanować dowód dostawy (CMR). Włóż dowód dostawy (przednia strona) do skanera, naciśnij i przytrzymaj czerwony przycisk <span class = \"colorRed\">, aż usłyszysz sygnał </span>",
+      "backButtonText": "Wróć"
+    },
+    "first-03factory.aspx": {
+      "instructionText": "Kliknij nazwę gospodarstwa / firmy, jak pokazano w dowodzie dostawy (CMR).",
+      "factoryLisrHeaderText": "Firma / Gospodarstwo",
+      "chosenFactoryText": "Wybrałeś następującą firmę",
+      "goButtonText": "Dalej",
+      "backButtonText": "Wróć"
+    },
+    "first-02lists.aspx": {
+      "instructionText": "Wybierz nazwę klienta/odbiorcy poniżej:",
+      "backButtonText": "Wróć"
+    },
+    "first-03cargo.aspx": {
+      "instructionText": "Wybierz nazwę towaru poniżej:",
+      "backButtonText": "Wróć"
+    },
+    "first-04adata.aspx": {
+      "instructionText": "Wprowadź numer rejestracyjny pojazdu i przyczepy",
+      "frontPlateLabelText": "Numer przedniego pojazdu Nr",
+      "rearPlateLabelText": "Numer tylnej przyczepy Nr",
+      "goButtonText": "Dalej",
+      "backButtonText": "Wróć"
+    },
+    "first-04bdata.aspx": {
+      "instructionText": "Podaj numer dowodu dostawy (CMR) i masę brutto w kilogramach, jak podano w dowodzie dostawy (CMR).",
+      "cmrLabelText": "Numer dowodu dostawy (CMR)",
+      "weightLabelText": "Masa ładunku w kilogramach",
+      "weightNotAvailableButtonText": "Brak informacji o wadze",
+      "goButtonText": "Ważyć!",
+      "backButtonText": "Zacznij jeszcze raz"
+    },
+    "first-success.aspx": {
+      "instructionText": "Dziękuję! Poczekaj, weź wydruk i jedź na terminalu w celu rozładunku.",
+      "backButtonText": "Zacznij jeszcze raz"
+    },
+    "second-01scanqr.aspx": {
+      "instructionText": "Umieść kod (pokazany na wydruku) przed kamerą i poczekaj, aż <span class = \"colorRed\"> usłyszysz sygnał </span>",
+      "backButtonText": "Zacznij jeszcze raz"
+    },
+    "notready.aspx": {
+      "instructionText": "Nie oczekuje się ładunku. Zadzwoń do stevedore przez interkom, aby uzyskać dalsze instrukcje.",
+      "backButtonText": "Zacznij jeszcze raz"
+    },
+    "second-notready.aspx": {
+      "instructionText": "Błąd. Spróbuj ponownie lub zadzwoń do stevedore za pośrednictwem interkomu, aby uzyskać dalsze instrukcje.",
+      "tryAgainButtonText": "Spróbuj ponownie",
+      "backButtonText": "Zacznij jeszcze raz"
+    },
+    "second-repeat.aspx": {
+      "instructionText": "Błąd skali. Spróbuj ponownie.",
+      "tryAgainButtonText": "Potwierdź i spróbuj ponownie",
+      "truckDetailInfo1": "Waga w dowodzie dostawy / CMR: ",
+      "truckDetailInfo2": " kg. <br> Masa pojazdu całkowita:",
+      "backButtonText": "Zacznij jeszcze raz"
+    },
+    "second-success.aspx": {
+      "instructionText": "Poczekaj na wydruk i zanieś do biura bezpieczeństwa w celu dalszego przetwarzania.",
+      "backButtonText": "Zacznij jeszcze raz"
+    },
+    "wait-print.aspx": {
+      "instructionText": "Poczekaj na wydruk!",
+      "backButtonText": "Zacznij jeszcze raz"
+    }
+  },
+  "ee": {
+    "first-00choice.aspx": {
+      "arrivalButtonText": "Arrival. Initial Weighing",
+      "departureButtonText": "Departure. Final Weighing",
+      "backButtonText": "Back"
+    },
+    "00scales.aspx": {
+      "instructionText": "Choose the right scale",
+      "backButtonText": "Back"
+    },
+    "first-01scan.aspx": {
+      "instructionText": "Kontrollige oma saatelehte (CMR). Sisestage saateleht (küljega allapoole) skannerisse, hoidke all punast nuppu <span class = \"colorRed\">, kuni kuulete signaali </span>",
+      "backButtonText": "Tagasi"
+    },
+    "first-03factory.aspx": {
+      "instructionText": "Klõpsake talu / ettevõtte nime, nagu on näidatud teie saatelehel (CMR).",
+      "factoryLisrHeaderText": "Ettevõte / talu",
+      "chosenFactoryText": "Olete valinud järgmise ettevõtte",
+      "goButtonText": "Jätkake",
+      "backButtonText": "Tagasi"
+    },
+    "first-02lists.aspx": {
+      "instructionText": "Valige allpool kliendi/vastuvõtja nimi:",
+      "backButtonText": "Tagasi"
+    },
+    "first-03cargo.aspx": {
+      "instructionText": "Valige allpool kauba nimi:",
+      "backButtonText": "Tagasi"
+    },
+    "first-04adata.aspx": {
+      "instructionText": "Sisestage oma sõiduki ja haagise registreerimisnumber",
+      "frontPlateLabelText": "Esiosa number Nr",
+      "rearPlateLabelText": "Tagumise haagise number Nr",
+      "goButtonText": "Jätkake",
+      "backButtonText": "Tagasi"
+    },
+    "first-04bdata.aspx": {
+      "instructionText": "Sisestage saatelehe (CMR) number ja lasti brutomass kilodes vastavalt saatelehele (CMR).",
+      "cmrLabelText": "Saatelehe (CMR) number",
+      "weightLabelText": "Veose kaal kilodes",
+      "weightNotAvailableButtonText": "Pole kaaluinfot",
+      "goButtonText": "Kaaluma!",
+      "backButtonText": "Alusta uuesti"
+    },
+    "first-success.aspx": {
+      "instructionText": "Aitäh! Palun oodake, võtke väljatrükk ja sõitke terminali peal lasti mahalaadimiseks.",
+      "backButtonText": "Alusta uuesti"
+    },
+    "second-01scanqr.aspx": {
+      "instructionText": "Pange kood (väljatrükil näidatud) kaamera ette ja oodake, kuni <span class = \"colorRed\"> kuulete signaali </span>",
+      "backButtonText": "Alusta uuesti"
+    },
+    "notready.aspx": {
+      "instructionText": "Lasti ei oodata. Täiendavate juhiste saamiseks helistage stividorile intercomi kaudu.",
+      "backButtonText": "Alusta uuesti"
+    },
+    "second-notready.aspx": {
+      "instructionText": "Viga. Proovige uuesti või helistage sisetelefoni kaudu stividorile, et saada täiendavaid juhiseid.",
+      "tryAgainButtonText": "Proovi uuesti",
+      "backButtonText": "Alusta uuesti"
+    },
+    "second-repeat.aspx": {
+      "instructionText": "Kaalude viga. Proovi uuesti.",
+      "tryAgainButtonText": "Kinnitage ja proovige uuesti",
+      "truckDetailInfo1": "Kaal vastavalt saatelehele/CMR: ",
+      "truckDetailInfo2": " kg. <br> Sõiduki brutomass: ",
+      "backButtonText": "Alusta uuesti"
+    },
+    "second-success.aspx": {
+      "instructionText": "Palun oodake väljatrükki ja viige see turbekontorisse edasiseks töötlemiseks.",
+      "backButtonText": "Alusta uuesti"
+    },
+    "wait-print.aspx": {
+      "instructionText": "Palun oodake väljaprinti!",
+      "backButtonText": "Alusta uuesti"
+    }
+  }
+}
