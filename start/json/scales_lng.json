@@ -1,15 +1,11 @@
 ﻿{
   "en": {
-    "first-00choice.aspx": {
+    "direction": {
       "arrivalButtonText": "Arrival. Initial Weighing",
       "departureButtonText": "Departure. Final Weighing",
       "backButtonText": "Back"
     },
-    "00scales.aspx": {
-      "instructionText": "Choose the right scale",
-      "backButtonText": "Back"
-    },
-    "first-01scan.aspx": {
+    "invoice": {
       "instructionText": "Please scan your delivery note (CMR). Insert your delivery note (faced-down) into the scanner, press and hold the red button <span class=\"colorRed\"> till you hear the signal </span>",
       "backButtonText": "Back"
     },
@@ -78,16 +74,12 @@
   },
 
   "ru": {
-    "first-00choice.aspx": {
-      "arrivalButtonText": "Arrival. Initial Weighing",
-      "departureButtonText": "Departure. Final Weighing",
-      "backButtonText": "Back"
+    "direction": {
+          "arrivalButtonText": "Прибытие. Начальное взвешивание",
+          "departureButtonText": "Выезд. Конечное взвешивание",
+          "backButtonText": "Назад"
     },
-    "00scales.aspx": {
-      "instructionText": "Choose the right scale",
-      "backButtonText": "Back"
-    },
-    "first-01scan.aspx": {
+    "invoice": {
       "instructionText": "Положите накладную в сканер (лицевой стороной вниз), нажмите и удерживайте красную кнопку <span class=\"colorRed\"> до звукового сигнала </span>",
       "backButtonText": "Назад"
     },
@@ -155,16 +147,12 @@
     }
   },
   "lv": {
-    "first-00choice.aspx": {
-      "arrivalButtonText": "Arrival. Initial Weighing",
-      "departureButtonText": "Departure. Final Weighing",
-      "backButtonText": "Back"
+    "direction": {
+      "arrivalButtonText": "Ierašanās. Sākuma svēršana",
+      "departureButtonText": "Izbraukšana. Gala svēršana",
+      "backButtonText": "Atpakaļ"
     },
-    "00scales.aspx": {
-      "instructionText": "Choose the right scale",
-      "backButtonText": "Back"
-    },
-    "first-01scan.aspx": {
+    "invoice": {
       "instructionText": "Lūdzu, noskenējiet pavadzīmi (CMR). Ievietojiet pavadzīmi (ar virspusi uz leju) skenerī, nospiediet un turiet sarkano pogu <span class = \"colorRed\">, līdz sadzirdat signālu </span>",
       "backButtonText": "Atpakaļ"
     },
@@ -232,16 +220,12 @@
     }
   },
   "lt": {
-    "first-00choice.aspx": {
-      "arrivalButtonText": "Arrival. Initial Weighing",
-      "departureButtonText": "Departure. Final Weighing",
-      "backButtonText": "Back"
-    },
-    "00scales.aspx": {
-      "instructionText": "Choose the right scale",
-      "backButtonText": "Back"
-    },
-     "first-01scan.aspx": {
+    "direction": {
+      "arrivalButtonText": "Atvykimas. Pradinis svėrimas",
+      "departureButtonText": "Išvykimas. Galutinis svėrimas",
+      "backButtonText": "Atgal"
+  },
+     "invoice": {
       "instructionText": "Prašome nuskaityti savo važtaraštį (CMR). Įdėkite pristatymo važtaraštį (nukreipta žemyn) į skaitytuvą, paspauskite ir palaikykite raudoną mygtuką <span class = \"colorRed\">, kol išgirsite signalą </span>",
       "backButtonText": "Atgal"
     },
@@ -309,16 +293,12 @@
     }
   },
   "pl": {
-    "first-00choice.aspx": {
-      "arrivalButtonText": "Arrival. Initial Weighing",
-      "departureButtonText": "Departure. Final Weighing",
-      "backButtonText": "Back"
+    "direction": {
+      "arrivalButtonText": "Przyjazd. Ważenie wstępne",
+      "departureButtonText": "Wyjazd. Ważenie końcowe",
+      "backButtonText": "Wróć"
     },
-    "00scales.aspx": {
-      "instructionText": "Choose the right scale",
-      "backButtonText": "Back"
-    },
-    "first-01scan.aspx": {
+    "invoice": {
       "instructionText": "Proszę zeskanować dowód dostawy (CMR). Włóż dowód dostawy (przednia strona) do skanera, naciśnij i przytrzymaj czerwony przycisk <span class = \"colorRed\">, aż usłyszysz sygnał </span>",
       "backButtonText": "Wróć"
     },
@@ -386,16 +366,12 @@
     }
   },
   "ee": {
-    "first-00choice.aspx": {
-      "arrivalButtonText": "Arrival. Initial Weighing",
-      "departureButtonText": "Departure. Final Weighing",
-      "backButtonText": "Back"
+    "direction": {
+      "arrivalButtonText": "Saabumine. Esialgne kaalumine",
+      "departureButtonText": "Lahkumine. Lõplik kaalumine",
+      "backButtonText": "Tagasi"
     },
-    "00scales.aspx": {
-      "instructionText": "Choose the right scale",
-      "backButtonText": "Back"
-    },
-    "first-01scan.aspx": {
+    "invoice": {
       "instructionText": "Kontrollige oma saatelehte (CMR). Sisestage saateleht (küljega allapoole) skannerisse, hoidke all punast nuppu <span class = \"colorRed\">, kuni kuulete signaali </span>",
       "backButtonText": "Tagasi"
     },

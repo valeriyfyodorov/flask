@@ -1,0 +1,48 @@
+﻿{% extends "base.html" %}
+
+{% block styles %}
+<style type="text/css">
+
+.row {
+             padding-top: 50px;
+         }
+body{
+  background-color: #eee;
+}
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+     
+         <div class="extraspace text-center">
+     
+          Izvēlēties valodu. Choose language.  Выберете язык.                  
+             </div>
+    
+<div class="container-fluid text-center">
+  <!-- Main component container start -->
+  {% for row in lngRows %}
+
+    <div class="row" >
+      {% for lng in row %}
+        <div class="col-md-3 offset-md-2"> 
+                <a href="{{url_for('direction')}}/?lng={{lng}}">
+                    <img src="{{ url_for('static', filename='images/lng/') }}{{lng}}.png" class="img-responsive attractive" alt="{{lng}}">
+                </a>
+        </div>
+      {% endfor %}
+    </div>
+ {% endfor %}
+            
+        
+
+</div> <!-- /container -->
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {% include 'idle_script.html' %}
+{% endblock %}

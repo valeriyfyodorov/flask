@@ -5,6 +5,8 @@ app = Flask(__name__)
 app.config.from_mapping(
         SECRET_KEY='devsecret',
         DATABASE=os.path.join(app.instance_path, 'flaskrun.sqlite'),
+        MEDIA_FOLDER=os.path.join(app.root_path, 'media'),
+        JSON_FOLDER=os.path.join(app.root_path, 'json'),
     )
 from . import routes
 

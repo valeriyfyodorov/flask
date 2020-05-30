@@ -1,0 +1,14 @@
+
+<script src="{{ url_for('static', filename='scripts/idle-timer.min.js') }}"></script>
+    <script>
+
+        $(function () {
+            // binds to document - shorthand
+            $.idleTimer(60000);
+        });
+
+        $(document).on("idle.idleTimer", function (event, elem, obj) {
+            cuurentUrl=window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+            location.href = "/";
+        });
+    </script>
