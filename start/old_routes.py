@@ -28,7 +28,7 @@ def invoice():
     lng = request.args.get('lng')
     if lng not in vocabulary: lng = "en" 
     voc = vocabulary[lng]["invoice"]
-    api_url = app.config['DB_SERVER_API_URL'] + "&command=scalelists"
+    api_url = app.config['DB_SERVER_API_URL'] + f"&command=todaylists&lng={lng}"
     # remove for the proper area
     shippersLists = None
     with urequest.urlopen(api_url) as response:
