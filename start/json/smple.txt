@@ -7,7 +7,7 @@ http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=list&id=1939&lng
 http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=listfactories&list=1940
 [ {"factoryID": 1760, "factoryName": " Abra, LPKS" },{"factoryID": 1887, "factoryName": " Agro Klag" },{"...}]
 
-http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=newunitweight&list=1940&fr=1887&sc=1&wkg=47300&pt=HZ333&inr=AZ30000&iwt=25000
+http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=newunitweight&list=1940&fr=1887&sc=1&wkg=47300&pt=HZ333&inr=AZ30000&iwt=25000&ifn=image.jpg
 {"id":42317,"nr":"HZ333","extraCode":null,"declarationNr":"AZ30000","tranunitListId":1940,"cargoId":39,
 "factoryId":1887,"shipperId":1735,"stationId":1735,"ownerId":1735,"shippedFromFactory":"2020-05-31T15:58:03.511381",
 "arrivedAtPort":"2020-05-31T15:58:03.511381","arrivedAtGate":"0001-01-01T00:00:00","readyAtGate":"0001-01-01T00:00:00",
@@ -24,5 +24,5 @@ http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=newunitweight&li
 "weightingGrossMoment":"2020-05-31T15:58:03.511381","weightingEmptyMoment":"0001-01-01T00:00:00",
 "inLandDeclarationNr":null,"t1Nr":null,"mrnNr":null,"passedBorder":false,"firstAferBorderStation":null,"railwayUsed":null,
 "checkedOnTerminal":false,"qualityOk":false,"lockedByLogistics":false,"isSplit":false,"originalId":42317,"unitOwnerId":0,
-"departedFromPort":"0001-01-01T00:00:00","weightingScaleId":1}
+"departedFromPort":"0001-01-01T00:00:00","weightingScaleId":1,"weightingScaleFinalId":0, "invoiceFileName": ""}
 

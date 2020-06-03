@@ -21,28 +21,30 @@
   </div>
 
   <div class="row" >
-    <div class="col-md-10 offset-md-1">
-        
-       <a id="hLarrival" class="btn btn-secondary btn-lg btn-xl btn-block" href="{{url_for('scales')}}/?lng={{lng}}&dir=in">
-           <i class="fas fa-sign-in-alt"></i>  
-       <br />
-           {{voc["arrivalButtonText"]}}</a>
-         
-            
-      </div>
-</div>
-<div class="row" >
+    <div class="col-md-12">
+            <h2>
+              {{voc["instructionText"] | safe}}
 
-   <div class="col-md-10 offset-md-1">
-        <a id="hLdeparture" class="btn btn-secondary btn-lg btn-xl btn-block" href="{{url_for('scales')}}/?lng={{lng}}&dir=out">
-           <i class="fas fa-sign-out-alt"></i>
-       <br />
-       {{voc["departureButtonText"]}}
-      </a>
-           
+            </h2>
+    </div>         
+  </div>
+  {% for shipperList in shippersList %}
+      <div class="row" >
+        <div class="col-md-10 offset-md-1">
+          <a class="btn btn-secondary btn-lg btn-xl btn-block" href="{{url_for('scales')+query}}&list={{shipperList['listId']}}">
+              
+            {{shipperList['cargoName']}}
+            - 
+            {% if (shipperList['truckScalesHeading'] | length)  > 0 %}
+                {{shipperList['truckScalesHeading']}}
+            {% else %}
+              {{shipperList['shipperName']}}
+            {% endif %}
+          </a>
+        </div>
       </div>
-  
-   </div>
+  {% endfor %}
+      
 
 <div class="extraspace" >
   <div class="col-md-12">

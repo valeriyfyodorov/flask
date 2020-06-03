@@ -16,11 +16,9 @@
   <!-- Main component container start -->
  
  
-  <div class="row" >
-    <div class="col-md-12">
-      <p></p>
-    </div>
-  </div>
+  <div class="row" ><div class="col-md-12"><p></p></div></div>
+
+
   <div class="row" >
     <div class="col-md-12">
             <h2>
@@ -28,29 +26,41 @@
 
             </h2>
     </div>         
-</div>
-
-
-<div class="row" >
-    <div class="col-md-12" id="buttoninstructions">
-        <img src="{{ url_for('static', filename='images/first-scan.gif') }}" class="img-responsive" />
-     </div>          
-</div>
-
-
-
-<div class="extraspace" >
-  <div class="col-md-10 offset-md-1">
-    <p></p>
-    
   </div>
-</div>
-<div class="row" >
+
+  
+
+  <div class="row" >
+      <div class="col-md-12" id="buttoninstructions">
+          <img src="{{ url_for('static', filename='images/first-scan.gif') }}" class="img-responsive" />
+      </div>          
+  </div>
+
+  <div class="row" ><div class="col-md-12"><p></p></div></div>
+
+
+  <div class="row" >
     <div class="col-md-10 offset-md-1">
-      <a href="{{url_for('index')}}" class="btn btn-danger btn-lg btn-xl btn-block" role="button">
-              X
-          </a>     
+      <a class="btn btn-success btn-lg btn-xl" href="{{url_for('lists')+query}}">
+        
+          {{voc["readyButtonText"]}}
+      
+      </a>
     </div>
+  </div>
+
+  <div class="extraspace" >
+    <div class="col-md-10 offset-md-1">
+      <p></p>
+      
+    </div>
+  </div>
+  <div class="row" >
+      <div class="col-md-4 offset-md-4">
+        <a href="{{url_for('index')}}" class="btn btn-danger btn-lg btn-xl btn-block" role="button">
+                X
+            </a>     
+      </div>
   </div>
   
 
