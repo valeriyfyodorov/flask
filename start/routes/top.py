@@ -45,3 +45,18 @@ def scales():
         },
     }
     return render_template('scales.html', title='Choose scale', lng=lng, voc=voc, buttons=buttons)
+
+@app.route('/directions/')
+def directions():
+    lng = defaultEn(request.args.get('lng'), vocabulary)
+    voc = vocabulary[lng]["directions"]
+    next_page_name = app.config['DB_SERVER_URL'] + "weighting-instructions.aspx"
+    return render_template('directions.html', title='Proceed to terminal', voc=voc, next_page_name=next_page_name)
+
+
+@app.route('/unknownerror/')
+def unknownerror():
+    lng = defaultEn(request.args.get('lng'), vocabulary)
+    voc = vocabulary[lng]["unknownerror"]
+    next_page_name = app.config['DB_SERVER_URL'] + "weighting-instructions.aspx"
+    return render_template('unknownerror.html', title='Sorry. Error.', voc=voc)

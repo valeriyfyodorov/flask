@@ -26,3 +26,28 @@ http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=newunitweight&li
 "checkedOnTerminal":false,"qualityOk":false,"lockedByLogistics":false,"isSplit":false,"originalId":42317,"unitOwnerId":0,
 "departedFromPort":"0001-01-01T00:00:00","weightingScaleId":1,"weightingScaleFinalId":0, "invoiceFileName": ""}
 
+http://eu.amgs.me/apijson.ashx?key=gd3784h67hxgugb&command=newunitweight&lng=lv&sc=0&ptf=LF0010&
+ptr=L0001R&wkg=550
+&ifn=2020%2F06%2F03%2Fhh_mm_ss.jpg&list=194&fr=17&pt=LF0010%2FL000&inr=AAA&iwt=13333
+
+{'id': 42332, 'nr': 'LF0010/L000', 'extraCode': None, 'declarationNr': 'AAA', 'tranunitListId': 194, 
+'cargoId': 18, 'factoryId': 17, 'shipperId': 80, 'stationId': 508, 'ownerId': 80, 'shippedFromFactory': '2020-06-04T18:38:58.1274348', 
+'arrivedAtPort': '2020-06-04T18:38:58.1274348', 'arrivedAtGate': '0001-01-01T00:00:00', 'readyAtGate': '0001-01-01T00:00:00', 
+'leftAtGate': '0001-01-01T00:00:00', 'warehouseFirstId': 0, 'warehousePresentId': 0, 'warehousePreviousId': 0, 
+'warehouseFirstDate': '0001-01-01T00:00:00', 'warehousePresentDate': '0001-01-01T00:00:00', 'warehousePreviousDate': '0001-01-01T00:00:00', 
+'cargoPlanHoldId': 0, 'cargoPlanHoldDate': '0001-01-01T00:00:00', 'statusId': 2, 'weightAfterLosses': 13.333, 'weightPresent': 13.333, 
+'weightPresentOnShip': 0.0, 'weightScales': 0.0, 'weightScalesOnShip': 0.0, 'weightDeclared': 13.333, 'weightInitial': 13.333, 
+'scoopsQuantity': 0.0, 'workerGroupToWarehouseId': 0, 'workerGroupToVesselId': 0, 'truckToWarehouseId': 0, 'truckToVesselId': 0, 
+'truckWorkerToVesselID': 0, 'checkedForPresence': False, 'euStatus': False, 'qualityDescription': None, 'remark': None, 'smgsCode': None, 
+'stevedoreInfo': None, 'qGluten': 0.0, 'qProtein': 0.0, 'qGermination': 0.0, 'qTestWeight': 0.0, 'qForeignMatter': 0.0, 'qFallingNumber': 0.0, 
+'qHumidity': 0.0, 'qOtherGrain': 0.0, 'qBugsDamage': 0.0, 'qGrainImpurity': 0.0, 'weightingGrossWeight': 0.56, 'weightingEmptyWeight': 0.0, 
+'weightingGrossWeightDeclared': 0.0, 'weightingEmptyWeightDeclared': 0.0, 'weightingGrossMoment': '2020-06-04T18:38:58.1430615', 
+'weightingEmptyMoment': '0001-01-01T00:00:00', 'inLandDeclarationNr': None, 't1Nr': None, 'mrnNr': None, 'passedBorder': False, 
+'firstAferBorderStation': None, 'railwayUsed': None, 'checkedOnTerminal': False, 'qualityOk': False, 'lockedByLogistics': False, 
+'isSplit': False, 'originalId': 42332, 'unitOwnerId': 0, 'departedFromPort': '0001-01-01T00:00:00', 'weightingScaleId': 0}
+
+
+
+http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=finalweight&tranunit=42100
+{"result": 1,"error": "No car id determined in qr code"}
+

@@ -14,9 +14,9 @@
       "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Back"
     },
-    "first-03factory.aspx": {
+    "factories": {
       "instructionText": "Please click on the name of the farm/company as shown in your delivery note (CMR).",
-      "factoryLisrHeaderText": "Company/Farm",
+      "factoryListHeaderText": "Company/Farm",
       "chosenFactoryText": "You have chosen following Company",
       "goButtonText": "Continue",
       "backButtonText": "Back"
@@ -29,14 +29,14 @@
       "instructionText": "Please choose the name of cargo/goods below:",
       "backButtonText": "Back"
     },
-    "first-04adata.aspx": {
+    "plates": {
       "instructionText": "Please enter your vehicle and trailer registration number",
       "frontPlateLabelText": "Front vehicle number Nr",
       "rearPlateLabelText": "Rear trailer number Nr",
       "goButtonText": "Continue",
       "backButtonText": "Start again"
     },
-    "first-04bdata.aspx": {
+    "cmr": {
       "instructionText": "Please enter your delivery note (CMR) number and gross cargo weight in kilos as stated on your delivery note (CMR).",
       "cmrLabelText": "Delivery note (CMR) number",
       "weightLabelText": "Cargo weight in kilos",
@@ -44,7 +44,7 @@
       "goButtonText": "To Weigh!",
       "backButtonText": "Start again"
     },
-    "first-success.aspx": {
+    "directions": {
       "instructionText": "Thank you! Please wait, take the print-out and drive on the terminal site for cargo unloading.",
       "backButtonText": "Start again"
     },
@@ -56,7 +56,7 @@
       "instructionText": "No cargo expected. Please call the stevedore via the intercom for further instructions.",
       "backButtonText": "Start again"
     },
-    "second-notready.aspx": {
+    "unknownerror": {
       "instructionText": "Error. Please try again or call the stevedore via the intercom for further instructions.",
       "tryAgainButtonText": "Try again",
       "backButtonText": "Start again"
@@ -93,9 +93,9 @@
       "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Назад"
     },
-    "first-03factory.aspx": {
+    "factories": {
       "instructionText": "Нажмите на название хозяйства/отправителя как указано в документах.",
-      "factoryLisrHeaderText": "Отправитель/Хозяйство",
+      "factoryListHeaderText": "Отправитель/Хозяйство",
       "chosenFactoryText": "Вы выбрали отправителя: ",
       "goButtonText": "Продолжить",
       "backButtonText": "Назад"
@@ -108,14 +108,14 @@
       "instructionText": "Выберите груз из списка:",
       "backButtonText": "Назад"
     },
-    "first-04adata.aspx": {
+    "plates": {
       "instructionText": "Введите гос.номер транспортного средства и прицепа",
       "frontPlateLabelText": "Передний номер транспортного средства №",
       "rearPlateLabelText": "Номер прицепа №",
       "goButtonText": "Продолжить",
       "backButtonText": "Назад"
     },
-    "first-04bdata.aspx": {
+    "cmr": {
       "instructionText": "Введите данные накладной/CMR : ее номер и указанный на ней вес в кг",
       "cmrLabelText": "Номер накладной/ CMR",
       "weightLabelText": "Вес груза в кг",
@@ -123,7 +123,7 @@
       "goButtonText": "Взвесить транспортное средство!",
       "backButtonText": "Начать заново"
     },
-    "first-success.aspx": {
+    "directions": {
       "instructionText": "Спасибо! Подождите распечатки с инструкцией и следуйте на выгрузку.",
       "backButtonText": "Начать заново"
     },
@@ -135,7 +135,7 @@
       "instructionText": "Терминал не готов к приемке товара. Обращайтесь за помощью к стивидору.",
       "backButtonText": "Начать заново"
     },
-    "second-notready.aspx": {
+    "unknownerror": {
       "instructionText": "Произошла ошибка. Попробуйте еще раз или обращайтесь за помощью к стивидору.",
       "tryAgainButtonText": "Повторить попытку взвешивания",
       "backButtonText": "Начать заново"
@@ -171,9 +171,9 @@
       "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Atpakaļ"
     },
-    "first-03factory.aspx": {
+    "factories": {
       "instructionText": "Lūdzu, noklikšķiniet uz saimniecības / uzņēmuma nosaukuma, kā norādīts pavadzīmē (CMR).",
-      "factoryLisrHeaderText": "Uzņēmums/Saimniecība",
+      "factoryListHeaderText": "Uzņēmums/Saimniecība",
       "chosenFactoryText": "Jūs izvēlējāties sekojošu uzņēmumu",
       "goButtonText": "Turpināt",
       "backButtonText": "Atpakaļ"
@@ -186,14 +186,14 @@
       "instructionText": "Lūdzu, izvēlieties zemāk preču nosaukumu:",
       "backButtonText": "Atpakaļ"
     },
-    "first-04adata.aspx": {
+    "plates": {
       "instructionText": "Lūdzu, ievadiet transportlīdzekļa un piekabes reģistrācijas numurus",
       "frontPlateLabelText": "Priekšējais transportlīdzekļa numurs Nr",
       "rearPlateLabelText": "Aizmugurējais piekabes numurs Nr",
       "goButtonText": "Turpināt",
       "backButtonText": "Atpakaļ"
     },
-    "first-04bdata.aspx": {
+    "cmr": {
       "instructionText": "Lūdzu, ievadiet piegādes pavadzīmes (CMR) numuru un bruto kravas svaru kilogramos, kā norādīts pavadzīmē (CMR).",
       "cmrLabelText": "Pavadzīmes (CMR) numurs",
       "weightLabelText": "Kravas svars kilogramos",
@@ -201,7 +201,7 @@
       "goButtonText": "Svērt!",
       "backButtonText": "Sākt no jauna"
     },
-    "first-success.aspx": {
+    "directions": {
       "instructionText": "Paldies! Lūdzu, uzgaidiet, paņemiet izdruku un brauciet uz terminālu kravas izkraušanai.",
       "backButtonText": "Sākt no jauna"
     },
@@ -213,7 +213,7 @@
       "instructionText": "Krava nav gaidāma. Lūdzu, sazinieties ar stividoru, izmantojot interkomu, lai saņemtu papildu instrukcijas.",
       "backButtonText": "Sākt no jauna"
     },
-    "second-notready.aspx": {
+    "unknownerror": {
       "instructionText": "Kļūda. Lūdzu, mēģiniet vēlreiz vai piezvaniet stividoram, izmantojot interkomu, lai iegūtu papildu instrukcijas.",
       "tryAgainButtonText": "Mēģināt vēlreiz",
       "backButtonText": "Sākt no jauna"
@@ -249,9 +249,9 @@
       "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Atgal"
     },
-    "first-03factory.aspx": {
+    "factories": {
       "instructionText": "Spustelėkite ūkio / įmonės pavadinimą, kaip parodyta jūsų važtaraštyje (CMR).",
-      "factoryLisrHeaderText": "Įmonė / ūkis",
+      "factoryListHeaderText": "Įmonė / ūkis",
       "chosenFactoryText": "Jūs pasirinkote šią įmonę",
       "goButtonText": "Tęsti",
       "backButtonText": "Atgal"
@@ -264,14 +264,14 @@
       "instructionText": "Prašome pasirinkti prekių pavadinimą:",
       "backButtonText": "Atgal"
     },
-    "first-04adata.aspx": {
+    "plates": {
       "instructionText": "Įveskite savo transporto priemonės ir priekabos registracijos numerį",
       "frontPlateLabelText": "Priekinės transporto priemonės numeris Nr",
       "rearPlateLabelText": "Galinės priekabos numeris Nr",
       "goButtonText": "Tęsti",
       "backButtonText": "Atgal"
     },
-    "first-04bdata.aspx": {
+    "cmr": {
       "instructionText": "Prašome įrašyti savo važtaraščio (CMR) numerį ir bendrą krovinio svorį kilogramais, kaip nurodyta jūsų važtaraštyje (CMR).",
       "cmrLabelText": "Važtaraščio (CMR) numeris",
       "weightLabelText": "Krovinio svoris kilogramais",
@@ -279,7 +279,7 @@
       "goButtonText": "Sverti!",
       "backButtonText": "Pradėti iš naujo"
     },
-    "first-success.aspx": {
+    "directions": {
       "instructionText": "Ačiū! Palaukite spausdinimo, ir važiuokite į terminalo vietą iškrauti krovinio.",
       "backButtonText": "Pradėti iš naujo"
     },
@@ -291,7 +291,7 @@
       "instructionText": "Nesitikima jokio krovinio. Norėdami gauti daugiau instrukcijų, paskambinkite stividorui per interkomą.",
       "backButtonText": "Pradėti iš naujo"
     },
-    "second-notready.aspx": {
+    "unknownerror": {
       "instructionText": "Klaida. Bandykite dar kartą arba paskambinkite stividorui per interkomą, kad gautumėte daugiau instrukcijų.",
       "tryAgainButtonText": "Bandyti iš naujo",
       "backButtonText": "Pradėti iš naujo"
@@ -327,9 +327,9 @@
       "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Wróć"
     },
-    "first-03factory.aspx": {
+    "factories": {
       "instructionText": "Kliknij nazwę gospodarstwa / firmy, jak pokazano w dowodzie dostawy (CMR).",
-      "factoryLisrHeaderText": "Firma / Gospodarstwo",
+      "factoryListHeaderText": "Firma / Gospodarstwo",
       "chosenFactoryText": "Wybrałeś następującą firmę",
       "goButtonText": "Dalej",
       "backButtonText": "Wróć"
@@ -342,14 +342,14 @@
       "instructionText": "Wybierz nazwę towaru poniżej:",
       "backButtonText": "Wróć"
     },
-    "first-04adata.aspx": {
+    "plates": {
       "instructionText": "Wprowadź numer rejestracyjny pojazdu i przyczepy",
       "frontPlateLabelText": "Numer przedniego pojazdu Nr",
       "rearPlateLabelText": "Numer tylnej przyczepy Nr",
       "goButtonText": "Dalej",
       "backButtonText": "Wróć"
     },
-    "first-04bdata.aspx": {
+    "cmr": {
       "instructionText": "Podaj numer dowodu dostawy (CMR) i masę brutto w kilogramach, jak podano w dowodzie dostawy (CMR).",
       "cmrLabelText": "Numer dowodu dostawy (CMR)",
       "weightLabelText": "Masa ładunku w kilogramach",
@@ -357,7 +357,7 @@
       "goButtonText": "Ważyć!",
       "backButtonText": "Zacznij jeszcze raz"
     },
-    "first-success.aspx": {
+    "directions": {
       "instructionText": "Dziękuję! Poczekaj, weź wydruk i jedź na terminalu w celu rozładunku.",
       "backButtonText": "Zacznij jeszcze raz"
     },
@@ -369,7 +369,7 @@
       "instructionText": "Nie oczekuje się ładunku. Zadzwoń do stevedore przez interkom, aby uzyskać dalsze instrukcje.",
       "backButtonText": "Zacznij jeszcze raz"
     },
-    "second-notready.aspx": {
+    "unknownerror": {
       "instructionText": "Błąd. Spróbuj ponownie lub zadzwoń do stevedore za pośrednictwem interkomu, aby uzyskać dalsze instrukcje.",
       "tryAgainButtonText": "Spróbuj ponownie",
       "backButtonText": "Zacznij jeszcze raz"
@@ -405,9 +405,9 @@
       "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Tagasi"
     },
-    "first-03factory.aspx": {
+    "factories": {
       "instructionText": "Klõpsake talu / ettevõtte nime, nagu on näidatud teie saatelehel (CMR).",
-      "factoryLisrHeaderText": "Ettevõte / talu",
+      "factoryListHeaderText": "Ettevõte / talu",
       "chosenFactoryText": "Olete valinud järgmise ettevõtte",
       "goButtonText": "Jätkake",
       "backButtonText": "Tagasi"
@@ -420,14 +420,14 @@
       "instructionText": "Valige allpool kauba nimi:",
       "backButtonText": "Tagasi"
     },
-    "first-04adata.aspx": {
+    "plates": {
       "instructionText": "Sisestage oma sõiduki ja haagise registreerimisnumber",
       "frontPlateLabelText": "Esiosa number Nr",
       "rearPlateLabelText": "Tagumise haagise number Nr",
       "goButtonText": "Jätkake",
       "backButtonText": "Tagasi"
     },
-    "first-04bdata.aspx": {
+    "cmr": {
       "instructionText": "Sisestage saatelehe (CMR) number ja lasti brutomass kilodes vastavalt saatelehele (CMR).",
       "cmrLabelText": "Saatelehe (CMR) number",
       "weightLabelText": "Veose kaal kilodes",
@@ -435,7 +435,7 @@
       "goButtonText": "Kaaluma!",
       "backButtonText": "Alusta uuesti"
     },
-    "first-success.aspx": {
+    "directions": {
       "instructionText": "Aitäh! Palun oodake, võtke väljatrükk ja sõitke terminali peal lasti mahalaadimiseks.",
       "backButtonText": "Alusta uuesti"
     },
@@ -447,7 +447,7 @@
       "instructionText": "Lasti ei oodata. Täiendavate juhiste saamiseks helistage stividorile intercomi kaudu.",
       "backButtonText": "Alusta uuesti"
     },
-    "second-notready.aspx": {
+    "unknownerror": {
       "instructionText": "Viga. Proovige uuesti või helistage sisetelefoni kaudu stividorile, et saada täiendavaid juhiseid.",
       "tryAgainButtonText": "Proovi uuesti",
       "backButtonText": "Alusta uuesti"

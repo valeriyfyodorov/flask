@@ -14,7 +14,7 @@
 {% block content %}
 <div class="container-fluid text-center">
   <!-- Main component container start -->
-  <div class=" extraspace" >
+  <div class="row" >
     <div class="col-md-12">
       <p></p>
     </div>
@@ -28,25 +28,33 @@
             </h2>
     </div>         
   </div>
-  {% for shipperList in shippersLists %}
-      <div class="row" >
-        <div class="col-md-10 offset-md-1">
-          <a class="btn btn-secondary btn-lg btn-xl btn-block" href="{{url_for('factories')+query}}&list={{shipperList['listId']}}">
-              
-            {{shipperList['cargoName']}}
-            - 
-            {% if (shipperList['truckScalesHeading'] | length)  > 0 %}
-                {{shipperList['truckScalesHeading']}}
-            {% else %}
-              {{shipperList['shipperName']}}
-            {% endif %}
-          </a>
-        </div>
+  
+  <div class="row" >
+    {% for factoriesPart in factories %}
+      <div class="col-sm-4">
+        <table class="table table-striped text-center table-hover table-bordered">
+          <thead>
+            <tr>
+              <th> {{voc["factoryListHeaderText"] | safe}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for factory in factoriesPart %}
+            <tr style="cursor:pointer">
+              <td class="btn btn-block" onclick='window.location="{{url_for('plates') + query}}&fr={{factory['factoryID']}}";'> 
+                {{factory["factoryName"]}}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
+
       
 
-<div class="extraspace" >
+<div class="row" >
   <div class="col-md-12">
     <p></p>
   </div>
