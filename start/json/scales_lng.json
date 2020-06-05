@@ -48,8 +48,9 @@
       "instructionText": "Thank you! Please wait, take the print-out and drive on the terminal site for cargo unloading.",
       "backButtonText": "Start again"
     },
-    "second-01scanqr.aspx": {
+    "qrcode": {
       "instructionText": "Please put the code (shown on your print-out) in front of the camera and wait till <span class=\"colorRed\"> you hear the signal</span>",
+      "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Start again"
     },
     "notready.aspx": {
@@ -68,7 +69,7 @@
       "truckDetailInfo2": " kg. <br> Vehicle gross weight: ",
       "backButtonText": "Start again"
     },
-    "second-success.aspx": {
+    "farewell": {
       "instructionText": "Please wait for the print-out and take it to the security office for further processing.",
       "backButtonText": "Start again"
     },
@@ -127,8 +128,9 @@
       "instructionText": "Спасибо! Подождите распечатки с инструкцией и следуйте на выгрузку.",
       "backButtonText": "Начать заново"
     },
-    "second-01scanqr.aspx": {
+    "qrcode": {
       "instructionText": "Расположите правильно под камерой код, указанный на вашей инструкции и ожидайте <span class=\"colorRed\"> звуковой сигнал </span>",
+      "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Начать заново"
     },
     "notready.aspx": {
@@ -147,7 +149,7 @@
       "truckDetailInfo2": " кг. <br> Брутто вес полного транспортного средства: ",
       "backButtonText": "Начать заново"
     },
-    "second-success.aspx": {
+    "farewell": {
       "instructionText": "Подождите распечатки акта и подпишите все документы у охраны.",
       "backButtonText": "Начать заново"
     },
@@ -205,8 +207,9 @@
       "instructionText": "Paldies! Lūdzu, uzgaidiet, paņemiet izdruku un brauciet uz terminālu kravas izkraušanai.",
       "backButtonText": "Sākt no jauna"
     },
-    "second-01scanqr.aspx": {
+    "qrcode": {
       "instructionText": "Lūdzu, novietojiet kodu (parādīts uz izdrukas) kameras priekšā un pagaidiet, līdz <span class = \"colorRed\"> jūs sadzirdat signālu </span>",
+      "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Sākt no jauna"
     },
     "notready.aspx": {
@@ -225,7 +228,7 @@
       "truckDetailInfo2": " kg. <br> Transportlīdzekļa bruto svars: ",
       "backButtonText": "Sākt no jauna"
     },
-    "second-success.aspx": {
+    "farewell": {
       "instructionText": "Lūdzu, uzgaidiet izdruku un nogādājiet to apsardzes birojā turpmākai apstrādei.",
       "backButtonText": "Sākt no jauna"
     },
@@ -283,8 +286,9 @@
       "instructionText": "Ačiū! Palaukite spausdinimo, ir važiuokite į terminalo vietą iškrauti krovinio.",
       "backButtonText": "Pradėti iš naujo"
     },
-    "second-01scanqr.aspx": {
+    "qrcode": {
       "instructionText": "Padėkite kodą (nurodyta ant spausdinimo) prieš kamerą ir palaukite, kol <span class = \"colorRed\"> išgirsite signalą </span>",
+      "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Pradėti iš naujo"
     },
     "notready.aspx": {
@@ -303,7 +307,7 @@
       "truckDetailInfo2": " kg. <br> Transporto priemonės bendrasis svoris: ",
       "backButtonText": "Pradėti iš naujo"
     },
-    "second-success.aspx": {
+    "farewell": {
       "instructionText": "Palaukite spausdinimo ir nuneškite į apsaugos tarnybą tolimesniam apdorojimui.",
       "backButtonText": "Pradėti iš naujo"
     },
@@ -361,8 +365,9 @@
       "instructionText": "Dziękuję! Poczekaj, weź wydruk i jedź na terminalu w celu rozładunku.",
       "backButtonText": "Zacznij jeszcze raz"
     },
-    "second-01scanqr.aspx": {
+    "qrcode": {
       "instructionText": "Umieść kod (pokazany na wydruku) przed kamerą i poczekaj, aż <span class = \"colorRed\"> usłyszysz sygnał </span>",
+      "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Zacznij jeszcze raz"
     },
     "notready.aspx": {
@@ -381,7 +386,7 @@
       "truckDetailInfo2": " kg. <br> Masa pojazdu całkowita:",
       "backButtonText": "Zacznij jeszcze raz"
     },
-    "second-success.aspx": {
+    "farewell": {
       "instructionText": "Poczekaj na wydruk i zanieś do biura bezpieczeństwa w celu dalszego przetwarzania.",
       "backButtonText": "Zacznij jeszcze raz"
     },
@@ -439,8 +444,9 @@
       "instructionText": "Aitäh! Palun oodake, võtke väljatrükk ja sõitke terminali peal lasti mahalaadimiseks.",
       "backButtonText": "Alusta uuesti"
     },
-    "second-01scanqr.aspx": {
+    "qrcode": {
       "instructionText": "Pange kood (väljatrükil näidatud) kaamera ette ja oodake, kuni <span class = \"colorRed\"> kuulete signaali </span>",
+      "readyButtonText": "I did it, ready to go!",
       "backButtonText": "Alusta uuesti"
     },
     "notready.aspx": {
@@ -459,7 +465,7 @@
       "truckDetailInfo2": " kg. <br> Sõiduki brutomass: ",
       "backButtonText": "Alusta uuesti"
     },
-    "second-success.aspx": {
+    "farewell": {
       "instructionText": "Palun oodake väljatrükki ja viige see turbekontorisse edasiseks töötlemiseks.",
       "backButtonText": "Alusta uuesti"
     },

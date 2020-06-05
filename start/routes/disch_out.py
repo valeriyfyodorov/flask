@@ -3,12 +3,9 @@ from flask import render_template, request, url_for, redirect
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl
 
-@app.route('/final/')
-def final():
-    query = queryfromArgs(request.args)
+@app.route('/qrcode/')
+def qrcode():
+    query = queryfromArgs(request.args) + "&local=1"
     lng = defaultEn(request.args.get('lng'), vocabulary)
-    voc = vocabulary[lng]["cmr"]
-    action = url_for("cmr") + query
-    backUrl = url_for('plates') + queryfromArgs(request.args, excludeKeysList=["pt"])
-    return render_template('disch_in/cmr.html', title='Insert cmr data', voc=voc, query=query, backUrl=backUrl, action=action)
-
+    voc = vocabulary[lng]["qrcode"]
+    return render_template('disch_out/qrcode.html', title='Place your code under camera', voc=voc, query=query)

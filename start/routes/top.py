@@ -1,9 +1,10 @@
 from start import app
-from flask import render_template, request, url_for
+from flask import render_template, request, url_for, redirect
 import urllib.request as urequest
 from .settings import vocabulary
-from .helpers import defaultEn
+from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl
 from start.intranet.config import PlatesSet
+from start.intranet.defs import readQrCodeFromCam
 
 @app.route('/')
 @app.route('/index')
@@ -21,14 +22,13 @@ def direction():
 def scales():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["scales"]
-    # TODO insert real url for outwards below
-    url =  url_for('invoice') if "in" == request.args.get('dir') else url_for('direction')
+    url =  url_for('invoice') if "disch_in" == request.args.get('dir') else url_for('qrcode')
     # TODO insert real plate nr finding function below
     plate0 = PlatesSet(front="LF0010", rear="L0001R") 
     plate1 = PlatesSet(front="RF0020", rear="R0002R") 
     # TODO insert real weight finding function below
     weight0 = 55005
-    weight1 = 44004
+    weight1 = 9999
     baseQuery = f"?lng={lng}"
     buttons = {
         "left":
@@ -60,3 +60,24 @@ def unknownerror():
     voc = vocabulary[lng]["unknownerror"]
     next_page_name = app.config['DB_SERVER_URL'] + "weighting-instructions.aspx"
     return render_template('unknownerror.html', title='Sorry. Error.', voc=voc)
+
+
+@app.route('/farewell/')
+def farewell():
+    lng = defaultEn(request.args.get('lng'), vocabulary)
+    tranunit = readQrCodeFromCam()
+    voc = vocabulary[lng]["farewell"]
+    query = queryfromArgs(request.args)
+    if tranunit == 0 : return redirect(url_for("qrcode") + query)
+    api_query = query[1:] + f"&tranunit={tranunit}"
+    api_url = app.config['DB_SERVER_API_URL'] + f"&command=finalweight" + f"&{api_query}"
+    weighting = jsonDictFromUrl(api_url)
+    if weighting["result"] == 2 : # means repeated print out
+        print(weighting["error"])
+        return redirect(app.config['DB_SERVER_URL'] + f"weighting-printout.aspx?{api_query}&local=1")
+    if weighting["result"] != 0 : # some error
+        print(weighting["error"])
+        return redirect(url_for("unknownerror") + query)
+    next_page_name = app.config['DB_SERVER_URL'] + "weighting-printout.aspx"
+    return render_template('farewell.html', title='Get the documents and goodbye', voc=voc, next_page_name=next_page_name, tranunit=tranunit)
+

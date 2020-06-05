@@ -21,7 +21,7 @@ def lists():
     api_url = app.config['DB_SERVER_API_URL'] + f"&command=todaylists&lng={lng}"
     shippersLists = jsonDictFromUrl(api_url)
     if len(shippersLists) == 0 :
-        return redirect(url_for('unknownerror'))
+        return redirect(url_for('unknownerror') + query)
     # allow to choose one and only list available, comment out if direct pass required
     # if len(shippersLists) == 1 :
     #     return redirect(url_for('factories') + query + f"&list={shippersLists[0]['listId']}")

@@ -1,0 +1,66 @@
+﻿{% extends "base.html" %}
+
+{% block styles %}
+<style type="text/css">
+
+.row {
+        padding-top: 50px;
+      }
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid text-center">
+  <!-- Main component container start -->
+ 
+ 
+  <div class="row" ><div class="col-md-12"><p></p></div></div>
+
+  <div class="extraspace" ><div class="col-md-12"><p></p></div></div>
+
+
+  <div class="row" >
+    <div class="col-md-12">
+            <h2>
+              {{voc["instructionText"] | safe}}
+
+            </h2>
+    </div>         
+  </div>
+
+  
+
+  <div class="row" >
+      <div class="col-sm-12" id="directionsImage">
+          <img src="{{ url_for('static', filename='images/second-directions.jpg') }}" class="img-responsive" />
+      </div>          
+  </div>
+
+  <div class="row" ><div class="col-md-12"><p></p></div></div>
+
+
+  
+
+</div> <!-- /container -->
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+
+    setTimeout(function () {
+        extraquery = "";
+        if (document.location.search.length > 0)
+        {
+            extraquery = document.location.search.substr(1);
+        }
+        window.location.href = "{{next_page_name}}?tranunit={{tranunit}}&" + extraquery; //will redirect to your 
+    }, 10000); //will call the function after 
+
+
+
+</script>
+{% endblock %}

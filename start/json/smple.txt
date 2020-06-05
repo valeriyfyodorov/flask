@@ -8,7 +8,7 @@ http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=listfactories&li
 [ {"factoryID": 1760, "factoryName": " Abra, LPKS" },{"factoryID": 1887, "factoryName": " Agro Klag" },{"...}]
 
 http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=newunitweight&list=1940&fr=1887&sc=1&wkg=47300&pt=HZ333&inr=AZ30000&iwt=25000&ifn=image.jpg
-{"id":42317,"nr":"HZ333","extraCode":null,"declarationNr":"AZ30000","tranunitListId":1940,"cargoId":39,
+{"id":42332,"nr":"HZ333","extraCode":null,"declarationNr":"AZ30000","tranunitListId":1940,"cargoId":39,
 "factoryId":1887,"shipperId":1735,"stationId":1735,"ownerId":1735,"shippedFromFactory":"2020-05-31T15:58:03.511381",
 "arrivedAtPort":"2020-05-31T15:58:03.511381","arrivedAtGate":"0001-01-01T00:00:00","readyAtGate":"0001-01-01T00:00:00",
 "leftAtGate":"0001-01-01T00:00:00","warehouseFirstId":0,"warehousePresentId":0,"warehousePreviousId":0,
@@ -48,6 +48,12 @@ ptr=L0001R&wkg=550
 
 
 
-http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=finalweight&tranunit=42100
+http://localhost:61810/apijson.ashx?key=gd3784h67hxgugb&command=finalweight&tranunit=42100&sc=1&wkg=15000
+http://eu.amgs.me/apijson.ashx?key=gd3784h67hxgugb&command=finalweight&lng=ru&sc=1&ptf=RF0020&ptr=R0002R&wkg=44004&tranunit=42335
+http://eu.amgs.me/apijson.ashx?key=gd3784h67hxgugb&command=finalweight&lng=ru&sc=1&ptf=RF0020&ptr=R0002R&wkg=44004&tranunit=42332
 {"result": 1,"error": "No car id determined in qr code"}
 
+http://eu.amgs.me/autoweight/weighting-printout.aspx?{api_query}&amp;local=1?lng=ru&sc=1&ptf=RF0020&ptr=R0002R&wkg=9999
+http://eu.amgs.me/autoweight/weighting-printout.aspx?lng=ru&amp;sc=1&amp;ptf=RF0020&amp;ptr=R0002R&amp;wkg=9999&amp;tranunit=42336&amp;local=1?lng=ru&sc=1&ptf=RF0020&ptr=R0002R&wkg=9999
+
+http://eu.amgs.me/autoweight/weighting-printout.aspx?lng=ru&sc=1&ptf=RF0020&ptr=R0002R&wkg=9999&local=1
