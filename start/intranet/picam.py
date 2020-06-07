@@ -35,7 +35,7 @@ def captureInvoiceToFile(): # return true if invoice photo was success
         copyfile(DUMMY_IMG_INVOICE, TEMP_INVOICE_IMG_FILE)
         rotateAndResave(TEMP_INVOICE_IMG_FILE, -90)
     else:
-        with picamera.PiCamera() as camera:
+        with PiCamera() as camera:
             light_on()
             camera.start_preview()
             time.sleep(2)

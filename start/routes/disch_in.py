@@ -16,8 +16,9 @@ def lists():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["lists"]
     okInvoice, invoiceFileName = readInvoice()
+    query = queryfromArgs(request.args)
     if not okInvoice:
-        return redirect(url_for('invoice') + f"lng={lng}")
+        return redirect(url_for('invoice') + query)
     query = queryfromArgs(request.args) + f"&ifn={invoiceFileName}"
     # get lists from api
     api_url = app.config['DB_SERVER_API_URL'] + f"&command=todaylists&lng={lng}"
