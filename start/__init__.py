@@ -11,6 +11,7 @@ app.config.from_mapping(
         DB_SERVER_API_URL="http://eu.amgs.me/apijson.ashx?key=gd3784h67hxgugb",
     )
 from . import routes
+from .intranet import startup
 
 # def create_app(test_config=None):
 #     # create and configure the app

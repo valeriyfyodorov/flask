@@ -29,7 +29,14 @@
     </div>
   </div>
 
-  <div class="row">
+
+  <div class="extraspace" id="spinimage" style="display:none;">
+    <div class="col-sm-12" >
+      <img src="{{ url_for('static', filename='images/loading.gif') }}" class="img-responsive" width="400px" />
+    </div>    
+  </div>
+
+  <div class="row hidable">
     <div class="col-md-12">
       <h2>
         {{voc["instructionText"] | safe}}
@@ -38,13 +45,13 @@
     </div>
   </div>
 
-  <div class=" extraspace">
+  <div class=" extraspace hidable">
     <div class="col-md-12">
       <img src="{{ url_for('static', filename='images/pprb.jpg') }}" class="img-responsive" />
     </div>
   </div>
 
-  <form method="post" action="{{action}}" id="form">
+  <form method="post" action="{{action}}" id="form" class="hidable">
 
     <div class="row">
       <div class="col-sm-6 text-right d-flex justify-content-end">
@@ -74,7 +81,7 @@
         <input id="iwt" name="iwt" class="form-control numbersonly" type="text"
           onClick="this.setSelectionRange(0, this.value.length)" placeholder="25000"
           style="width: 70%; font-size:4em; background-color: antiquewhite;">
-<h4 class="d-flex align-items-end">kg</h4>
+            <h4 class="d-flex align-items-end">kg</h4>
         <button type="button" style="margin-left:50px;" class="btn btn-sm btn-primary" onclick="setDef()">
           {{voc["weightNotAvailableButtonText"] }}
 
@@ -89,7 +96,9 @@
     </div>
     <div class="row">
       <div class="col-sm-6 offset-sm-3">
-        <button name="go" type="submit" value="go" id="go" class=" btn btn-lg btn-success btn-xl btn-block">
+        <button name="go" type="submit" value="go" id="go" class=" btn btn-lg btn-success btn-xl btn-block" 
+        onclick="$('.hidable').hide(); $('#spinimage').show(); Pace.restart(); "
+        >
           {{voc["goButtonText"]}}
         </button>
       </div>

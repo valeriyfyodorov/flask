@@ -2,6 +2,7 @@ from start import app
 from flask import render_template, request, url_for, redirect
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl, splitDictInto3
+from start.intranet.defs import readQrCodeFromCam, getPlatesNumbers, getWeightKg, readInvoice, archivePlates, archiveInvoice
 
 @app.route('/invoice/')
 def invoice():
@@ -14,15 +15,16 @@ def invoice():
 def lists():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["lists"]
-    # TODO - Scan page procedure shall be here first below
-    invoiceFileName = "2020/06/03/hh_mm_ss.jpg"
+    okInvoice, invoiceFileName = readInvoice()
+    if not okInvoice:
+        return redirect(url_for('invoice') + f"lng={lng}")
     query = queryfromArgs(request.args) + f"&ifn={invoiceFileName}"
     # get lists from api
     api_url = app.config['DB_SERVER_API_URL'] + f"&command=todaylists&lng={lng}"
     shippersLists = jsonDictFromUrl(api_url)
     if len(shippersLists) == 0 :
         return redirect(url_for('unknownerror') + query)
-    # allow to choose one and only list available, comment out if direct pass required
+    # allow to choose one and only list available, comment out if direct pass through required
     # if len(shippersLists) == 1 :
     #     return redirect(url_for('factories') + query + f"&list={shippersLists[0]['listId']}")
     return render_template('disch_in/lists.html', title='Choose client and cargo', voc=voc, query=query, shippersLists=shippersLists)
@@ -63,10 +65,11 @@ def cmr():
         invoiceNr = request.form.get('inr')
         invoiceWeight = request.form.get('iwt')
         api_query = query[1:] + f"&inr={invoiceNr}&iwt={invoiceWeight}"
-        # newunitweight&list=1940&fr=1887&sc=1&wkg=47300&pt=HZ333&inr=AZ30000&iwt=25000&ifn=image.jpg
         api_url = app.config['DB_SERVER_API_URL'] + f"&command=newunitweight" + f"&{api_query}"
         new_car = jsonDictFromUrl(api_url)
         if len(new_car) < 1 : return redirect(url_for('unknownerror') + query)
+        archivePlates(new_car["id"], request.args)
+        archiveInvoice(new_car["id"], request.args, invoiceNr)
         return redirect(url_for('directions') + f"?tranunit={new_car['id']}&local=1&lng={lng}")
     voc = vocabulary[lng]["cmr"]
     action = url_for("cmr") + query

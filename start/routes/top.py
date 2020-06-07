@@ -4,7 +4,7 @@ import urllib.request as urequest
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl
 from start.intranet.config import PlatesSet
-from start.intranet.defs import readQrCodeFromCam
+from start.intranet.defs import readQrCodeFromCam, getPlatesNumbers, getWeightKg, archivePlates
 
 @app.route('/')
 @app.route('/index')
@@ -23,12 +23,10 @@ def scales():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["scales"]
     url =  url_for('invoice') if "disch_in" == request.args.get('dir') else url_for('qrcode')
-    # TODO insert real plate nr finding function below
-    plate0 = PlatesSet(front="LF0010", rear="L0001R") 
-    plate1 = PlatesSet(front="RF0020", rear="R0002R") 
-    # TODO insert real weight finding function below
-    weight0 = 55005
-    weight1 = 9999
+    plate0 = getPlatesNumbers("north")
+    plate1 = getPlatesNumbers("south")
+    weight0 = getWeightKg("north")
+    weight1 = getWeightKg("south")
     baseQuery = f"?lng={lng}"
     buttons = {
         "left":
@@ -44,6 +42,9 @@ def scales():
             "textBelow": plate1.rear,
         },
     }
+    if weight0 < 200 and weight1 < 200: return redirect(url_for("unknownerror") + f"?lng={lng}")
+    if weight0 < 200: return redirect(buttons["right"]["url"]) # no left weight, no choice
+    if weight1 < 200: return redirect(buttons["left"]["url"]) # no right weight no choice
     return render_template('scales.html', title='Choose scale', lng=lng, voc=voc, buttons=buttons)
 
 @app.route('/directions/')
@@ -78,6 +79,8 @@ def farewell():
     if weighting["result"] != 0 : # some error
         print(weighting["error"])
         return redirect(url_for("unknownerror") + query)
+    # TODO save plates to proper file names
+    archivePlates(tranunit, request.args)
     next_page_name = app.config['DB_SERVER_URL'] + "weighting-printout.aspx"
     return render_template('farewell.html', title='Get the documents and goodbye', voc=voc, next_page_name=next_page_name, tranunit=tranunit)
 
