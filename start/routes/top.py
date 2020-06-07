@@ -7,18 +7,17 @@ from start.intranet.config import PlatesSet
 from start.intranet.defs import readQrCodeFromCam, getPlatesNumbers, getWeightKg, archivePlates
 
 @app.route('/')
-@app.route('/index')
 def index():
     lngRows = [["lv", "ru"], ["en", "ee"], ["lt", "pl"]]
     return render_template('languages.html', title='Select language', lngRows=lngRows)
 
-@app.route('/direction/')
+@app.route('/direction')
 def direction():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["direction"]
     return render_template('in_or_out.html', title='Choose direction', lng=lng, voc=voc)
 
-@app.route('/scales/')
+@app.route('/scales')
 def scales():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["scales"]
@@ -47,7 +46,7 @@ def scales():
     if weight1 < 200: return redirect(buttons["left"]["url"]) # no right weight no choice
     return render_template('scales.html', title='Choose scale', lng=lng, voc=voc, buttons=buttons)
 
-@app.route('/directions/')
+@app.route('/directions')
 def directions():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["directions"]
@@ -55,7 +54,7 @@ def directions():
     return render_template('directions.html', title='Proceed to terminal', voc=voc, next_page_name=next_page_name)
 
 
-@app.route('/unknownerror/')
+@app.route('/unknownerror')
 def unknownerror():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["unknownerror"]
@@ -63,7 +62,7 @@ def unknownerror():
     return render_template('unknownerror.html', title='Sorry. Error.', voc=voc)
 
 
-@app.route('/farewell/')
+@app.route('/farewell')
 def farewell():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     tranunit = readQrCodeFromCam()

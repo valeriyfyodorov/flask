@@ -4,14 +4,14 @@ from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl, splitDictInto3
 from start.intranet.defs import readQrCodeFromCam, getPlatesNumbers, getWeightKg, readInvoice, archivePlates, archiveInvoice
 
-@app.route('/invoice/')
+@app.route('/invoice')
 def invoice():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["invoice"]
     query = queryfromArgs(request.args)
     return render_template('disch_in/invoice.html', title='Scan invoice or CMR', voc=voc, query=query)
 
-@app.route('/lists/')
+@app.route('/lists')
 def lists():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["lists"]
@@ -29,7 +29,7 @@ def lists():
     #     return redirect(url_for('factories') + query + f"&list={shippersLists[0]['listId']}")
     return render_template('disch_in/lists.html', title='Choose client and cargo', voc=voc, query=query, shippersLists=shippersLists)
 
-@app.route('/factories/')
+@app.route('/factories')
 def factories():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["factories"]
@@ -42,7 +42,7 @@ def factories():
     return render_template('disch_in/factories.html', title='Choose your farm/ shipper', voc=voc, query=query, factories=factories)
 
 
-@app.route('/plates/', methods=["GET", "POST"])
+@app.route('/plates', methods=["GET", "POST"])
 def plates():
     query = queryfromArgs(request.args)
     if request.method == 'POST':
@@ -57,7 +57,7 @@ def plates():
     backUrl = url_for('factories') + queryfromArgs(request.args, excludeKeysList=["fr", "pt"])
     return render_template('disch_in/plates.html', title='Insert plates data', voc=voc, query=query, backUrl=backUrl, action=action)
 
-@app.route('/cmr/', methods=["GET", "POST"])
+@app.route('/cmr', methods=["GET", "POST"])
 def cmr():
     query = queryfromArgs(request.args)
     lng = defaultEn(request.args.get('lng'), vocabulary)

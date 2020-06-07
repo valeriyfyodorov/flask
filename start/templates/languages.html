@@ -28,7 +28,7 @@ body{
     <div class="row" >
       {% for lng in row %}
         <div class="col-md-3 offset-md-2"> 
-                <a href="{{url_for('direction')}}/?lng={{lng}}"
+                <a href="{{url_for('direction')}}?lng={{lng}}"
                 onclick="document.getElementById('maindiv').style.display = 'none'; Pace.restart(); "
                 >
                     <img src="{{ url_for('static', filename='images/lng/') }}{{lng}}.png" class="img-responsive attractive" alt="{{lng}}">

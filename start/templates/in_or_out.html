@@ -29,7 +29,7 @@
   <div class="row hidable" >
     <div class="col-md-10 offset-md-1">
         
-       <a id="hLarrival" class="btn btn-secondary btn-lg btn-xl btn-block" href="{{url_for('scales')}}/?lng={{lng}}&dir=disch_in" 
+       <a id="hLarrival" class="btn btn-secondary btn-lg btn-xl btn-block" href="{{url_for('scales')}}?lng={{lng}}&dir=disch_in" 
        onclick="$('.hidable').hide(); $('#spinimage').show(); Pace.restart(); "
         >
            <i class="fas fa-sign-in-alt"></i>  
@@ -42,7 +42,7 @@
 <div class="row hidable" >
 
    <div class="col-md-10 offset-md-1">
-        <a id="hLdeparture" class="btn btn-secondary btn-lg btn-xl btn-block" href="{{url_for('scales')}}/?lng={{lng}}&dir=disch_out" 
+        <a id="hLdeparture" class="btn btn-secondary btn-lg btn-xl btn-block" href="{{url_for('scales')}}?lng={{lng}}&dir=disch_out" 
         onclick="$('.hidable').hide(); $('#spinimage').show(); Pace.restart(); "
         >
            <i class="fas fa-sign-out-alt"></i>
