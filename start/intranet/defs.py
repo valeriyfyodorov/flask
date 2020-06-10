@@ -35,8 +35,8 @@ def getWeightKg(scalesName):
     str_weight = "0"            
     if c.is_open():
         regs = c.read_holding_registers(1, 1)
-        if regs:
-            str_weight = str(regs)[1: -1].strip()
+        if len(regs) > 0:
+            str_weight = str_weight[0]
     if c.is_open():
         c.close() # close connection on every weight request
     result = int(str_weight)

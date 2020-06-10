@@ -1,6 +1,13 @@
+from datetime import datetime
+from flask import send_file
 import json
 import urllib.request as urequest
+from io import BytesIO
+from PIL import Image
 from  urllib.parse import urlencode as encode
+
+def dateFromJson(jsonStr):
+    return datetime.strptime(jsonStr, '%Y-%m-%dT%H:%M:%S')
 
 def defaultEn(lng, dictionary):
     if lng is None: return "en" 
@@ -39,3 +46,11 @@ def splitDictInto3(dictionary, extraDict=None):
         return dictionary[0:1], dictionary[1:], dict3
     divResult = int(len(dictionary) / 3)
     return dictionary[0:divResult], dictionary[divResult : divResult * 2], dictionary[divResult * 2 :]
+
+
+def servePILimageAsPNG(img):
+    file_object = BytesIO()
+    # img.save(file_object, 'JPEG', quality=70) for jpg
+    img.save(file_object, 'PNG')
+    file_object.seek(0)
+    return send_file(file_object, mimetype='image/PNG')
