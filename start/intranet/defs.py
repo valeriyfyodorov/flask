@@ -10,13 +10,11 @@ from .picam import captureInvoiceToFile, camToPilImg
 def getPlatesNumbers(scalesName):
     plates = PlatesSet()
     img_front = readRtspImage(
-            SCALES[scalesName]["cam_front"]["url"], 
-            crop_ratio=SCALES[scalesName]["cam_front"]["crop_ratio"]
+            SCALES[scalesName]["cam_front"]
         )
     plates.front = recognizePlate(img_front)
     img_rear = readRtspImage(
-            SCALES[scalesName]["cam_rear"]["url"],
-            crop_ratio=SCALES[scalesName]["cam_rear"]["crop_ratio"]
+            SCALES[scalesName]["cam_rear"]
         )
     plates.rear = recognizePlate(img_rear)
     if len(plates.front) > 8:
@@ -63,12 +61,10 @@ def archivePlates(car_id, args):
     sc = str(queryDict["sc"]).strip()
     scalesName = SCALES_NAME_FOR_ID[sc]
     img_front = readRtspImage(
-            SCALES[scalesName]["cam_front"]["url"], 
-            crop_ratio=SCALES[scalesName]["cam_front"]["crop_ratio"]
+            SCALES[scalesName]["cam_front"]
         )
     img_rear = readRtspImage(
-            SCALES[scalesName]["cam_rear"]["url"],
-            crop_ratio=SCALES[scalesName]["cam_rear"]["crop_ratio"]
+            SCALES[scalesName]["cam_rear"]
         )
     cv2.imwrite(archiveFileName(IMAGES_DIRECTORY, f"_{car_id}_({wkg}-F-{ptf}).jpg"),img_front)
     cv2.imwrite(archiveFileName(IMAGES_DIRECTORY, f"_{car_id}_({wkg}-R-{ptr}).jpg"),img_rear)
