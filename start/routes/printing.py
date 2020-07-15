@@ -45,6 +45,7 @@ def qrinstructions():
         remark += " " + tranunit["remark"]
     content = {
         "tranunit_id": tranunit["id"],
+        "scaleId": tranunit["weightingScaleId"],
         "cargoName": cargo["name"],
         "clientName": client["name"],
         "clientAddress": client["invoiceAddressWording"],

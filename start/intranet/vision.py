@@ -1,5 +1,8 @@
 from .utils import Timer
-from .config import SCALES, ALPR_API_TOKEN, ALPR_URL, DEBUG_WITH_DUMMY_PLATES, DUMMY_IMG_FRONT
+from .config import (
+    SCALES, ALPR_API_TOKEN, ALPR_URL, 
+    DEBUG_WITH_DUMMY_PLATES, DUMMY_IMG_FRONT,
+)
 import re
 import requests
 import numpy as np
@@ -11,7 +14,7 @@ def bad_image(img):
     return min(hist) / max(hist) < 0.001
 
 def unskewed_image(img, box_warped, box_straight):
-    image[np.where(image == 0)] = 1
+    img[np.where(img == 0)] = 1
     height = img.shape[0]
     width = img.shape[1]
     TM = cv2.getPerspectiveTransform(box_warped, box_straight)

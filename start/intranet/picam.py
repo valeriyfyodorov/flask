@@ -1,7 +1,7 @@
 from .config import MAC_OS, DUMMY_IMG_INVOICE, DUMMY_IMG_QR, GPIO_LAMP, TEMP_INVOICE_IMG_FILE, DEBUG_WITH_DUMMY_QR
 import numpy
 import cv2 # run opencv_install.sh to install
-from time import sleep
+import time
 from shutil import copyfile
 from io import BytesIO
 from PIL import Image
@@ -58,7 +58,7 @@ def camToPilImg(): # return PIL image from cam
             light_on()
             stream = BytesIO()
             camera.start_preview()
-            sleep(2)
+            time.sleep(2)
             camera.capture(stream, format='jpeg')
             # "Rewind" the stream to the beginning so we can read its content
             stream.seek(0)

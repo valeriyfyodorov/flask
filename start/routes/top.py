@@ -22,23 +22,23 @@ def scales():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["scales"]
     url =  url_for('invoice') if "disch_in" == request.args.get('dir') else url_for('qrcode')
-    plate0 = getPlatesNumbers("north")
-    plate1 = getPlatesNumbers("south")
+    plate1 = getPlatesNumbers("north")
+    plate2 = getPlatesNumbers("south")
     weight0 = getWeightKg("north")
     weight1 = getWeightKg("south")
     baseQuery = f"?lng={lng}"
     buttons = {
         "left":
         {
-            "url": url + baseQuery + f"&sc=0&ptf={plate0.front}&ptr={plate0.rear}&wkg={weight0}",
-            "textAbove": plate0.front,
-            "textBelow": plate0.rear,
+            "url": url + baseQuery + f"&sc=1&ptf={plate1.front}&ptr={plate1.rear}&wkg={weight0}",
+            "textAbove": plate1.front,
+            "textBelow": plate1.rear,
         },
         "right":
         {
-            "url": url + baseQuery + f"&sc=1&ptf={plate1.front}&ptr={plate1.rear}&wkg={weight1}",
-            "textAbove": plate1.front,
-            "textBelow": plate1.rear,
+            "url": url + baseQuery + f"&sc=2&ptf={plate2.front}&ptr={plate2.rear}&wkg={weight1}",
+            "textAbove": plate2.front,
+            "textBelow": plate2.rear,
         },
     }
     if weight0 < 200 and weight1 < 200: return redirect(url_for("unknownerror") + f"?lng={lng}")

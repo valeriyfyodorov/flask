@@ -3,7 +3,12 @@ from shutil import copyfile
 import cv2
 import zbarlight
 from .utils import Timer, archiveFileName, dictFromArgs
-from .config import PlatesSet, SCALES, DEBUG_WITH_DUMMY_SCALES, SCALES_NAME_FOR_ID, IMAGES_DIRECTORY, TEMP_INVOICE_IMG_FILE
+from .config import (
+    PlatesSet, SCALES, 
+    DEBUG_WITH_DUMMY_SCALES, SCALES_NAME_FOR_ID, 
+    IMAGES_DIRECTORY, TEMP_INVOICE_IMG_FILE,
+    TEMP_PLATE_IMG_FILE_FRONT, TEMP_PLATE_IMG_FILE_REAR
+)
 from .vision import recognizePlate, readRtspImage
 from .picam import captureInvoiceToFile, camToPilImg
 
@@ -21,6 +26,9 @@ def getPlatesNumbers(scalesName):
         plates.front = plates.front[-6:]
     if len(plates.rear) > 8:
         plates.rear = "S" + plates.rear[-4:]
+    # # test img
+    # cv2.imwrite(TEMP_PLATE_IMG_FILE_FRONT,img_front)
+    # cv2.imwrite(TEMP_PLATE_IMG_FILE_REAR,img_rear)
     return plates
 
 def getWeightKg(scalesName):
@@ -68,6 +76,8 @@ def archivePlates(car_id, args):
         )
     cv2.imwrite(archiveFileName(IMAGES_DIRECTORY, f"_{car_id}_({wkg}-F-{ptf}).jpg"),img_front)
     cv2.imwrite(archiveFileName(IMAGES_DIRECTORY, f"_{car_id}_({wkg}-R-{ptr}).jpg"),img_rear)
+    cv2.imwrite(TEMP_PLATE_IMG_FILE_FRONT,img_front)
+    cv2.imwrite(TEMP_PLATE_IMG_FILE_REAR,img_rear)
 
 
 def archiveInvoice(car_id, args, invoiceNr):
