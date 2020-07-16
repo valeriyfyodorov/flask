@@ -12,7 +12,8 @@ def qrinstructions():
     query = queryfromArgs(request.args)
     api_query = query[1:]
     tranunit_id = request.args.get('tranunit')
-    tranunit = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=tranunit" + f"&id={tranunit_id}")
+    url = app.config['DB_SERVER_API_URL'] + f"&command=tranunit" + f"&id={tranunit_id}"
+    tranunit = jsonDictFromUrl(url)
     cargo = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=cargo" + f"&id={tranunit['cargoId']}")
     client = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['shipperId']}")
     factory = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['factoryId']}")
@@ -71,5 +72,6 @@ def qrimg():
 @app.route('/waitprint')
 def waitprint():
     lng = defaultEn(request.args.get('lng'), vocabulary)
-    voc = vocabulary[lng]["scales"]
-    return render_template('scales.html', title='Choose scale', lng=lng, voc=voc)
+    voc = vocabulary[lng]["waitprint"]
+    next_page_name = url_for("index")
+    return render_template('waitprint.html', title='Wait', voc=voc, next_page_name=next_page_name)

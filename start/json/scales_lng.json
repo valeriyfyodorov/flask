@@ -73,7 +73,7 @@
       "instructionText": "Please wait for the print-out and take it to the security office for further processing.",
       "backButtonText": "Start again"
     },
-    "wait-print.aspx": {
+    "waitprint": {
       "instructionText": "Please wait for the print-out!",
       "backButtonText": "Start again"
     }
@@ -153,7 +153,7 @@
       "instructionText": "Подождите распечатки акта и подпишите все документы у охраны.",
       "backButtonText": "Начать заново"
     },
-    "wait-print.aspx": {
+    "waitprint": {
       "instructionText": "Ждите распечатку!",
       "backButtonText": "Начать заново"
     }
@@ -232,7 +232,7 @@
       "instructionText": "Lūdzu, uzgaidiet izdruku un nogādājiet to apsardzes birojā turpmākai apstrādei.",
       "backButtonText": "Sākt no jauna"
     },
-    "wait-print.aspx": {
+    "waitprint": {
       "instructionText": "Lūdzu, uzgaidiet izdruku!",
       "backButtonText": "Sākt no jauna"
     }
@@ -311,7 +311,7 @@
       "instructionText": "Palaukite spausdinimo ir nuneškite į apsaugos tarnybą tolimesniam apdorojimui.",
       "backButtonText": "Pradėti iš naujo"
     },
-    "wait-print.aspx": {
+    "waitprint": {
       "instructionText": "Palaukite spausdinimo!",
       "backButtonText": "Pradėti iš naujo"
     }
@@ -390,7 +390,7 @@
       "instructionText": "Poczekaj na wydruk i zanieś do biura bezpieczeństwa w celu dalszego przetwarzania.",
       "backButtonText": "Zacznij jeszcze raz"
     },
-    "wait-print.aspx": {
+    "waitprint": {
       "instructionText": "Poczekaj na wydruk!",
       "backButtonText": "Zacznij jeszcze raz"
     }
@@ -469,7 +469,7 @@
       "instructionText": "Palun oodake väljatrükki ja viige see turbekontorisse edasiseks töötlemiseks.",
       "backButtonText": "Alusta uuesti"
     },
-    "wait-print.aspx": {
+    "waitprint": {
       "instructionText": "Palun oodake väljaprinti!",
       "backButtonText": "Alusta uuesti"
     }

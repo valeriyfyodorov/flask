@@ -6,9 +6,9 @@ if MAC_OS:
 else:
     import RPi.GPIO as GPIO
 
-DEBUG_WITH_DUMMY_SCALES = True
+DEBUG_WITH_DUMMY_SCALES = False
 DEBUG_WITH_DUMMY_INVOICE = True
-DEBUG_WITH_DUMMY_PLATES = True
+DEBUG_WITH_DUMMY_PLATES = False
 DEBUG_WITH_DUMMY_QR = True
 
 GPIO.setwarnings(False)
@@ -67,7 +67,7 @@ SCALES = {
         "modbus": 
         {
             "host": "192.168.21.124",
-            "port": 504,
+            "port": 505,
         },
     },
     "south":

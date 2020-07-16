@@ -28,7 +28,10 @@ def jsonDictFromUrl(api_url):
     with urequest.urlopen(api_url) as response:
         if response.getcode() == 200:
             source = response.read()
-            result = json.loads(source)
+            if len(source) > 0:
+                result = json.loads(source)
+            else:
+                print('When trying to read data from server API zero length response received') 
         else:
             print('An error occurred while attempting to retrieve lists data from the API.') 
     return result
