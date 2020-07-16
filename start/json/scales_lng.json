@@ -25,7 +25,7 @@
       "instructionText": "Please choose the name of the Receiver as per waybill:",
       "backButtonText": "Start again"
     },
-    "first-03cargo.aspx": {
+    "printout": {
       "instructionText": "Please choose the name of cargo/goods below:",
       "backButtonText": "Back"
     },
@@ -105,7 +105,7 @@
       "instructionText": "Выберите Получателя по накладной из списка:",
       "backButtonText": "Начать заново"
     },
-    "first-03cargo.aspx": {
+    "printout": {
       "instructionText": "Выберите груз из списка:",
       "backButtonText": "Назад"
     },
@@ -184,7 +184,7 @@
       "instructionText": "Lūdzu, izvēlieties zemāk Saņēmēja / klienta vārdu:",
       "backButtonText": "Sākt no jauna"
     },
-    "first-03cargo.aspx": {
+    "printout": {
       "instructionText": "Lūdzu, izvēlieties zemāk preču nosaukumu:",
       "backButtonText": "Atpakaļ"
     },
@@ -263,7 +263,7 @@
       "instructionText": "Prašome pasirinkti kliento vardą:",
       "backButtonText": "Atgal"
     },
-    "first-03cargo.aspx": {
+    "printout": {
       "instructionText": "Prašome pasirinkti prekių pavadinimą:",
       "backButtonText": "Atgal"
     },
@@ -342,7 +342,7 @@
       "instructionText": "Wybierz nazwę klienta/odbiorcy poniżej:",
       "backButtonText": "Wróć"
     },
-    "first-03cargo.aspx": {
+    "printout": {
       "instructionText": "Wybierz nazwę towaru poniżej:",
       "backButtonText": "Wróć"
     },
@@ -421,7 +421,7 @@
       "instructionText": "Valige allpool kliendi/vastuvõtja nimi:",
       "backButtonText": "Tagasi"
     },
-    "first-03cargo.aspx": {
+    "printout": {
       "instructionText": "Valige allpool kauba nimi:",
       "backButtonText": "Tagasi"
     },

@@ -76,12 +76,12 @@ def farewell():
     if weighting["result"] == 2 : # means repeated print out
         print(weighting["error"])
         # return redirect(app.config['DB_SERVER_URL'] + f"weighting-printout.aspx?{api_query}&local=1") # in case the printing at amgs
-        return redirect(url_for("waitprint") + f"?{api_query}") 
+        return redirect(url_for("printout") + f"?{api_query}") 
     if weighting["result"] != 0 : # some error
         print(weighting["error"])
         return redirect(url_for("unknownerror") + query)
     archivePlates(tranunit, request.args)
     # next_page_name = app.config['DB_SERVER_URL'] + "weighting-printout.aspx" # in case the printing at amgs
-    next_page_name = url_for("waitprint")
+    next_page_name = url_for("printout")
     return render_template('farewell.html', title='Get the documents and goodbye', voc=voc, next_page_name=next_page_name, tranunit=tranunit)
 
