@@ -59,7 +59,7 @@ def directions():
 def unknownerror():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["unknownerror"]
-    next_page_name = app.config['DB_SERVER_URL'] + "weighting-instructions.aspx"
+    # next_page_name = app.config['DB_SERVER_URL'] + "weighting-instructions.aspx"
     return render_template('unknownerror.html', title='Sorry. Error.', voc=voc)
 
 
