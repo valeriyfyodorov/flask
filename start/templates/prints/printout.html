@@ -1,0 +1,186 @@
+﻿{% extends "base.html" %}
+
+{% block styles %}
+<style>
+  table,
+  th,
+  td {
+    border: 0 transparent black;
+  }
+
+  th,
+  td {
+    padding: 0px;
+    vertical-align: top;
+  }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid text-center">
+  <!-- Main component container start -->
+  <div style="margin-top: 20px; text-align: center;">
+    <img src="{{ url_for('static', filename='images/logo.jpg') }}" width="80px"
+      style="display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+
+
+  <div style="margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; text-align: left;">
+    Rīga,
+    {{content["issueMoment"]}}
+  </div>
+
+  <div style="margin-top: 20px">
+    <p style="text-align: center;">
+      Svēršanas akts
+      <br />
+      {{content["docTitle"]}}
+      Nr
+      {{content["tranunit_id"]}}
+    </p>
+  </div>
+
+  <p style="text-align: center; margin-top: 0px;">
+    Izdrukas laiks:
+    {{content["print_time"]}}
+  </p>
+
+  <div style="text-align: left; margin-top: 30px;">
+    <table style="margin-left: auto; margin-right: auto;">
+      <tbody>
+        <tr>
+          <td style="width:85px;">
+            Izsniegts:
+          </td>
+          <td style="width:198px;">
+            SIA "Alpha Osta"
+          </td>
+          <td style="width:28px;">
+          </td>
+          <td style="width:66px;">
+            Klients:
+          </td>
+          <td style="width:223px;">
+            {{content["clientName"]}}
+          </td>
+        </tr>
+        <tr>
+          <td style="width:85px;">
+            Adrese:
+          </td>
+          <td style="width:198px;">
+            Birztalu 26, Rīga, LV-1015
+          </td>
+          <td style="width:28px;">
+          </td>
+          <td style="width:66px;">
+            Adrese:
+          </td>
+          <td style="width:223px;">
+            {{content["clientAddress"]}}
+          </td>
+        </tr>
+        <tr>
+          <td style="width:85px;">
+            Reģ. Nr.
+          </td>
+          <td style="width:198px;">
+            40003103141
+          </td>
+          <td style="width:28px;">
+          </td>
+          <td style="width:66px;">
+            Reģ. Nr
+          </td>
+          <td style="width:223px;">
+            {{content["clientRegNr"]}}
+          </td>
+        </tr>
+        <tr>
+          <td style="width:85px;">
+          </td>
+          <td style="width:198px;">
+          </td>
+          <td style="width:28px;">
+          </td>
+          <td style="width:66px;">
+          </td>
+          <td style="width:223px;">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h4 style="text-align: center; margin-top: 30px;">
+    Svēršanas rezultāti
+  </h4>
+  <p style="text-align: center; font-weight: bold;">
+    A/m valsts nr:
+    {{content["nr"]}}
+  </p>
+  <p style="text-align: center;">
+    Krava:
+    {{content["cargoName"]}}
+  </p>
+  <p style="text-align: center;">
+    Izsniegšanas vieta: Birztalu 26, Rīga, LV-1015, Latvija
+  </p>
+  <p style="text-align: center;">
+    Bruto svēršana:
+  </p>
+  <p style="text-align: center;">
+    Svēršanas laiks:
+    {{content["grossWeightMoment"]}}
+    Bruto svars:
+    {{content["grossWeightScales"]}}
+    kg
+  </p>
+  <p style="text-align: center;">
+    Taras svēršana:
+  </p>
+  <p style="text-align: center;">
+    Svēršanas laiks:
+    {{content["tareWeightMoment"]}}
+    Taras svars:
+    {{content["tareWeightScales"]}}
+    kg
+  </p>
+  <p style="text-align: center; font-weight: bold;">
+    Neto svars:
+    {{content["netWeightScales"]}}
+    kg
+  </p>
+  <div style="margin-left: 50px; text-align: left; ">
+    <p>
+      {{content["extraHeading"]}}
+    </p>
+    <p>
+      Piezīmes:
+      {{content["remark"]}}
+    </p>
+  </div>
+  <div style="margin-right: 50px;">
+    <p style="text-align: right;">
+    </p>
+  </div>
+  <div style="margin-top: 50px; text-align: center;">
+    Šis dokuments ir sagatavots elektroniski un derīgs bez paraksta
+  </div>
+
+</div> <!-- /container -->
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+  $(function () {
+    window.print();
+    setTimeout("closePrintView()", 5000);
+  });
+  function closePrintView() {
+    document.location.href = "{{url_for("waitprint")}}" + document.location.search;
+  }
+</script>
+{% endblock %}
