@@ -45,11 +45,11 @@ SERVER_API_URL="http://eu.amgs.me/apijson.ashx?key=gd3784h67hxgugb"
 ALPR_API_TOKEN = 'Token 702d66a3f614a31139fefd757892acfb85771ee7'
 ALPR_URL = 'https://api.platerecognizer.com/v1/plate-reader'
 
-SCALES_NAME_FOR_ID = {"1": "north", "2": "south"}
+SCALES_NAME_FOR_ID = {"2": "north", "1": "south"}
 SCALES = {
     "north":
     {
-        "id": 1,
+        "id": 2,
         "cam_front": 
         {
             "url": "rtsp://192.168.21.113:554/video2",
@@ -72,17 +72,17 @@ SCALES = {
     },
     "south":
     {
-        "id": 2,
+        "id": 1,
         "cam_front": 
         {
-            "url": "rtsp://192.168.21.113:554/video2",
+            "url": "rtsp://192.168.21.48:554/video2",
             "crop_ratio": [0.61, 0.97, 0.255, 0.99],
             "warp_from": [[684,398], [685,425], [807,425], [804,398]],
             "warp_to": [[684,398], [685,427], [820,427], [820,398]],
         },
         "cam_rear": 
         {
-            "url": "rtsp://192.168.21.114:554/video2",
+            "url": "rtsp://192.168.21.44:554/video2",
             "crop_ratio": [0.39, 0.81, 0.35, 0.8],
             "warp_from": [[430,458], [430,562], [750,580], [750,466]],
             "warp_to": [[430,466], [430,580], [750,580], [750,466]],

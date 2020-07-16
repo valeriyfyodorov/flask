@@ -142,4 +142,10 @@ def printout():
         "docTitle": docTitle,
     }
     next_page_name = url_for("waitprint")
-    return render_template('printout.html', title='Alpha-Osta: Noliktavas svēršanas/glabājuma kvīts', voc=voc, next_page_name=next_page_name)
+    return render_template(
+        'prints/printout.html', 
+        title='Alpha-Osta: Noliktavas svēršanas/glabājuma kvīts', 
+        voc=voc, 
+        content=content,
+        next_page_name=next_page_name
+        )
