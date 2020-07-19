@@ -86,12 +86,12 @@
           "backButtonText": "Назад"
     },
     "scales": {
-      "instructionText": "Choose your scale",
-      "backButtonText": "Back"
+      "instructionText": "Выберите весы с вашей машиной.",
+      "backButtonText": "Назад"
     },
     "invoice": {
-      "instructionText": "Положите накладную в сканер (лицевой стороной вниз), нажмите и удерживайте красную кнопку <span class=\"colorRed\"> до звукового сигнала </span>",
-      "readyButtonText": "I did it, ready to go!",
+      "instructionText": "Положите накладную в терминал (лицевой стороной вверх).",
+      "readyButtonText": "Готово",
       "backButtonText": "Назад"
     },
     "factories": {
@@ -129,8 +129,8 @@
       "backButtonText": "Начать заново"
     },
     "qrcode": {
-      "instructionText": "Расположите правильно под камерой код, указанный на вашей инструкции и ожидайте <span class=\"colorRed\"> звуковой сигнал </span>",
-      "readyButtonText": "I did it, ready to go!",
+      "instructionText": "Положите инструкцию с кодом в терминал (лицевой стороной вверх).",
+      "readyButtonText": "Готово",
       "backButtonText": "Начать заново"
     },
     "notready.aspx": {
@@ -165,12 +165,12 @@
       "backButtonText": "Atpakaļ"
     },
     "scales": {
-      "instructionText": "Choose your scale",
-      "backButtonText": "Back"
+      "instructionText": "Izvēlieties savus svarus",
+      "backButtonText": "Atpakaļ"
     },
     "invoice": {
-      "instructionText": "Lūdzu, noskenējiet pavadzīmi (CMR). Ievietojiet pavadzīmi (ar virspusi uz leju) skenerī, nospiediet un turiet sarkano pogu <span class = \"colorRed\">, līdz sadzirdat signālu </span>",
-      "readyButtonText": "I did it, ready to go!",
+      "instructionText": "Lūdzu, ievietojiet pavadzīmi (CMR) (ar virspusi uz augšu) terminalī",
+      "readyButtonText": "Turpināt",
       "backButtonText": "Atpakaļ"
     },
     "factories": {
@@ -208,8 +208,8 @@
       "backButtonText": "Sākt no jauna"
     },
     "qrcode": {
-      "instructionText": "Lūdzu, novietojiet kodu (parādīts uz izdrukas) kameras priekšā un pagaidiet, līdz <span class = \"colorRed\"> jūs sadzirdat signālu </span>",
-      "readyButtonText": "I did it, ready to go!",
+      "instructionText": "Lūdzu, novietojiet kodu (parādīts uz izdrukas) terminalī",
+      "readyButtonText": "Turpināt",
       "backButtonText": "Sākt no jauna"
     },
     "notready.aspx": {
@@ -244,12 +244,12 @@
       "backButtonText": "Atgal"
     },
     "scales": {
-      "instructionText": "Choose your scale",
-      "backButtonText": "Back"
+      "instructionText": "Pasirinkite savo skalę",
+      "backButtonText": "Atgal"
     },
      "invoice": {
-      "instructionText": "Prašome nuskaityti savo važtaraštį (CMR). Įdėkite pristatymo važtaraštį (nukreipta žemyn) į skaitytuvą, paspauskite ir palaikykite raudoną mygtuką <span class = \"colorRed\">, kol išgirsite signalą </span>",
-      "readyButtonText": "I did it, ready to go!",
+      "instructionText": "Į terminalą įdėkite važtaraštį (CMR) (puse aukštyn)",
+      "readyButtonText": "Tęsti",
       "backButtonText": "Atgal"
     },
     "factories": {
@@ -287,8 +287,8 @@
       "backButtonText": "Pradėti iš naujo"
     },
     "qrcode": {
-      "instructionText": "Padėkite kodą (nurodyta ant spausdinimo) prieš kamerą ir palaukite, kol <span class = \"colorRed\"> išgirsite signalą </span>",
-      "readyButtonText": "I did it, ready to go!",
+      "instructionText": "Įdėkite kodą (rodomą ant atspaudo) į terminalą",
+      "readyButtonText": "Sverti!",
       "backButtonText": "Pradėti iš naujo"
     },
     "notready.aspx": {
@@ -323,12 +323,12 @@
       "backButtonText": "Wróć"
     },
     "scales": {
-      "instructionText": "Choose your scale",
-      "backButtonText": "Back"
+      "instructionText": "Wybierz swoją skalę",
+      "backButtonText": "Wróć"
     },
     "invoice": {
       "instructionText": "Proszę zeskanować dowód dostawy (CMR). Włóż dowód dostawy (przednia strona) do skanera, naciśnij i przytrzymaj czerwony przycisk <span class = \"colorRed\">, aż usłyszysz sygnał </span>",
-      "readyButtonText": "I did it, ready to go!",
+      "readyButtonText": "Dalej",
       "backButtonText": "Wróć"
     },
     "factories": {
@@ -367,7 +367,7 @@
     },
     "qrcode": {
       "instructionText": "Umieść kod (pokazany na wydruku) przed kamerą i poczekaj, aż <span class = \"colorRed\"> usłyszysz sygnał </span>",
-      "readyButtonText": "I did it, ready to go!",
+      "readyButtonText": "Dalej",
       "backButtonText": "Zacznij jeszcze raz"
     },
     "notready.aspx": {
@@ -402,8 +402,8 @@
       "backButtonText": "Tagasi"
     },
     "scales": {
-      "instructionText": "Choose your scale",
-      "backButtonText": "Back"
+      "instructionText": "Valige oma skaala",
+      "backButtonText": "Tagasi"
     },
     "invoice": {
       "instructionText": "Kontrollige oma saatelehte (CMR). Sisestage saateleht (küljega allapoole) skannerisse, hoidke all punast nuppu <span class = \"colorRed\">, kuni kuulete signaali </span>",
@@ -446,7 +446,7 @@
     },
     "qrcode": {
       "instructionText": "Pange kood (väljatrükil näidatud) kaamera ette ja oodake, kuni <span class = \"colorRed\"> kuulete signaali </span>",
-      "readyButtonText": "I did it, ready to go!",
+      "readyButtonText": "Kaaluma!",
       "backButtonText": "Alusta uuesti"
     },
     "notready.aspx": {
