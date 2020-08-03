@@ -165,6 +165,8 @@
   );
 
   $('input[type="text"]').keyup(function (event) {
+    noNumbers = $("#iwt").val().replace(/\D/g,'');
+    $("#iwt").val(noNumbers);
     if ($('#inr').val().length > 1
       && $('#iwt').val().length > 3) {
       $('#go').show();
