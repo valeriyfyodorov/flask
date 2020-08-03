@@ -167,6 +167,11 @@
   $('input[type="text"]').keyup(function (event) {
     noNumbers = $("#iwt").val().replace(/\D/g,'');
     $("#iwt").val(noNumbers);
+    var number = Number(noNumbers);
+    if (number < 800 || number > 70000)
+    {
+      return;
+    }
     if ($('#inr').val().length > 1
       && $('#iwt').val().length > 3) {
       $('#go').show();
