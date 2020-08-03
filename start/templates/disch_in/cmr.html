@@ -150,12 +150,6 @@
     }
   });
 
-  $(".numbersonly").keypress(function (e) {
-    //if the letter is not digit then display error and don't type anything
-    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-      return false;
-    }
-  });
   
 
   $("#iwt").on('input', function () {
@@ -168,19 +162,17 @@
     noNumbers = $("#iwt").val().replace(/\D/g,'');
     $("#iwt").val(noNumbers);
     var number = Number(noNumbers);
-    if (number < 800 || number > 70000)
-    {
-      return;
-    }
+    
     if ($('#inr').val().length > 1
-      && $('#iwt').val().length > 3) {
+      && $('#iwt').val().length > 3 && number > 800 & number < 70000) {
       $('#go').show();
       if (event.keyCode === 13) {
         event.preventDefault();
         document.getElementById("go").click();
       }
       $(this).val($(this).val().toUpperCase());
-    } else {
+    } 
+    else {
       $('#go').hide();
     }
     $(this).val($(this).val().toUpperCase());
