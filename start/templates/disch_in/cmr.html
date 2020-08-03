@@ -153,11 +153,16 @@
   $(".numbersonly").keypress(function (e) {
     //if the letter is not digit then display error and don't type anything
     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-      //display error message
-      // alert("Insert Only Numbers");
       return false;
     }
   });
+  
+
+  $("#iwt").on('input', function () {
+    noNumbers = $("#iwt").val().replace(/\D/g,'');
+    $("#iwt").val(noNumbers);
+    }
+  );
 
   $('input[type="text"]').keyup(function (event) {
     if ($('#inr').val().length > 1

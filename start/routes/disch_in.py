@@ -54,9 +54,16 @@ def plates():
         return redirect(url_for('cmr') + query)
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["plates"]
+    front = (request.args.get('ptf') or '')
+    rear = (request.args.get('ptr') or '')
     action = url_for("plates") + query
     backUrl = url_for('factories') + queryfromArgs(request.args, excludeKeysList=["fr", "pt"])
-    return render_template('disch_in/plates.html', title='Insert plates data', voc=voc, query=query, backUrl=backUrl, action=action)
+    return render_template(
+        'disch_in/plates.html', 
+        title='Insert plates data', 
+        front=front, rear=rear,
+        voc=voc, query=query, backUrl=backUrl, action=action
+        )
 
 @app.route('/cmr', methods=["GET", "POST"])
 def cmr():

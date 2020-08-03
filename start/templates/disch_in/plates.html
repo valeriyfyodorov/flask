@@ -51,15 +51,17 @@
           <h5>
             {{voc["frontPlateLabelText"] }}
               </h5>
-              <input id="ptf" name="ptf" class="form-control" type="text" autofocus value="{{request.args.get('ptf')}}" onClick="this.setSelectionRange(0, this.value.length)"
+              <input id="ptf" name="ptf" class="form-control" type="text" autofocus 
+              value="{{front}}" 
+              onClick="this.setSelectionRange(0, this.value.length)"
               placeholder="XX0000" style="width: 70%; font-size:4em; background-color: antiquewhite;">
         
             
       </div>  
       <div class="col-sm-6 text-left d-flex justify-content-start">   
-        
-         
-        <input id="ptr" name="ptr" class="form-control" type="text" value="{{request.args.get('ptr')}}" onClick="this.setSelectionRange(0, this.value.length)"
+        <input id="ptr" name="ptr" class="form-control" type="text" 
+        value="{{rear}}" 
+        onClick="this.setSelectionRange(0, this.value.length)"
         placeholder="X0000" style="width: 70%; font-size:4em; background-color: antiquewhite;">
               <h5>
                 {{voc["rearPlateLabelText"] }}
