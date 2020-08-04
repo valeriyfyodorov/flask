@@ -19,9 +19,20 @@ def light_off():
     GPIO.output(GPIO_LAMP, False)
 
 def isThisEmptyBox(image):
+    height = image.shape[0]
+    width = image.shape[1]
+    img = image[
+        int(height*0.4):int(height*0.8), 
+        int(width*0.2):int(width*0.8)
+    ]
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     avg_color = numpy.average(numpy.average(hsv, axis=0), axis=0)[0]
-    return (avg_color > 5 and avg_color < 15)
+    hist = cv2.calcHist([hsv],[0],None,[5],[0,180])
+    # print(hist)
+    ratio = (min(hist) / max(hist))[0]
+    print(ratio)
+    return (ratio < 0.005)
+    # return (avg_color > 5 and avg_color < 15)
 
 def rotateAndResave(filepath, degrees): # return true if invoice photo was success
     im = Image.open(filepath)
