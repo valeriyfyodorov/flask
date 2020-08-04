@@ -72,6 +72,8 @@ def cmr():
     if request.method == 'POST':
         invoiceNr = request.form.get('inr')
         invoiceNr = invoiceNr.replace("/","").replace("\\", "").replace(" ", "")
+        alphanumeric_filter = filter(str.isalnum, invoiceNr)
+        invoiceNr = "".join(alphanumeric_filter)
         invoiceWeight = request.form.get('iwt')
         api_query = query[1:] + f"&inr={invoiceNr}&iwt={invoiceWeight}"
         api_url = app.config['DB_SERVER_API_URL'] + f"&command=newunitweight" + f"&{api_query}"
