@@ -75,7 +75,9 @@ def cmr():
         api_query = query[1:] + f"&inr={invoiceNr}&iwt={invoiceWeight}"
         api_url = app.config['DB_SERVER_API_URL'] + f"&command=newunitweight" + f"&{api_query}"
         new_car = jsonDictFromUrl(api_url)
-        if len(new_car) < 1 : return redirect(url_for('unknownerror') + query)
+        if (new_car) is None:
+            return redirect(url_for('unknownerror') + query + f"&error=new car api error {api_url}")
+        if len(new_car) < 1 : return redirect(url_for('unknownerror') + query + f"&error=new car api error {api_url}")
         archivePlates(new_car["id"], request.args)
         archiveInvoice(new_car["id"], request.args, invoiceNr)
         return redirect(url_for('directions') + f"?tranunit={new_car['id']}&local=1&lng={lng}")
