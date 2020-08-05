@@ -1,6 +1,6 @@
 import re
 import requests
-import numpy as np
+import numpy
 import cv2 # run opencv_install.sh to install
 
 def bad_image(img):
@@ -90,24 +90,23 @@ def isThisEmptyBox(image):
     height = image.shape[0]
     width = image.shape[1]
     img = image[
-        int(height*0.4):int(height*0.8), 
-        int(width*0.2):int(width*0.8)
+        int(height*0.3):int(height*0.7), 
+        int(width*0.3):int(width*0.7)
     ]
-    # cv2.imshow("Test", img)
-    # cv2.waitKey(0)
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    avg_color = numpy.average(numpy.average(hsv, axis=0), axis=0)[0]
     hist = cv2.calcHist([hsv],[0],None,[5],[0,180])
     # print(hist)
     ratio = (min(hist) / max(hist))[0]
     print(ratio)
     return (ratio < 0.005)
 
-loc = '/Users/Valera/Documents/venprojs/pi/latest/html/invoice_red.jpg'
+loc = '/Users/Valera/Documents/venprojs/pi/latest/html/invoice_red1.jpg'
 test_img = cv2.imread(loc)
 print(loc)
 print(isThisEmptyBox(test_img))
 
-loc = '/Users/Valera/Documents/venprojs/pi/latest/html/invoice_tape.jpg'
+loc = '/Users/Valera/Documents/venprojs/pi/latest/html/invoice_red2.jpeg'
 test_img = cv2.imread(loc)
 print(loc)
 print(isThisEmptyBox(test_img))
