@@ -22,8 +22,8 @@ def isThisEmptyBox(image):
     height = image.shape[0]
     width = image.shape[1]
     img = image[
-        int(height*0.3):int(height*0.8), 
-        int(width*0.3):int(width*0.8)
+        int(height*0.3):int(height*0.7), 
+        int(width*0.3):int(width*0.7)
     ]
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     avg_color = numpy.average(numpy.average(hsv, axis=0), axis=0)[0]
