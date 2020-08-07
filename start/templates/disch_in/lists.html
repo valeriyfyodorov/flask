@@ -31,14 +31,17 @@
   {% for shipperList in shippersLists %}
       <div class="row" >
         <div class="col-md-10 offset-md-1">
-          <a class="btn btn-secondary btn-lg btn-xl btn-block" href="{{url_for('factories')+query}}&list={{shipperList['listId']}}">
+          <a class="btn btn-secondary btn-lg btn-xl btn-block shadow" 
+          href="{{url_for('factories')+query}}&list={{shipperList['listId']}}">
               
             {{shipperList['cargoName']}}
             - 
             {% if (shipperList['truckScalesHeading'] | length)  > 0 %}
                 {{shipperList['truckScalesHeading']}}
             {% else %}
+            <span style="font-size: 0.6em;">
               {{shipperList['shipperName']}}
+              </span>
             {% endif %}
           </a>
         </div>
