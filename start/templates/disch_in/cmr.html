@@ -71,7 +71,7 @@
         <h4>Nr</h4>
         <input id="inr" name="inr" class="form-control" type="text" autofocus
           onClick="this.setSelectionRange(0, this.value.length)" placeholder="AB00000"
-          style="width: 70%; font-size:4em; background-color: antiquewhite;">
+          style="width: 70%; font-size:3.3em; background-color: antiquewhite;">
 
 
       </div>
@@ -80,7 +80,7 @@
 
         <input id="iwt" name="iwt" class="form-control numbersonly" type="text"
           onClick="this.setSelectionRange(0, this.value.length)" placeholder="25000"
-          style="width: 70%; font-size:4em; background-color: antiquewhite;">
+          style="width: 70%; font-size:3.5em; background-color: antiquewhite;">
             <h4 class="d-flex align-items-end">kg</h4>
         <button type="button" style="margin-left:50px;" class="btn btn-sm btn-secondary" onclick="setDef()">
           {{voc["weightNotAvailableButtonText"] }}
@@ -144,7 +144,7 @@
 
   $(function () {
     $('#go').hide();
-    if ($('#inr').val().length > 1
+    if ($('#inr').val().length > 0
       && $('#iwt').val().length > 3) {
       $('#go').show();
     }
@@ -162,7 +162,7 @@
     $("#iwt").val(noNumbers);
     var number = Number(noNumbers);
     
-    if ($('#inr').val().length > 1
+    if ($('#inr').val().length > 0
       && $('#iwt').val().length > 3 && number > 800 & number < 70000) {
       $('#go').show();
       if (event.keyCode === 13) {
@@ -178,7 +178,7 @@
   });
   function setDef() {
     $('#iwt').val(25000);
-    if ($('#inr').val().length > 1) {
+    if ($('#inr').val().length > 0) {
       $('#go').show();
     }
   }
