@@ -1,4 +1,5 @@
 from pyModbusTCP.client import ModbusClient
+import time
 from shutil import copyfile
 import cv2
 import zbarlight
@@ -21,6 +22,7 @@ def getPlatesNumbers(scalesName):
     img_rear = readRtspImage(
             SCALES[scalesName]["cam_rear"]
         )
+    time.sleep(0.1)
     plates.rear = recognizePlate(img_rear)
     if len(plates.front) > 8:
         plates.front = plates.front[-6:]
@@ -29,6 +31,7 @@ def getPlatesNumbers(scalesName):
     # # test img
     # cv2.imwrite(TEMP_PLATE_IMG_FILE_FRONT,img_front)
     # cv2.imwrite(TEMP_PLATE_IMG_FILE_REAR,img_rear)
+    time.sleep(0.1)
     return plates
 
 def getWeightKg(scalesName):
