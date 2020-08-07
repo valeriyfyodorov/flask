@@ -23,7 +23,7 @@
 {% block content %}
 <div class="container-fluid text-center">
   <!-- Main component container start -->
-  <div class=" extraspace">
+  <div class="row">
     <div class="col-md-12">
       <p></p>
     </div>
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <div class=" extraspace hidable">
+  <div class=" hidable">
     <div class="col-md-12">
       <img src="{{ url_for('static', filename='images/pprb.jpg') }}" class="img-responsive" />
     </div>
@@ -82,7 +82,7 @@
           onClick="this.setSelectionRange(0, this.value.length)" placeholder="25000"
           style="width: 70%; font-size:4em; background-color: antiquewhite;">
             <h4 class="d-flex align-items-end">kg</h4>
-        <button type="button" style="margin-left:50px;" class="btn btn-sm btn-primary" onclick="setDef()">
+        <button type="button" style="margin-left:50px;" class="btn btn-sm btn-secondary" onclick="setDef()">
           {{voc["weightNotAvailableButtonText"] }}
 
         </button>
