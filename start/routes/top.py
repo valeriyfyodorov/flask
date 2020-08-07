@@ -1,4 +1,5 @@
 from start import app
+from decimal import Decimal
 from flask import render_template, request, url_for, redirect
 import urllib.request as urequest
 from .settings import vocabulary
@@ -77,12 +78,29 @@ def unknownerror():
 @app.route('/farewell')
 def farewell():
     lng = defaultEn(request.args.get('lng'), vocabulary)
-    tranunit = readQrCodeFromCam()
+    tranunitId = readQrCodeFromCam()
     voc = vocabulary[lng]["farewell"]
     query = queryfromArgs(request.args)
-    if tranunit == 0:
+    if tranunitId == 0:
         return redirect(url_for("qrcode") + query)
-    api_query = query[1:] + f"&tranunit={tranunit}"
+    front = (request.args.get('ptf') or '')
+    rear = (request.args.get('ptr') or '')
+    if len(front) > 3 and len(rear) > 3 and len(front) < 7 and len(rear) < 7:
+        tranunit = jsonDictFromUrl(
+            app.config['DB_SERVER_API_URL'] + f"&command=tranunit" + f"&id={tranunitId}")
+        fullPlate = tranunit["nr"]
+        tareWeightScales = tranunit["weightingEmptyWeight"]
+        if (
+            (tareWeightScales < 0.1) and
+            (not front[:2] in fullPlate) and
+            (not front[-2:] in fullPlate) and
+            (not front[1:3] in fullPlate) and
+            (not rear[:2] in fullPlate) and
+            (not rear[1:3] in fullPlate) and
+            (not rear[-2:] in fullPlate)
+        ):
+            return redirect(url_for("unknownerror") + f"?error=Recognized plates do not match with recorded")
+    api_query = query[1:] + f"&tranunit={tranunitId}"
     api_url = app.config['DB_SERVER_API_URL'] + \
         f"&command=finalweight" + f"&{api_query}"
     weighting = jsonDictFromUrl(api_url)
@@ -92,8 +110,8 @@ def farewell():
         return redirect(url_for("printout") + f"?{api_query}")
     if weighting["result"] != 0:  # some error
         print(weighting["error"])
-        return redirect(url_for("unknownerror") + query)
-    archivePlates(tranunit, request.args)
+        return redirect(url_for("unknownerror") + f"?error={weighting['error']}")
+    archivePlates(tranunitId, request.args)
     # next_page_name = app.config['DB_SERVER_URL'] + "weighting-printout.aspx" # in case the printing at amgs
     next_page_name = url_for("printout")
     return render_template('farewell.html', title='Get the documents and goodbye', voc=voc, next_page_name=next_page_name, tranunit=tranunit)
