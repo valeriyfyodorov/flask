@@ -13,8 +13,10 @@ from .config import (
 from .vision import recognizePlate, readRtspImage
 from .picam import captureInvoiceToFile, camToPilImg
 
-def getPlatesNumbers(scalesName):
+def getPlatesNumbers(scalesName, weight=1000):
     plates = PlatesSet()
+    if weight < 200 : 
+        return plates
     img_front = readRtspImage(
             SCALES[scalesName]["cam_front"]
         )
