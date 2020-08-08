@@ -1,6 +1,6 @@
 from .config import MAC_OS, DUMMY_IMG_INVOICE, DUMMY_IMG_QR, GPIO_LAMP, TEMP_INVOICE_IMG_FILE, DEBUG_WITH_DUMMY_QR
 import numpy
-import cv2 # run opencv_install.sh to install
+import cv2  # run opencv_install.sh to install
 import time
 from shutil import copyfile
 from io import BytesIO
@@ -12,33 +12,39 @@ else:
     import RPi.GPIO as GPIO
     from picamera import PiCamera
 
+
 def light_on():
     GPIO.output(GPIO_LAMP, True)
 
+
 def light_off():
     GPIO.output(GPIO_LAMP, False)
+
 
 def isThisEmptyBox(image):
     height = image.shape[0]
     width = image.shape[1]
     img = image[
-        int(height*0.3):int(height*0.7), 
-        int(width*0.3):int(width*0.7)
+        int(height*0.4):int(height*0.6),
+        int(width*0.4):int(width*0.6)
     ]
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    # hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    hsv = image
     avg_color = numpy.average(numpy.average(hsv, axis=0), axis=0)[0]
-    hist = cv2.calcHist([hsv],[0],None,[5],[0,180])
+    hist = cv2.calcHist([hsv], [0], None, [4], [0, 255])
     # print(hist)
     ratio = (min(hist) / max(hist))[0]
     # print(ratio)
-    return (ratio < 0.005)
+    return (ratio > 0.1)
     # return (avg_color > 5 and avg_color < 15)
 
-def rotateAndResave(filepath, degrees): # return true if invoice photo was success
+
+def rotateAndResave(filepath, degrees):  # return true if invoice photo was success
     im = Image.open(filepath)
     im.rotate(degrees, expand=True).save(filepath)
-    
-def captureInvoiceToFile(): # return true if invoice photo was success
+
+
+def captureInvoiceToFile():  # return true if invoice photo was success
     result = True
     number = ""
     if MAC_OS:
@@ -60,7 +66,8 @@ def captureInvoiceToFile(): # return true if invoice photo was success
             light_off()
     return result, number
 
-def camToPilImg(): # return PIL image from cam
+
+def camToPilImg():  # return PIL image from cam
     image = None
     if DEBUG_WITH_DUMMY_QR:
         image = Image.open(DUMMY_IMG_QR)
