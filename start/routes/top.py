@@ -99,7 +99,7 @@ def farewell():
             (not rear[1:3] in fullPlate) and
             (not rear[-2:] in fullPlate)
         ):
-            return redirect(url_for("unknownerror") + f"?error=Recognized plates do not match with recorded")
+            return redirect(url_for("unknownerror") + f"?error=DB plates differ {front} {rear}")
     api_query = query[1:] + f"&tranunit={tranunitId}"
     api_url = app.config['DB_SERVER_API_URL'] + \
         f"&command=finalweight" + f"&{api_query}"
