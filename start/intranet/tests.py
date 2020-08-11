@@ -1,8 +1,9 @@
 import re
 import requests
 import numpy
+import urllib.parse
 import cv2  # run opencv_install.sh to install
-from picamera import PiCamera
+# from picamera import PiCamera
 from PIL import Image
 from random import randint
 
@@ -133,8 +134,20 @@ def captureInvoiceToFile(img_file=""):
 # print(isThisEmptyBox(test_img))
 
 
-value = randint(0, 100)
+# value = randint(0, 100)
 
-IMAGES_DIRECTORY = '/var/www/html/'
-TEMP_INVOICE_IMG_FILE = IMAGES_DIRECTORY + f"invoice_tst_{value}.jpg"
-print(captureInvoiceToFile(img_file=TEMP_INVOICE_IMG_FILE))
+# IMAGES_DIRECTORY = '/var/www/html/'
+# TEMP_INVOICE_IMG_FILE = IMAGES_DIRECTORY + f"invoice_tst_{value}.jpg"
+# print(captureInvoiceToFile(img_file=TEMP_INVOICE_IMG_FILE))
+
+def test_inv(invoiceNr):
+    # invoiceNr = invoiceNr.replace("/", "").replace("\\", "").replace(" ", "")
+    # alphanumeric_filter = filter(str.isalnum, invoiceNr)
+    # invoiceNr = "".join(alphanumeric_filter)
+    invoiceNr = urllib.parse.quote(invoiceNr, safe='')
+    invoiceWeight = '25000'
+    api_query = f"&inr={invoiceNr}&iwt={invoiceWeight}"
+    print(api_query)
+
+
+test_inv("hz/hz123")
