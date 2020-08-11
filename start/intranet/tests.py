@@ -150,4 +150,4 @@ def test_inv(invoiceNr):
     print(api_query)
 
 
-test_inv("hz/hz123")
+test_inv("hz/\hz123")

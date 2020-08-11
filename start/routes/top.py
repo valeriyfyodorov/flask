@@ -92,6 +92,7 @@ def farewell():
         tareWeightScales = tranunit["weightingEmptyWeight"]
         if (
             (tareWeightScales < 0.1) and
+            (len(fullPlate) > 7) and
             (not front[:2] in fullPlate) and
             (not front[-2:] in fullPlate) and
             (not front[1:3] in fullPlate) and
