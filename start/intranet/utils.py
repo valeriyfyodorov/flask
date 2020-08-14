@@ -2,6 +2,7 @@ import time
 from shutil import copyfile
 import os
 
+
 class Timer:
     timers = dict()
 
@@ -20,12 +21,17 @@ class Timer:
             self.timers[self.name] += elapsed_time
         return elapsed_time
 
-def archiveFileName(folder, suffix, prefix=""):
-    file_header = str(prefix) + time.strftime("%Y%m%d_%H%M") + str(suffix)
+
+def archiveFileName(folder, suffix, prefix="", saveTime=True):
+    file_header = str(prefix)
+    if (saveTime):
+        file_header += time.strftime("%Y%m%d_%H%M")
+    file_header += str(suffix)
     year, month, day = time.strftime("%Y %m %d").split()
     destination_dir = folder + "{}/{}/{}/".format(year, month, day)
     os.makedirs(destination_dir, exist_ok=True)
     return destination_dir + file_header
+
 
 def dictFromArgs(args):
     return args.to_dict(flat=True)
