@@ -3,6 +3,7 @@ from flask import render_template, request, url_for, redirect
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl
 
+
 @app.route('/qrcode')
 def qrcode():
     query = queryfromArgs(request.args) + "&local=1"

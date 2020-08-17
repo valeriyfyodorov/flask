@@ -103,14 +103,20 @@ def archiveInvoice(car_id, args, invoiceNr):
         IMAGES_DIRECTORY, f"_{car_id}.jpg", saveTime=False))
 
 
-def readQrCodeFromCam():
+def readQrCodeFromCam(onlyNumeric=True):
     timer = Timer("readqr")
     code = 0
     while True:
         codes = zbarlight.scan_codes(['qrcode'], camToPilImg())
-        print(codes)
         if codes is not None:
-            code = int(codes[0])
-        if code > 0 or timer.read() > 10:
+            res = codes[0].decode("utf-8")
+            if res.isnumeric():
+                code = int(res)
+            elif onlyNumeric:
+                code = 0
+            else:
+                code = res
+            break
+        if timer.read() > 10:
             break
     return code

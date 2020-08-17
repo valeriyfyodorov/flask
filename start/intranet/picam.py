@@ -5,6 +5,7 @@ import time
 from shutil import copyfile
 from io import BytesIO
 from PIL import Image
+from .defs import readQrCodeFromCam
 
 if MAC_OS:
     from . import GPIO
@@ -21,7 +22,7 @@ def light_off():
     GPIO.output(GPIO_LAMP, False)
 
 
-def isThisEmptyBox(image):
+def isThisTooRed(image):
     height = image.shape[0]
     width = image.shape[1]
     img = image[
@@ -37,6 +38,15 @@ def isThisEmptyBox(image):
     # print(ratio)
     return (ratio > 0.1)
     # return (avg_color > 5 and avg_color < 15)
+
+
+def isThisEmptyBox(image):
+    # return isThisTooRed(image) # old type check
+    zcode = readQrCodeFromCam(onlyNumeric=False)
+    if zcode == "iiiiii":
+        return True
+    else:
+        return False
 
 
 def rotateAndResave(filepath, degrees):  # return true if invoice photo was success

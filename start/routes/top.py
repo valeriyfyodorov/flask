@@ -107,7 +107,6 @@ def farewell():
     weighting = jsonDictFromUrl(api_url)
     if weighting["result"] == 2:  # means repeated print out
         print(weighting["error"])
-        # return redirect(app.config['DB_SERVER_URL'] + f"weighting-printout.aspx?{api_query}&local=1") # in case the printing at amgs
         return redirect(url_for("printout") + f"?{api_query}")
     if weighting["result"] != 0:  # some error
         print(weighting["error"])

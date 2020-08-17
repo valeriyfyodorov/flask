@@ -1,11 +1,32 @@
 import re
 import requests
+import time
 import numpy
 import urllib.parse
 import cv2  # run opencv_install.sh to install
 # from picamera import PiCamera
 from PIL import Image
 from random import randint
+import zbarlight
+
+
+class Timer:
+    timers = dict()
+
+    def __init__(self, name):
+        self.name = name
+        self._start_time = time.time()
+        self.timers.setdefault(name, 0)
+
+    def reset(self, name=None):
+        self._start_time = time.time()
+        self.timers.setdefault(name, self._start_time)
+
+    def read(self):
+        elapsed_time = time.time() - self._start_time
+        if self.name:
+            self.timers[self.name] += elapsed_time
+        return elapsed_time
 
 
 def bad_image(img):
@@ -150,4 +171,27 @@ def test_inv(invoiceNr):
     print(api_query)
 
 
-test_inv("hz/\hz123")
+def readQrCodeFromCam(onlyNumeric=True):
+    timer = Timer("readqr")
+    code = 0
+    IMAGES_DIRECTORY = '/Users/Valera/Documents/venprojs/pi/latest/html/'
+    # DUMMY_IMG_QR = IMAGES_DIRECTORY + 'dummy-qr.jpg'
+    DUMMY_IMG_QR = IMAGES_DIRECTORY + 'goodqr.jpg'
+    image = Image.open(DUMMY_IMG_QR)
+    while True:
+        codes = zbarlight.scan_codes(['qrcode'], image)
+        if codes is not None:
+            res = codes[0].decode("utf-8")
+            if res.isnumeric():
+                code = int(res)
+            elif onlyNumeric:
+                code = 0
+            else:
+                code = res
+            break
+        if timer.read() > 10:
+            break
+    return code
+
+
+print(readQrCodeFromCam(onlyNumeric=False))
