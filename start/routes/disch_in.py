@@ -3,7 +3,7 @@ import urllib.parse
 from flask import render_template, request, url_for, redirect
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl, splitDictInto3
-from start.intranet.defs import readQrCodeFromCam, getPlatesNumbers, getWeightKg, readInvoice, archivePlates, archiveInvoice
+from start.intranet.defs import getPlatesNumbers, getWeightKg, readInvoice, archivePlates, archiveInvoice
 
 
 @app.route('/invoice')

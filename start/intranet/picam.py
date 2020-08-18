@@ -5,7 +5,6 @@ import time
 from shutil import copyfile
 from io import BytesIO
 from PIL import Image
-from .defs import readQrCodeFromCam
 
 if MAC_OS:
     from . import GPIO
@@ -38,15 +37,6 @@ def isThisTooRed(image):
     # print(ratio)
     return (ratio > 0.1)
     # return (avg_color > 5 and avg_color < 15)
-
-
-def isThisEmptyBox(image):
-    # return isThisTooRed(image) # old type check
-    zcode = readQrCodeFromCam(onlyNumeric=False)
-    if zcode == "iiiiii":
-        return True
-    else:
-        return False
 
 
 def rotateAndResave(filepath, degrees):  # return true if invoice photo was success
@@ -93,3 +83,31 @@ def camToPilImg():  # return PIL image from cam
             image = Image.open(stream)
             light_off()
     return image
+
+
+def readQrCodeFromCam(onlyNumeric=True):
+    timer = Timer("readqr")
+    code = 0
+    while True:
+        codes = zbarlight.scan_codes(['qrcode'], camToPilImg())
+        if codes is not None:
+            res = codes[0].decode("utf-8")
+            if res.isnumeric():
+                code = int(res)
+            elif onlyNumeric:
+                code = 0
+            else:
+                code = res
+            break
+        if timer.read() > 10:
+            break
+    return code
+
+
+def isThisEmptyBox(image):
+    # return isThisTooRed(image) # old type check
+    zcode = readQrCodeFromCam(onlyNumeric=False)
+    if zcode == "iiiiii":
+        return True
+    else:
+        return False

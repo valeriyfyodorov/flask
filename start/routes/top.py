@@ -5,7 +5,8 @@ import urllib.request as urequest
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl
 from start.intranet.config import PlatesSet, SCALES
-from start.intranet.defs import readQrCodeFromCam, getPlatesNumbers, getWeightKg, archivePlates
+from start.intranet.defs import getPlatesNumbers, getWeightKg, archivePlates
+from start.intranet.picam import readQrCodeFromCam
 
 
 @app.route('/')

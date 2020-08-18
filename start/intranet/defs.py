@@ -11,7 +11,7 @@ from .config import (
     TEMP_PLATE_IMG_FILE_FRONT, TEMP_PLATE_IMG_FILE_REAR
 )
 from .vision import recognizePlate, readRtspImage
-from .picam import captureInvoiceToFile, camToPilImg
+from .picam import captureInvoiceToFile
 
 
 def getPlatesNumbers(scalesName, weight=1000):
@@ -101,22 +101,3 @@ def archiveInvoice(car_id, args, invoiceNr):
     wkg = str(queryDict["wkg"])
     copyfile(TEMP_INVOICE_IMG_FILE, archiveFileName(
         IMAGES_DIRECTORY, f"_{car_id}.jpg", saveTime=False))
-
-
-def readQrCodeFromCam(onlyNumeric=True):
-    timer = Timer("readqr")
-    code = 0
-    while True:
-        codes = zbarlight.scan_codes(['qrcode'], camToPilImg())
-        if codes is not None:
-            res = codes[0].decode("utf-8")
-            if res.isnumeric():
-                code = int(res)
-            elif onlyNumeric:
-                code = 0
-            else:
-                code = res
-            break
-        if timer.read() > 10:
-            break
-    return code
