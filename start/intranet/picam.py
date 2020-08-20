@@ -5,6 +5,7 @@ import time
 from shutil import copyfile
 from io import BytesIO
 from PIL import Image
+from .utils import Timer
 
 if MAC_OS:
     from . import GPIO
