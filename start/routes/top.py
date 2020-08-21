@@ -1,25 +1,30 @@
 from start import app
-from decimal import Decimal
+# from decimal import Decimal
 from flask import render_template, request, url_for, redirect
-import urllib.request as urequest
+# import urllib.request as urequest
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl
-from start.intranet.config import PlatesSet, SCALES
+from start.intranet.config import SCALES
 from start.intranet.defs import getPlatesNumbers, getWeightKg, archivePlates
-from start.intranet.picam import readQrCodeFromCam
+from start.intranet.picam import camToPilImg
+from start.intranet.vision import readQrCodeFromImg
 
 
 @app.route('/')
 def index():
     lngRows = [["lv", "ru"], ["en", "ee"], ["lt", "pl"]]
-    return render_template('languages.html', title='Select language', lngRows=lngRows)
+    return render_template(
+        'languages.html', title='Select language', lngRows=lngRows
+    )
 
 
 @app.route('/direction')
 def direction():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["direction"]
-    return render_template('in_or_out.html', title='Choose direction', lng=lng, voc=voc)
+    return render_template(
+        'in_or_out.html', title='Choose direction', lng=lng, voc=voc
+    )
 
 
 @app.route('/scales')
@@ -31,7 +36,9 @@ def scales():
     weightLeft = getWeightKg("north")
     weightRight = getWeightKg("south")
     if weightLeft < 200 and weightRight < 200:
-        return redirect(url_for("unknownerror") + f"?lng={lng}&error=Small weight")
+        return redirect(
+            url_for("unknownerror") + f"?lng={lng}&error=Small weight"
+        )
     platesLeft = getPlatesNumbers("north", weight=weightLeft)
     platesRight = getPlatesNumbers("south", weight=weightRight)
     scaleIdLeft = SCALES["north"]["id"]
@@ -55,7 +62,9 @@ def scales():
         return redirect(buttons["right"]["url"])  # no left weight, no choice
     if weightRight < 200:
         return redirect(buttons["left"]["url"])  # no right weight no choice
-    return render_template('scales.html', title='Choose scale', lng=lng, voc=voc, buttons=buttons)
+    return render_template(
+        'scales.html', title='Choose scale', lng=lng, voc=voc, buttons=buttons
+    )
 
 
 @app.route('/directions')
@@ -64,7 +73,12 @@ def directions():
     voc = vocabulary[lng]["directions"]
     # next_page_name = app.config['DB_SERVER_URL'] + "weighting-instructions.aspx" # for external server processing
     next_page_name = url_for("qrinstructions")
-    return render_template('directions.html', title='Proceed to terminal', voc=voc, next_page_name=next_page_name)
+    return render_template(
+        'directions.html',
+        title='Proceed to terminal',
+        voc=voc,
+        next_page_name=next_page_name
+    )
 
 
 @app.route('/unknownerror')
@@ -73,13 +87,15 @@ def unknownerror():
     voc = vocabulary[lng]["unknownerror"]
     errorTxt = (request.args.get('error') or '')
     # next_page_name = app.config['DB_SERVER_URL'] + "weighting-instructions.aspx"
-    return render_template('unknownerror.html', title='Sorry. Error.', voc=voc, errorTxt=errorTxt)
+    return render_template(
+        'unknownerror.html', title='Sorry. Error.', voc=voc, errorTxt=errorTxt
+    )
 
 
 @app.route('/farewell')
 def farewell():
     lng = defaultEn(request.args.get('lng'), vocabulary)
-    tranunitId = readQrCodeFromCam()
+    tranunitId = readQrCodeFromImg(camToPilImg())
     voc = vocabulary[lng]["farewell"]
     query = queryfromArgs(request.args)
     if tranunitId == 0:
@@ -88,7 +104,9 @@ def farewell():
     rear = (request.args.get('ptr') or '')
     if len(front) > 3 and len(rear) > 3 and len(front) < 7 and len(rear) < 7:
         tranunit = jsonDictFromUrl(
-            app.config['DB_SERVER_API_URL'] + f"&command=tranunit" + f"&id={tranunitId}")
+            app.config['DB_SERVER_API_URL'] +
+            f"&command=tranunit" + f"&id={tranunitId}"
+        )
         fullPlate = tranunit["nr"]
         tareWeightScales = tranunit["weightingEmptyWeight"]
         if (
@@ -101,7 +119,10 @@ def farewell():
             (not rear[1:3] in fullPlate) and
             (not rear[-2:] in fullPlate)
         ):
-            return redirect(url_for("unknownerror") + f"?error=DB plates differ {front} {rear}")
+            return redirect(
+                url_for("unknownerror") +
+                f"?error=DB plates differ {front} {rear}"
+            )
     api_query = query[1:] + f"&tranunit={tranunitId}"
     api_url = app.config['DB_SERVER_API_URL'] + \
         f"&command=finalweight" + f"&{api_query}"
@@ -111,8 +132,15 @@ def farewell():
         return redirect(url_for("printout") + f"?{api_query}")
     if weighting["result"] != 0:  # some error
         print(weighting["error"])
-        return redirect(url_for("unknownerror") + f"?error={weighting['error']}")
+        return redirect(
+            url_for("unknownerror") + f"?error={weighting['error']}"
+        )
     archivePlates(tranunitId, request.args)
     # next_page_name = app.config['DB_SERVER_URL'] + "weighting-printout.aspx" # in case the printing at amgs
     next_page_name = url_for("printout")
-    return render_template('farewell.html', title='Get the documents and goodbye', voc=voc, next_page_name=next_page_name, tranunit=tranunitId)
+    return render_template(
+        'farewell.html',
+        title='Get the documents and goodbye',
+        voc=voc, next_page_name=next_page_name,
+        tranunit=tranunitId
+    )

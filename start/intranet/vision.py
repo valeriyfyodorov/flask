@@ -1,12 +1,14 @@
-from .utils import Timer
-from .config import (
-    SCALES, ALPR_API_TOKEN, ALPR_URL,
-    DEBUG_WITH_DUMMY_PLATES, DUMMY_IMG_FRONT,
-)
+# from PIL import Image
 import re
 import requests
 import numpy as np
 import cv2  # run opencv_install.sh to install
+import zbarlight
+from .utils import Timer
+from .config import (
+    ALPR_API_TOKEN, ALPR_URL,
+    DEBUG_WITH_DUMMY_PLATES, DUMMY_IMG_FRONT,
+)
 
 
 def bad_image(img):
@@ -15,10 +17,17 @@ def bad_image(img):
     return min(hist) / max(hist) < 0.001
 
 
+def pilToOpenCvImg(pilImage):
+    open_cv_image = np.array(pilImage.convert('RGB'))
+    # Convert RGB to BGR
+    image = open_cv_image[:, :, ::-1].copy()
+    return image
+
+
 def unskewed_image(img, box_warped, box_straight):
     img[np.where(img == 0)] = 1
-    height = img.shape[0]
-    width = img.shape[1]
+    # height = img.shape[0]
+    # width = img.shape[1]
     TM = cv2.getPerspectiveTransform(box_warped, box_straight)
     warped = cv2.warpPerspective(img, TM, (img.shape[1], img.shape[0]))
     warped[np.where(warped == 0)] = img[np.where(warped == 0)]
@@ -96,3 +105,50 @@ def recognizePlate(img):
     except:
         print("Error during plate getting from api")
     return result
+
+
+def readQrCodeFromImg(pilImage, onlyNumeric=True):
+    timer = Timer("readqr")
+    code = 0
+    while True:
+        codes = zbarlight.scan_codes(['qrcode'], pilImage)
+        if codes is not None:
+            res = codes[0].decode("utf-8")
+            if res.isnumeric():
+                code = int(res)
+            elif onlyNumeric:
+                code = 0
+            else:
+                code = res
+            break
+        if timer.read() > 10:
+            break
+    return code
+
+
+def isThisTooRed(pilImage):
+    image = pilToOpenCvImg(pilImage)
+    # height = image.shape[0]
+    # width = image.shape[1]
+    # img = image[
+    #     int(height*0.4):int(height*0.6),
+    #     int(width*0.4):int(width*0.6)
+    # ]
+    # hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    hsv = image
+    # avg_color = np.average(np.average(hsv, axis=0), axis=0)[0]
+    hist = cv2.calcHist([hsv], [0], None, [4], [0, 255])
+    # print(hist)
+    ratio = (min(hist) / max(hist))[0]
+    # print(ratio)
+    return (ratio > 0.1)
+    # return (avg_color > 5 and avg_color < 15)
+
+
+def isThisEmptyBox(pilImage):
+    # return isThisTooRed(image) # old type check
+    zcode = readQrCodeFromImg(pilImage, onlyNumeric=False)
+    if zcode == "iiiiii":
+        return True
+    else:
+        return False

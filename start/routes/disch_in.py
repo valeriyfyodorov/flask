@@ -47,7 +47,11 @@ def factories():
     extraDict = {"factoryID": 0, "factoryName": "Cits..Другой..Other"}
     factories = list(splitDictInto3(
         jsonDictFromUrl(api_url), extraDict=extraDict))
-    return render_template('disch_in/factories.html', title='Choose your farm/ shipper', voc=voc, query=query, factories=factories)
+    return render_template(
+        'disch_in/factories.html', title='Choose your farm/ shipper',
+        voc=voc,
+        query=query, factories=factories
+    )
 
 
 @app.route('/plates', methods=["GET", "POST"])

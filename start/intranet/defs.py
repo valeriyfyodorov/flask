@@ -2,7 +2,6 @@ from pyModbusTCP.client import ModbusClient
 import time
 from shutil import copyfile
 import cv2
-import zbarlight
 from .utils import Timer, archiveFileName, dictFromArgs
 from .config import (
     PlatesSet, SCALES,
@@ -97,7 +96,7 @@ def archivePlates(car_id, args):
 
 
 def archiveInvoice(car_id, args, invoiceNr):
-    queryDict = dictFromArgs(args)
-    wkg = str(queryDict["wkg"])
+    # queryDict = dictFromArgs(args)
+    # wkg = str(queryDict["wkg"])
     copyfile(TEMP_INVOICE_IMG_FILE, archiveFileName(
         IMAGES_DIRECTORY, f"_{car_id}.jpg", saveTime=False))
