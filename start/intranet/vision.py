@@ -108,21 +108,16 @@ def recognizePlate(img):
 
 
 def readQrCodeFromImg(pilImage, onlyNumeric=True):
-    timer = Timer("readqr")
     code = 0
-    while True:
-        codes = zbarlight.scan_codes(['qrcode'], pilImage)
-        if codes is not None:
-            res = codes[0].decode("utf-8")
-            if res.isnumeric():
-                code = int(res)
-            elif onlyNumeric:
-                code = 0
-            else:
-                code = res
-            break
-        if timer.read() > 10:
-            break
+    codes = zbarlight.scan_codes(['qrcode'], pilImage)
+    if codes is not None:
+        res = codes[0].decode("utf-8")
+        if res.isnumeric():
+            code = int(res)
+        elif onlyNumeric:
+            code = 0
+        else:
+            code = res
     return code
 
 
