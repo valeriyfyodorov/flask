@@ -1,13 +1,63 @@
 import re
 import requests
 import time
-import numpy
+import numpy as np
 import urllib.parse
 import cv2  # run opencv_install.sh to install
 # from picamera import PiCamera
 from PIL import Image
 from random import randint
 import zbarlight
+from pyModbusTCP.client import ModbusClient
+
+SCALES = {
+    "north":
+    {
+        "id": 2,
+        "cam_front":
+        {
+            "url": "rtsp://192.168.21.113:554/video2",
+            "crop_ratio": [0.61, 0.97, 0.255, 0.99],
+            "warp_from": [[879, 539], [879, 576], [1018, 570], [1019, 537]],
+            "warp_to": [[879, 539], [879, 576], [1049, 576], [1049, 539]],
+        },
+        "cam_rear":
+        {
+            "url": "rtsp://192.168.21.114:554/video2",
+            "crop_ratio": [0.39, 0.81, 0.35, 0.8],
+            "warp_from": [[528, 332], [528, 355], [631, 354], [631, 332]],
+            "warp_to": [[528, 332], [528, 354], [631, 354], [631, 332]],
+        },
+        "modbus":
+        {
+            "host": "192.168.21.124",
+            "port": 505,
+        },
+    },
+    "south":
+    {
+        "id": 1,
+        "cam_front":
+        {
+            "url": "rtsp://192.168.21.48:554/video2",
+            "crop_ratio": [0.61, 0.97, 0.255, 0.99],
+            "warp_from": [[684, 398], [685, 425], [807, 425], [804, 398]],
+            "warp_to": [[684, 398], [685, 427], [820, 427], [820, 398]],
+        },
+        "cam_rear":
+        {
+            "url": "rtsp://192.168.21.44:554/video2",
+            "crop_ratio": [0.39, 0.81, 0.35, 0.8],
+            "warp_from": [[430, 458], [430, 562], [750, 580], [750, 466]],
+            "warp_to": [[430, 466], [430, 580], [750, 580], [750, 466]],
+        },
+        "modbus":
+        {
+            "host": "192.168.21.124",
+            "port": 504,
+        },
+    },
+}
 
 
 class Timer:
@@ -194,4 +244,27 @@ def readQrCodeFromCam(onlyNumeric=True):
     return code
 
 
-print(readQrCodeFromCam(onlyNumeric=False))
+def getWeightKg(scalesName):
+    c = ModbusClient()
+    host = "192.168.21.124"
+    port = 505
+    c.host(host)
+    c.port(port)
+    if not c.is_open():
+        if not c.open():
+            print(
+                f"unable to connect to modbus {SCALES[scalesName]['modbus']['host']} at port {SCALES[scalesName]['modbus']['port']}")
+    str_weight = "0"
+    if c.is_open():
+        regs = c.read_holding_registers(1, 1)
+        print(regs)
+        if regs is not None:
+            if len(regs) > 0:
+                str_weight = regs[0]
+    if c.is_open():
+        c.close()  # close connection on every weight request
+    result = int(str_weight)
+    return result
+
+
+print(getWeightKg("north"))
