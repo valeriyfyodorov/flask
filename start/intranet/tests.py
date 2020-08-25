@@ -247,7 +247,9 @@ def readQrCodeFromCam(onlyNumeric=True):
 def getWeightKg(scalesName):
     c = ModbusClient()
     host = "192.168.21.124"
+    host = "192.168.21.200"
     port = 505
+    port = 502
     c.host(host)
     c.port(port)
     if not c.is_open():
@@ -256,7 +258,8 @@ def getWeightKg(scalesName):
                 f"unable to connect to modbus {SCALES[scalesName]['modbus']['host']} at port {SCALES[scalesName]['modbus']['port']}")
     str_weight = "0"
     if c.is_open():
-        regs = c.read_holding_registers(1, 1)
+        regs = c.read_holding_registers(1, 2)
+        regs = c.read_holding_registers(555, 2)
         print(regs)
         if regs is not None:
             if len(regs) > 0:
