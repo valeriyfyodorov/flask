@@ -1,5 +1,4 @@
 import time
-from shutil import copyfile
 import os
 
 

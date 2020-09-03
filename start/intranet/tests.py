@@ -1,3 +1,4 @@
+import os
 import re
 import requests
 import time
@@ -28,6 +29,13 @@ SCALES = {
             "warp_from": [[528, 332], [528, 355], [631, 354], [631, 332]],
             "warp_to": [[528, 332], [528, 354], [631, 354], [631, 332]],
         },
+        "cam_top":
+        {
+            "url": "rtsp://192.168.21.185:554/video2",
+            "crop_ratio": [0.1, 0.9, 0.1, 0.9],
+            "warp_from": [[528, 332], [528, 355], [631, 354], [631, 332]],
+            "warp_to": [[528, 332], [528, 355], [631, 354], [631, 332]],
+        },
         "modbus":
         {
             "host": "192.168.21.124",
@@ -51,6 +59,13 @@ SCALES = {
             "warp_from": [[430, 458], [430, 562], [750, 580], [750, 466]],
             "warp_to": [[430, 466], [430, 580], [750, 580], [750, 466]],
         },
+        "cam_top":
+        {
+            "url": "rtsp://192.168.21.182:554/video2",
+            "crop_ratio": [0.1, 0.9, 0.1, 0.9],
+            "warp_from": [[528, 332], [528, 355], [631, 354], [631, 332]],
+            "warp_to": [[528, 332], [528, 355], [631, 354], [631, 332]],
+        },
         "modbus":
         {
             "host": "192.168.21.124",
@@ -58,6 +73,9 @@ SCALES = {
         },
     },
 }
+
+MAC_TEST_LOCATION = '/Users/Valera/Documents/venprojs/pi/latest/html/'
+IMAGES_DIRECTORY = MAC_TEST_LOCATION
 
 
 class Timer:
@@ -270,4 +288,18 @@ def getWeightKg(scalesName):
     return result
 
 
-print(getWeightKg("north"))
+def archiveCargoImage(cargoId, args):
+    scalesName = "south"
+    img_top = readRtspImage(
+        SCALES[scalesName]["cam_top"]
+    )
+    destination_dir = IMAGES_DIRECTORY + f"/{cargoId}/"
+    os.makedirs(destination_dir, exist_ok=True)
+    file_path = destination_dir + time.strftime("%y_%m_%d_%H_%M_%S")
+    try:
+        cv2.imwrite(file_path, img_top)
+    except cv2.error as e:
+        print("No image on top camera" + "1" + f" {e}")
+
+
+print(archiveCargoImage(1, None))

@@ -1,4 +1,5 @@
 from pyModbusTCP.client import ModbusClient
+import os
 import time
 from shutil import copyfile
 import cv2
@@ -101,3 +102,19 @@ def archiveInvoice(car_id, args, invoiceNr):
     # wkg = str(queryDict["wkg"])
     copyfile(TEMP_INVOICE_IMG_FILE, archiveFileName(
         IMAGES_DIRECTORY, f"_{car_id}.jpg", saveTime=False))
+
+
+def archiveCargoImage(cargoId, args):
+    queryDict = dictFromArgs(args)
+    sc = str(queryDict["sc"]).strip()
+    scalesName = SCALES_NAME_FOR_ID[sc]
+    img_top = readRtspImage(
+        SCALES[scalesName]["cam_top"]
+    )
+    destination_dir = IMAGES_DIRECTORY + f"/{cargoId}/"
+    os.makedirs(destination_dir, exist_ok=True)
+    file_path = destination_dir + time.strftime("%y_%m_%d_%H_%M_%S") + ".jpg"
+    try:
+        cv2.imwrite(file_path, img_top)
+    except cv2.error as e:
+        print("No image on top camera scale Nr" + sc + f" {e}")
