@@ -299,10 +299,7 @@ def archiveCargoImage(scalesName, cargoId, args):
     destination_dir = IMAGES_DIRECTORY + f"/{cargoId}/"
     os.makedirs(destination_dir, exist_ok=True)
     file_path = destination_dir + time.strftime("%y_%m_%d_%H_%M_%S") + ".jpg"
-    try:
-        cv2.imwrite(file_path, img_top)
-    except cv2.error as e:
-        print("No image on top camera" + "1" + f" {e}")
+    cv2.imwrite(file_path, img_top)
 
 
 print(archiveCargoImage("north", 1, None), "- north")
