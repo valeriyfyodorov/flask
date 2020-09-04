@@ -11,28 +11,29 @@ from random import randint
 import zbarlight
 from pyModbusTCP.client import ModbusClient
 
+SCALES_NAME_FOR_ID = {"2": "north", "1": "south"}
 SCALES = {
     "north":
     {
         "id": 2,
         "cam_front":
         {
-            "url": "rtsp://192.168.21.113:554/video2",
-            "crop_ratio": [0.61, 0.97, 0.255, 0.99],
-            "warp_from": [[879, 539], [879, 576], [1018, 570], [1019, 537]],
-            "warp_to": [[879, 539], [879, 576], [1049, 576], [1049, 539]],
+            "url": "rtsp://192.168.20.183:554/video2",
+            "crop_ratio": [0.3, 0.97, 0.255, 0.99],
+            "warp_from": [[400, 400], [500, 400], [500, 500], [400, 500]],
+            "warp_to": [[400, 400], [500, 400], [500, 500], [400, 500]],
         },
         "cam_rear":
         {
-            "url": "rtsp://192.168.21.114:554/video2",
+            "url": "rtsp://192.168.20.184:554/video2",
             "crop_ratio": [0.39, 0.81, 0.35, 0.8],
-            "warp_from": [[528, 332], [528, 355], [631, 354], [631, 332]],
-            "warp_to": [[528, 332], [528, 354], [631, 354], [631, 332]],
+            "warp_from": [[400, 400], [500, 400], [500, 500], [400, 500]],
+            "warp_to": [[400, 400], [500, 400], [500, 500], [400, 500]],
         },
         "cam_top":
         {
-            "url": "rtsp://192.168.21.185:554/video2",
-            "crop_ratio": [0.1, 0.9, 0.1, 0.9],
+            "url": "rtsp://192.168.20.185:554/video2",
+            "crop_ratio": [0.5, 0.7, 0.4, 0.6],
             "warp_from": [[528, 332], [528, 355], [631, 354], [631, 332]],
             "warp_to": [[528, 332], [528, 355], [631, 354], [631, 332]],
         },
@@ -47,22 +48,22 @@ SCALES = {
         "id": 1,
         "cam_front":
         {
-            "url": "rtsp://192.168.21.48:554/video2",
-            "crop_ratio": [0.61, 0.97, 0.255, 0.99],
-            "warp_from": [[684, 398], [685, 425], [807, 425], [804, 398]],
-            "warp_to": [[684, 398], [685, 427], [820, 427], [820, 398]],
+            "url": "rtsp://192.168.20.180:554/video2",
+            "crop_ratio": [0.3, 0.97, 0.255, 0.99],
+            "warp_from": [[400, 400], [500, 400], [500, 500], [400, 500]],
+            "warp_to": [[400, 400], [500, 400], [500, 500], [400, 500]],
         },
         "cam_rear":
         {
-            "url": "rtsp://192.168.21.44:554/video2",
+            "url": "rtsp://192.168.20.181:554/video2",
             "crop_ratio": [0.39, 0.81, 0.35, 0.8],
-            "warp_from": [[430, 458], [430, 562], [750, 580], [750, 466]],
-            "warp_to": [[430, 466], [430, 580], [750, 580], [750, 466]],
+            "warp_from": [[400, 400], [500, 400], [500, 500], [400, 500]],
+            "warp_to": [[400, 400], [500, 400], [500, 500], [400, 500]],
         },
         "cam_top":
         {
-            "url": "rtsp://192.168.21.182:554/video2",
-            "crop_ratio": [0.1, 0.9, 0.1, 0.9],
+            "url": "rtsp://192.168.20.182:554/video2",
+            "crop_ratio": [0.3, 0.5, 0.3, 0.5],
             "warp_from": [[528, 332], [528, 355], [631, 354], [631, 332]],
             "warp_to": [[528, 332], [528, 355], [631, 354], [631, 332]],
         },
@@ -74,8 +75,10 @@ SCALES = {
     },
 }
 
+
 MAC_TEST_LOCATION = '/Users/Valera/Documents/venprojs/pi/latest/html/'
 IMAGES_DIRECTORY = MAC_TEST_LOCATION
+DEBUG_WITH_DUMMY_PLATES = False
 
 
 class Timer:
@@ -295,7 +298,7 @@ def archiveCargoImage(cargoId, args):
     )
     destination_dir = IMAGES_DIRECTORY + f"/{cargoId}/"
     os.makedirs(destination_dir, exist_ok=True)
-    file_path = destination_dir + time.strftime("%y_%m_%d_%H_%M_%S")
+    file_path = destination_dir + time.strftime("%y_%m_%d_%H_%M_%S") + ".jpg"
     try:
         cv2.imwrite(file_path, img_top)
     except cv2.error as e:
