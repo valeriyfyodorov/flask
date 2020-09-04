@@ -12,8 +12,8 @@ import zbarlight
 from pyModbusTCP.client import ModbusClient
 
 MAC_TEST_LOCATION = '/Users/Valera/Documents/venprojs/pi/latest/html/'
-IMAGES_DIRECTORY = MAC_TEST_LOCATION
-# IMAGES_DIRECTORY = '/var/www/html/'
+# IMAGES_DIRECTORY = MAC_TEST_LOCATION
+IMAGES_DIRECTORY = '/var/www/html/'
 DEBUG_WITH_DUMMY_PLATES = False
 
 
