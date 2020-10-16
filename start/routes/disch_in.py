@@ -42,17 +42,40 @@ def factories():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["factories"]
     shippersList = request.args.get('list')
+    blockSelected = request.args.get('block')
+    blockUrlStart = request.base_url + \
+        queryfromArgs(request.args, excludeKeysList=["block"])
+    blockData = {
+        "0":
+        {
+            "url": blockUrlStart,
+            "state": "active",
+        },
+        "1":
+        {
+            "url": blockUrlStart + "&block=1",
+            "state": "",
+        },
+    }
     query = queryfromArgs(request.args) + f"&list={shippersList}"
     # get one list from api
     api_url = app.config['DB_SERVER_API_URL'] + \
         f"&command=listfactories&list={shippersList}"
     extraDict = {"factoryID": 0, "factoryName": "Cits..Другой..Other"}
+    if (blockSelected == "1"):
+        api_url += f"&greaterthan=l"
+        blockData["0"]["state"] = ""
+        blockData["1"]["state"] = "active"
+    else:
+        api_url += f"&lessthan=l"
+        extraDict = None
     factories = list(splitDictInto3(
         jsonDictFromUrl(api_url), extraDict=extraDict))
     return render_template(
         'disch_in/factories.html', title='Choose your farm/ shipper',
         voc=voc,
-        query=query, factories=factories
+        query=query, factories=factories,
+        blockData=blockData,
     )
 
 

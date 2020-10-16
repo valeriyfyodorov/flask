@@ -1,0 +1,10 @@
+{
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pycodestyleArgs": [
+        "--ignore=E501"
+    ],
+    "python.linting.pylamaArgs": [
+        "--ignore=E501",
+        "--max_line_length=120"
+    ]
+}
