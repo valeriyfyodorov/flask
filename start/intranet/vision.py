@@ -99,11 +99,14 @@ def recognizePlate(img):
     img_encoded = img_buffer.tostring()
     try:
         files = {'upload': img_encoded}
-        response = requests.post(ALPR_URL, files=files, headers=headers)
+        response = requests.post(
+            ALPR_URL, files=files, headers=headers, timeout=7)
         if (len(response.json()['results']) != 0):
             result = chooseBestFromAPI(response.json()['results'])
-    except:
-        print("Error during plate getting from api")
+    except requests.Timeout:
+        pass
+    except requests.ConnectionError:
+        pass
     return result
 
 
