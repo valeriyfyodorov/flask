@@ -35,7 +35,7 @@ def scales():
         'dir') else url_for('qrcode')
     weightLeft = getWeightKg("north")
     weightRight = getWeightKg("south")
-    if weightLeft < 200 and weightRight < 200:
+    if weightLeft < 3000 and weightRight < 3000:
         return redirect(
             url_for("unknownerror") + f"?lng={lng}&error=Small weight"
         )
@@ -58,9 +58,9 @@ def scales():
             "textBelow": platesRight.rear,
         },
     }
-    if weightLeft < 200:
+    if weightLeft < 3000:
         return redirect(buttons["right"]["url"])  # no left weight, no choice
-    if weightRight < 200:
+    if weightRight < 3000:
         return redirect(buttons["left"]["url"])  # no right weight no choice
     return render_template(
         'scales.html', title='Choose scale', lng=lng, voc=voc, buttons=buttons
