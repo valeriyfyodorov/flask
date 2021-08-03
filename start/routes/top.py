@@ -35,6 +35,8 @@ def scales():
         'dir') else url_for('qrcode')
     weightLeft = getWeightKg("north")
     weightRight = getWeightKg("south")
+    # weightLeft = 20000 #for test reasons
+    # weightRight = 20000
     if weightLeft < 3000 and weightRight < 3000:
         return redirect(
             url_for("unknownerror") + f"?lng={lng}&error=Small weight"
