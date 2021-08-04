@@ -7,7 +7,7 @@ import urllib.parse
 import cv2  # run opencv_install.sh to install
 # from picamera import PiCamera
 from PIL import Image
-from random import randint
+# from random import randint
 import zbarlight
 from pyModbusTCP.client import ModbusClient
 
