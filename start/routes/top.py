@@ -110,6 +110,11 @@ def farewell():
             f"&command=tranunit" + f"&id={tranunitId}"
         )
         fullPlate = tranunit["nr"]
+        if fullPlate is None:
+            return redirect(
+                url_for("unknownerror") +
+                f"?error=The car with this id doesnt exist"
+            )
         tareWeightScales = tranunit["weightingEmptyWeight"]
         if (
             (tareWeightScales < 0.1) and
