@@ -128,6 +128,8 @@ def cmr():
             return redirect(url_for('unknownerror') + query + f"&error=new car api error {api_url}")
         if len(new_car) < 1:
             return redirect(url_for('unknownerror') + query + f"&error=new car api error {api_url}")
+        if "id" not in new_car:
+            return redirect(url_for('unknownerror') + query + f"&error=probably repeated nr {api_url}")
         archivePlates(new_car["id"], request.args)
         archiveCargoImage(new_car["cargoId"], request.args)
         archiveInvoice(new_car["id"], request.args, invoiceNr)

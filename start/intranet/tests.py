@@ -1,8 +1,11 @@
+import json
 import os
 import re
+from urllib import request
 import requests
 import time
 import numpy as np
+from socket import timeout
 import urllib.parse
 import cv2  # run opencv_install.sh to install
 # from picamera import PiCamera
@@ -305,4 +308,32 @@ def archiveCargoImage(cargoId, args):
         print("No image on top camera" + "1" + f" {e}")
 
 
-print(archiveCargoImage(1, None))
+def jsonDictFromUrl(api_url):
+    result = {
+        "result": 100,
+        "error": "unknown error",
+    }
+    try:
+        with request.urlopen(api_url) as response:
+            if response.getcode() == 200:
+                source = response.read()
+                if len(source) > 0:
+                    result = json.loads(source)
+                else:
+                    print(
+                        'When trying to read data from server API zero length response received')
+            else:
+                print(
+                    'An error occurred while attempting to retrieve lists data from the API.')
+    except timeout:
+        print(
+            'Timeout error when trying API call'
+        )
+    return result
+
+
+api_url = "http://amgs.me/apijson.ashx?key=gd3784h67hxgugb" + \
+    f"&command=newunitweight"
+res = jsonDictFromUrl(api_url)
+if "result" not in res:
+    print(res)
