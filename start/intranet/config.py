@@ -40,8 +40,8 @@ TEMP_INVOICE_IMG_FILE = IMAGES_DIRECTORY + 'invoice.jpg'
 TEMP_PLATE_IMG_FILE_FRONT = IMAGES_DIRECTORY + 'front.jpg'
 TEMP_PLATE_IMG_FILE_REAR = IMAGES_DIRECTORY + 'rear.jpg'
 
-SERVER_URL = "http://eu.amgs.me/autoweight/"
-SERVER_API_URL = "http://eu.amgs.me/apijson.ashx?key=gd3784h67hxgugb"
+SERVER_URL = "http://al.amgs.me/autoweight/"
+SERVER_API_URL = "http://al.amgs.me/apijson.ashx?key=gd3784h67hxgugb"
 
 ALPR_API_TOKEN = 'Token 702d66a3f614a31139fefd757892acfb85771ee7'
 ALPR_URL = 'https://api.platerecognizer.com/v1/plate-reader'
