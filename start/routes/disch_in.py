@@ -56,6 +56,11 @@ def factories():
             "url": blockUrlStart + "&block=1",
             "state": "",
         },
+        "2":
+        {
+            "url": blockUrlStart + "&block=2",
+            "state": "",
+        },
     }
     query = queryfromArgs(request.args) + f"&list={shippersList}"
     # get one list from api
@@ -63,11 +68,15 @@ def factories():
         f"&command=listfactories&list={shippersList}"
     extraDict = {"factoryID": 0, "factoryName": "Cits..Другой..Other"}
     if (blockSelected == "1"):
-        api_url += f"&greaterthan=l"
+        api_url += f"&greaterthan=i&lessthan=p"
         blockData["0"]["state"] = ""
         blockData["1"]["state"] = "active"
+    if (blockSelected == "2"):
+        api_url += f"&greaterthan=p"
+        blockData["0"]["state"] = ""
+        blockData["2"]["state"] = "active"
     else:
-        api_url += f"&lessthan=l"
+        api_url += f"&lessthan=i"
         extraDict = None
     factories = list(splitDictInto3(
         jsonDictFromUrl(api_url), extraDict=extraDict))
