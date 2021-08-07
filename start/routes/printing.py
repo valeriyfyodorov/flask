@@ -3,6 +3,7 @@ from start import app
 from flask import render_template, request, url_for, redirect
 import qrcode
 from socket import error as SocketError
+import time
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, servePILimageAsPNG, dateFromJson, jsonDictFromUrl
 
@@ -103,12 +104,16 @@ def printout():
         try:
             tranunit = jsonDictFromUrl(
                 app.config['DB_SERVER_API_URL'] + f"&command=tranunit" + f"&id={tranunit_id}")
+            time.sleep(0.002)
             cargo = jsonDictFromUrl(
                 app.config['DB_SERVER_API_URL'] + f"&command=cargo" + f"&id={tranunit['cargoId']}")
+            time.sleep(0.0002)
             client = jsonDictFromUrl(
                 app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['shipperId']}")
+            time.sleep(0.0002)
             factory = jsonDictFromUrl(
                 app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['factoryId']}")
+            time.sleep(0.0002)
             stevedoreInfo = jsonDictFromUrl(
                 app.config['DB_SERVER_API_URL'] +
                 f"&command=steveinfo" +
