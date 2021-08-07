@@ -2,8 +2,10 @@ from datetime import datetime
 from start import app
 from flask import render_template, request, url_for, redirect
 import qrcode
+from socket import error as SocketError
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, servePILimageAsPNG, dateFromJson, jsonDictFromUrl
+
 
 @app.route('/qrinstructions')
 def qrinstructions():
@@ -12,35 +14,41 @@ def qrinstructions():
     query = queryfromArgs(request.args)
     api_query = query[1:]
     tranunit_id = request.args.get('tranunit')
-    url = app.config['DB_SERVER_API_URL'] + f"&command=tranunit" + f"&id={tranunit_id}"
+    url = app.config['DB_SERVER_API_URL'] + \
+        f"&command=tranunit" + f"&id={tranunit_id}"
     tranunit = jsonDictFromUrl(url)
-    cargo = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=cargo" + f"&id={tranunit['cargoId']}")
-    client = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['shipperId']}")
-    factory = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['factoryId']}")
+    cargo = jsonDictFromUrl(
+        app.config['DB_SERVER_API_URL'] + f"&command=cargo" + f"&id={tranunit['cargoId']}")
+    client = jsonDictFromUrl(
+        app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['shipperId']}")
+    factory = jsonDictFromUrl(
+        app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['factoryId']}")
     stevedoreInfo = jsonDictFromUrl(
-        app.config['DB_SERVER_API_URL'] + 
-        f"&command=steveinfo" + 
+        app.config['DB_SERVER_API_URL'] +
+        f"&command=steveinfo" +
         f"&cargo={tranunit['cargoId']}&shipper={tranunit['shipperId']}&factory={tranunit['factoryId']}"
-        )
-    drivingScheme = stevedoreInfo["drivingScheme"] + ".jpg";
-    info = stevedoreInfo["stevedoreInfo"];
-    if info is None : info = ""
-    print_time = datetime.now().strftime("%d/%m/%Y %H:%M");
+    )
+    drivingScheme = stevedoreInfo["drivingScheme"] + ".jpg"
+    info = stevedoreInfo["stevedoreInfo"]
+    if info is None:
+        info = ""
+    print_time = datetime.now().strftime("%d/%m/%Y %H:%M")
     netWeightScales = tranunit["weightScales"]
     grossWeightMoment = dateFromJson(tranunit["weightingGrossMoment"])
     grossWeightScales = tranunit["weightingGrossWeight"]
     tareWeightMoment = dateFromJson(tranunit["weightingEmptyMoment"])
     tareWeightScales = tranunit["weightingEmptyWeight"]
-    if (grossWeightScales < tareWeightScales): # loading, not discharging
+    if (grossWeightScales < tareWeightScales):  # loading, not discharging
         grossWeightMoment = dateFromJson(tranunit["weightingEmptyMoment"])
         grossWeightScales = tranunit["weightingEmptyWeight"]
-        tareWeightMoment = dateFromJson(tranunit["weightingGrossMoment"]) 
+        tareWeightMoment = dateFromJson(tranunit["weightingGrossMoment"])
         tareWeightScales = tranunit["weightingGrossWeight"]
-        netWeightScales = -netWeightScales;
-    showIncomingTitle = (grossWeightScales > tareWeightScales);
+        netWeightScales = -netWeightScales
+    showIncomingTitle = (grossWeightScales > tareWeightScales)
     grossWeightScales = "{:.0f}".format(grossWeightScales * 1000)
     issueMoment = grossWeightMoment
-    extraHeading = tranunit["declarationNr"] + " // " + "{:.0f}".format(tranunit['weightDeclared'] * 1000) + " kg"
+    extraHeading = tranunit["declarationNr"] + " // " + \
+        "{:.0f}".format(tranunit['weightDeclared'] * 1000) + " kg"
     remark = factory["name"]
     if tranunit["remark"] is not None:
         remark += " " + tranunit["remark"]
@@ -63,11 +71,13 @@ def qrinstructions():
     }
     return render_template('disch_in/qrinstructions.html', title='Keep this all time', lng=lng, voc=voc, content=content)
 
+
 @app.route('/qrimg')
 def qrimg():
     code = request.args.get('code')
     img = qrcode.make(code)
     return servePILimageAsPNG(img)
+
 
 @app.route('/waitprint')
 def waitprint():
@@ -84,18 +94,35 @@ def printout():
     query = queryfromArgs(request.args)
     api_query = query[1:]
     tranunit_id = request.args.get('tranunit')
-    tranunit = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=tranunit" + f"&id={tranunit_id}")
-    cargo = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=cargo" + f"&id={tranunit['cargoId']}")
-    client = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['shipperId']}")
-    factory = jsonDictFromUrl(app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['factoryId']}")
-    stevedoreInfo = jsonDictFromUrl(
-        app.config['DB_SERVER_API_URL'] + 
-        f"&command=steveinfo" + 
-        f"&cargo={tranunit['cargoId']}&shipper={tranunit['shipperId']}&factory={tranunit['factoryId']}"
-        )
+    tranunit = None
+    cargo = None
+    client = None
+    factory = None
+    stevedoreInfo = None
+    for i in range(3):
+        try:
+            tranunit = jsonDictFromUrl(
+                app.config['DB_SERVER_API_URL'] + f"&command=tranunit" + f"&id={tranunit_id}")
+            cargo = jsonDictFromUrl(
+                app.config['DB_SERVER_API_URL'] + f"&command=cargo" + f"&id={tranunit['cargoId']}")
+            client = jsonDictFromUrl(
+                app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['shipperId']}")
+            factory = jsonDictFromUrl(
+                app.config['DB_SERVER_API_URL'] + f"&command=company" + f"&id={tranunit['factoryId']}")
+            stevedoreInfo = jsonDictFromUrl(
+                app.config['DB_SERVER_API_URL'] +
+                f"&command=steveinfo" +
+                f"&cargo={tranunit['cargoId']}&shipper={tranunit['shipperId']}&factory={tranunit['factoryId']}"
+            )
+            break
+        except SocketError as e:
+            continue
+    if (tranunit is None) or (cargo is None) or (client is None) or (factory is None) or (stevedoreInfo is None):
+        return redirect(url_for('unknownerror') + query + f"&error=Bad internet connection")
     drivingScheme = stevedoreInfo["drivingScheme"] + ".jpg"
     info = stevedoreInfo["stevedoreInfo"]
-    if info is None : info = ""
+    if info is None:
+        info = ""
     print_time = datetime.now().strftime("%d/%m/%Y %H:%M")
     netWeightScales = tranunit["weightScales"]
     grossWeightMoment = dateFromJson(tranunit["weightingGrossMoment"])
@@ -103,10 +130,10 @@ def printout():
     grossWeightScales = tranunit["weightingGrossWeight"]
     tareWeightScales = tranunit["weightingEmptyWeight"]
     docTitle = "Kravas pieņemšanas glabājumā kvīts"
-    if (grossWeightScales < tareWeightScales): # loading, not discharging
+    if (grossWeightScales < tareWeightScales):  # loading, not discharging
         grossWeightMoment = dateFromJson(tranunit["weightingEmptyMoment"])
         grossWeightScales = tranunit["weightingEmptyWeight"]
-        tareWeightMoment = dateFromJson(tranunit["weightingGrossMoment"]) 
+        tareWeightMoment = dateFromJson(tranunit["weightingGrossMoment"])
         tareWeightScales = tranunit["weightingGrossWeight"]
         netWeightScales = -netWeightScales
         docTitle = "Kravas izsniegšanas no glabājumā pavadzīme"
@@ -115,7 +142,8 @@ def printout():
     tareWeightScales = "{:.0f}".format(tareWeightScales * 1000)
     netWeightScales = "{:.0f}".format(netWeightScales * 1000)
     issueMoment = tareWeightMoment
-    extraHeading = tranunit["declarationNr"] + " // " + "{:.0f}".format(tranunit['weightDeclared'] * 1000) + " kg"
+    extraHeading = tranunit["declarationNr"] + " // " + \
+        "{:.0f}".format(tranunit['weightDeclared'] * 1000) + " kg"
     remark = factory["name"]
     if tranunit["remark"] is not None:
         remark += " " + tranunit["remark"]
@@ -143,9 +171,9 @@ def printout():
     }
     next_page_name = url_for("waitprint")
     return render_template(
-        'prints/printout.html', 
-        title='Alpha-Osta: Noliktavas svēršanas/glabājuma kvīts', 
-        voc=voc, 
+        'prints/printout.html',
+        title='Alpha-Osta: Noliktavas svēršanas/glabājuma kvīts',
+        voc=voc,
         content=content,
         next_page_name=next_page_name
-        )
+    )
