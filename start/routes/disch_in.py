@@ -120,7 +120,7 @@ def cmr():
             f"&command=newunitweight" + f"&{api_query}"
         new_car = jsonDictFromUrl(api_url)
         if (new_car) is None:
-            for i in range(2):
+            for i in range(5):  # retry API
                 new_car = jsonDictFromUrl(api_url)
                 if new_car is not None:
                     break
