@@ -1,3 +1,4 @@
+import time
 from start import app
 # from decimal import Decimal
 from flask import render_template, request, url_for, redirect
@@ -22,7 +23,7 @@ def index():
 def direction():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["direction"]
-    print("loading direction page")
+    print(f"loading direction page {time.strftime('%H:%M:%S')}")
     return render_template(
         'in_or_out.html', title='Choose direction', lng=lng, voc=voc
     )
@@ -30,7 +31,8 @@ def direction():
 
 @app.route('/scales')
 def scales():
-    print("starting scales and cameras measurements")
+    print(
+        f"starting scales and cameras measurements {time.strftime('%H:%M:%S')}")
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["scales"]
     url = url_for('invoice') if "disch_in" == request.args.get(
@@ -63,12 +65,12 @@ def scales():
         },
     }
     if weightLeft < 3000:
-        print("right scale only proceed to plate")
+        print(f"right scale only proceed to plate {time.strftime('%H:%M:%S')}")
         return redirect(buttons["right"]["url"])  # no left weight, no choice
     if weightRight < 3000:
-        print("left scale only proceed to plate")
+        print(f"left scale only proceed to plate {time.strftime('%H:%M:%S')}")
         return redirect(buttons["left"]["url"])  # no right weight no choice
-    print("loading scalse choice page")
+    print(f"loading scalse choice page {time.strftime('%H:%M:%S')}")
     return render_template(
         'scales.html', title='Choose scale', lng=lng, voc=voc, buttons=buttons
     )
@@ -101,7 +103,7 @@ def unknownerror():
 
 @app.route('/farewell')
 def farewell():
-    print("entering farewell")
+    print(f"entering farewell {time.strftime('%H:%M:%S')}")
     lng = defaultEn(request.args.get('lng'), vocabulary)
     tranunitId = readQrCodeFromImg(camToPilImg())
     voc = vocabulary[lng]["farewell"]
@@ -111,7 +113,8 @@ def farewell():
     front = (request.args.get('ptf') or '')
     rear = (request.args.get('ptr') or '')
     if len(front) > 3 and len(rear) > 3 and len(front) < 7 and len(rear) < 7:
-        print(f"getting data from api for truck with id {tranunitId}")
+        print(
+            f"getting data from api for truck with id {tranunitId} {time.strftime('%H:%M:%S')}")
         tranunit = jsonDictFromUrl(
             app.config['DB_SERVER_API_URL']
             + f"&command=tranunit" + f"&id={tranunitId}"
@@ -140,7 +143,7 @@ def farewell():
     api_query = query[1:] + f"&tranunit={tranunitId}"
     api_url = app.config['DB_SERVER_API_URL'] + \
         f"&command=finalweight" + f"&{api_query}"
-    print(f"recording weight at api {api_url}")
+    print(f"recording weight at api {api_url} {time.strftime('%H:%M:%S')}")
     weighting = jsonDictFromUrl(api_url)
     if weighting["result"] == 2:  # means repeated print out
         print(weighting["error"])
@@ -153,7 +156,7 @@ def farewell():
     archivePlates(tranunitId, request.args)
     # next_page_name = app.config['DB_SERVER_URL'] + "weighting-printout.aspx" # in case the printing at amgs
     next_page_name = url_for("printout")
-    print("loading farewell page")
+    print(f"loading farewell page {time.strftime('%H:%M:%S')}")
     return render_template(
         'farewell.html',
         title='Get the documents and goodbye',
