@@ -22,6 +22,7 @@ def index():
 def direction():
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["direction"]
+    print("loading direction page")
     return render_template(
         'in_or_out.html', title='Choose direction', lng=lng, voc=voc
     )
@@ -29,6 +30,7 @@ def direction():
 
 @app.route('/scales')
 def scales():
+    print("starting scales and cameras measurements")
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["scales"]
     url = url_for('invoice') if "disch_in" == request.args.get(
@@ -61,9 +63,12 @@ def scales():
         },
     }
     if weightLeft < 3000:
+        print("right scale only proceed to plate")
         return redirect(buttons["right"]["url"])  # no left weight, no choice
     if weightRight < 3000:
+        print("left scale only proceed to plate")
         return redirect(buttons["left"]["url"])  # no right weight no choice
+    print("loading scalse choice page")
     return render_template(
         'scales.html', title='Choose scale', lng=lng, voc=voc, buttons=buttons
     )
@@ -96,6 +101,7 @@ def unknownerror():
 
 @app.route('/farewell')
 def farewell():
+    print("entering farewell")
     lng = defaultEn(request.args.get('lng'), vocabulary)
     tranunitId = readQrCodeFromImg(camToPilImg())
     voc = vocabulary[lng]["farewell"]
@@ -105,26 +111,27 @@ def farewell():
     front = (request.args.get('ptf') or '')
     rear = (request.args.get('ptr') or '')
     if len(front) > 3 and len(rear) > 3 and len(front) < 7 and len(rear) < 7:
+        print(f"getting data from api for truck with id {tranunitId}")
         tranunit = jsonDictFromUrl(
-            app.config['DB_SERVER_API_URL'] +
-            f"&command=tranunit" + f"&id={tranunitId}"
+            app.config['DB_SERVER_API_URL']
+            + f"&command=tranunit" + f"&id={tranunitId}"
         )
         fullPlate = tranunit["nr"]
         if fullPlate is None:
             return redirect(
-                url_for("unknownerror") +
-                f"?error=The car with this id doesnt exist"
+                url_for("unknownerror")
+                + f"?error=The car with this id doesnt exist"
             )
         tareWeightScales = tranunit["weightingEmptyWeight"]
         if (
-            (tareWeightScales < 0.1) and
-            (len(fullPlate) > 6) and
-            (not front[:2] in fullPlate) and
-            (not front[-2:] in fullPlate) and
-            (not front[1:3] in fullPlate) and
-            (not rear[:2] in fullPlate) and
-            (not rear[1:3] in fullPlate) and
-            (not rear[-2:] in fullPlate)
+            (tareWeightScales < 0.1)
+            and (len(fullPlate) > 6)
+            and (not front[:2] in fullPlate)
+            and (not front[-2:] in fullPlate)
+            and (not front[1:3] in fullPlate)
+            and (not rear[:2] in fullPlate)
+            and (not rear[1:3] in fullPlate)
+            and (not rear[-2:] in fullPlate)
         ):
             return redirect(
                 url_for("unknownerror") +
@@ -133,6 +140,7 @@ def farewell():
     api_query = query[1:] + f"&tranunit={tranunitId}"
     api_url = app.config['DB_SERVER_API_URL'] + \
         f"&command=finalweight" + f"&{api_query}"
+    print(f"recording weight at api {api_url}")
     weighting = jsonDictFromUrl(api_url)
     if weighting["result"] == 2:  # means repeated print out
         print(weighting["error"])
@@ -145,6 +153,7 @@ def farewell():
     archivePlates(tranunitId, request.args)
     # next_page_name = app.config['DB_SERVER_URL'] + "weighting-printout.aspx" # in case the printing at amgs
     next_page_name = url_for("printout")
+    print("loading farewell page")
     return render_template(
         'farewell.html',
         title='Get the documents and goodbye',

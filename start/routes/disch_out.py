@@ -6,7 +6,9 @@ from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl
 
 @app.route('/qrcode')
 def qrcode():
+    print("entering qrcode def")
     query = queryfromArgs(request.args) + "&local=1"
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["qrcode"]
+    print("loading qr code page")
     return render_template('disch_out/qrcode.html', title='Place your code under camera', voc=voc, query=query)
