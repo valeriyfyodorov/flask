@@ -47,15 +47,18 @@ def getWeightKg(scalesName):
             print(
                 f"unable to connect to modbus {SCALES[scalesName]['modbus']['host']} at port {SCALES[scalesName]['modbus']['port']}")
     str_weight = "0"
+    result = 0
     if c.is_open():
         regs = c.read_holding_registers(1, 2)
-        print(regs)
+        # print(regs)
         if regs is not None:
-            if len(regs) > 0:
-                str_weight = regs[0]
+            if len(regs) > 1:
+                print(f"regs[0]:{regs[0]}, regs[1]:{regs[1]}")
+                result = int(regs[0]) + (65536 * regs[1])
+                # str_weight = regs[0]
+    # result = int(str_weight)
     if c.is_open():
         c.close()  # close connection on every weight request
-    result = int(str_weight)
     if result == 0 and DEBUG_WITH_DUMMY_SCALES:
         if scalesName == "north":
             result = 44000
