@@ -54,7 +54,7 @@ def getWeightKg(scalesName):
         if regs is not None:
             if len(regs) > 1:
                 print(f"regs[0]:{regs[0]}, regs[1]:{regs[1]}")
-                result = int(regs[0]) + (65536 * regs[1])
+                result = int(regs[0]) + (65536 * int(regs[1]))
                 # str_weight = regs[0]
     # result = int(str_weight)
     if c.is_open():
