@@ -6,6 +6,7 @@ from socket import timeout
 from io import BytesIO
 from PIL import Image
 from urllib.parse import urlencode as encode
+from start.intranet.config import TRAFFIC_LIGHT_API_URL, TRAFFIC_LIGHT_API_AUTH, SCALES_NAME_FOR_ID, SCALES
 
 
 def dateFromJson(jsonStr):
@@ -43,13 +44,13 @@ def jsonDictFromUrl(api_url):
                     result = json.loads(source)
                 else:
                     print(
-                        'When trying to read data from server API zero length response received')
+                        'jsonDictFromUrl. When trying to read data from server API zero length response received')
             else:
                 print(
-                    'An error occurred while attempting to retrieve lists data from the API.')
+                    'jsonDictFromUrl. An error occurred while attempting to retrieve lists data from the API.')
     except timeout:
         print(
-            'Timeout error when trying API call'
+            'jsonDictFromUrl. Timeout error when trying API call'
         )
     return result
 
@@ -76,3 +77,38 @@ def servePILimageAsPNG(img):
     img.save(file_object, 'PNG')
     file_object.seek(0)
     return send_file(file_object, mimetype='image/PNG')
+
+
+def switchTrafficLight(scaleId, payload="green", topic="light_topic_front"):
+    scaleId = str(scaleId)
+    scale = SCALES[SCALES_NAME_FOR_ID[scaleId]]
+    body = {"payload": payload, "topic": scale[topic]}
+    req = urequest.Request(TRAFFIC_LIGHT_API_URL)
+    req.add_header('Content-Type', 'application/json; charset=utf-8')
+    req.add_header('Authorization', TRAFFIC_LIGHT_API_AUTH)
+    jsondataasbytes = json.dumps(body).encode('utf-8')
+    req.add_header('Content-Length', len(jsondataasbytes))
+    try:
+        with urequest.urlopen(req, jsondataasbytes) as response:
+            if response.getcode() == 200:
+                source = response.read()
+                if len(source) > 0:
+                    result = json.loads(source)
+                else:
+                    print(
+                        'switchTrafficLight. When trying to read data from server API zero length response received')
+            else:
+                print(
+                    'switchTrafficLight. An error occurred while attempting to retrieve lists data from the API.')
+    except timeout:
+        print(
+            'switchTrafficLight. Timeout error when trying API call'
+        )
+    return result
+
+
+def switchBothTrafficLight(scaleId, payload="green"):
+    topic = "light_topic_front"
+    switchTrafficLight(scaleId, payload, topic)
+    topic = "light_topic_rear"
+    return switchTrafficLight(scaleId, payload, topic)

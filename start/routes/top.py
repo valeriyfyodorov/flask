@@ -4,7 +4,7 @@ from start import app
 from flask import render_template, request, url_for, redirect
 # import urllib.request as urequest
 from .settings import vocabulary
-from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl
+from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl, switchBothTrafficLight
 from start.intranet.config import SCALES
 from start.intranet.defs import getPlatesNumbers, getWeightKg, archivePlates
 from start.intranet.picam import camToPilImg
@@ -154,6 +154,8 @@ def farewell():
             url_for("unknownerror") + f"?error={weighting['error']}"
         )
     archivePlates(tranunitId, request.args)
+    scaleId = request.form.get('sc')
+    switchBothTrafficLight(scaleId)
     # next_page_name = app.config['DB_SERVER_URL'] + "weighting-printout.aspx" # in case the printing at amgs
     next_page_name = url_for("printout")
     print(f"loading farewell page {time.strftime('%H:%M:%S')}")

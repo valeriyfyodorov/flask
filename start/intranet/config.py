@@ -47,6 +47,8 @@ ALPR_API_TOKEN = 'Token 702d66a3f614a31139fefd757892acfb85771ee7'
 ALPR_URL = 'https://api.platerecognizer.com/v1/plate-reader'
 
 SCALES_NAME_FOR_ID = {"2": "north", "1": "south"}
+TRAFFIC_LIGHT_API_URL = "http://192.168.21.82:8123/api/services/mqtt/publish"
+TRAFFIC_LIGHT_API_AUTH = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxYTQ2NjM1ZmI3NWU0NmI1YmIzMzU2NjkzYzViYzg4YyIsImlhdCI6MTYzODk2OTA1NCwiZXhwIjoxOTU0MzI5MDU0fQ.ib-WYqlTWzzLsM3PVCLLkS6_0bVIc5G8f1GI_YI3VUI"
 SCALES = {
     "north":
     {
@@ -77,6 +79,8 @@ SCALES = {
             "host": "192.168.21.124",
             "port": 505,
         },
+        "light_topic_front": "trafficlights/ts2ftl/status",
+        "light_topic_rear": "trafficlights/ts2rtl/status",
     },
     "south":
     {
@@ -107,6 +111,8 @@ SCALES = {
             "host": "192.168.21.124",
             "port": 504,
         },
+        "light_topic_front": "trafficlights/ts1ftl/status",
+        "light_topic_rear": "trafficlights/ts1rtl/status",
     },
 }
 

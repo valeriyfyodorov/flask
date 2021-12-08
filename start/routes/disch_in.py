@@ -3,7 +3,7 @@ import time
 from start import app
 from flask import render_template, request, url_for, redirect
 from .settings import vocabulary
-from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl, splitDictInto3
+from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl, splitDictInto3, switchBothTrafficLight
 from start.intranet.defs import (
     readInvoice, archivePlates, archiveInvoice, archiveCargoImage
 )
@@ -157,6 +157,8 @@ def cmr():
         archivePlates(new_car["id"], request.args)
         archiveCargoImage(new_car["cargoId"], request.args)
         archiveInvoice(new_car["id"], request.args, invoiceNr)
+        scaleId = request.form.get('sc')
+        switchBothTrafficLight(scaleId)
         return redirect(url_for('directions') + f"?tranunit={new_car['id']}&local=1&lng={lng}")
     voc = vocabulary[lng]["cmr"]
     action = url_for("cmr") + query
