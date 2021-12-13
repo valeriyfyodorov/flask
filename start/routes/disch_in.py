@@ -157,7 +157,7 @@ def cmr():
         archivePlates(new_car["id"], request.args)
         archiveCargoImage(new_car["cargoId"], request.args)
         archiveInvoice(new_car["id"], request.args, invoiceNr)
-        scaleId = request.form.get('sc')
+        scaleId = request.args.get('sc')
         switchBothTrafficLight(scaleId)
         return redirect(url_for('directions') + f"?tranunit={new_car['id']}&local=1&lng={lng}")
     voc = vocabulary[lng]["cmr"]

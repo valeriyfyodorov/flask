@@ -154,7 +154,7 @@ def farewell():
             url_for("unknownerror") + f"?error={weighting['error']}"
         )
     archivePlates(tranunitId, request.args)
-    scaleId = request.form.get('sc')
+    scaleId = request.args.get('sc')
     switchBothTrafficLight(scaleId)
     # next_page_name = app.config['DB_SERVER_URL'] + "weighting-printout.aspx" # in case the printing at amgs
     next_page_name = url_for("printout")
