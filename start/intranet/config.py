@@ -22,6 +22,8 @@ GPIO_LAMP = 22
 GPIO.setup(GPIO_LAMP, GPIO.OUT)
 GPIO.output(GPIO_LAMP, False)
 
+CHECK_SAMPLER_HOMING = True
+
 # ls /dev/video* first for right camera device here, minus 1 means first working
 VIDEO_CAPTURE_DEVICE = -1
 WEBCAM_BUFFER_SIZE = 5
@@ -81,6 +83,7 @@ SCALES = {
         },
         "light_topic_front": "trafficlights/ts2ftl/status",
         "light_topic_rear": "trafficlights/ts2rtl/status",
+        "sampler_homing_gpio_port": 24,
     },
     "south":
     {
@@ -113,8 +116,15 @@ SCALES = {
         },
         "light_topic_front": "trafficlights/ts1ftl/status",
         "light_topic_rear": "trafficlights/ts1rtl/status",
+        "sampler_homing_gpio_port": 23,
     },
 }
+
+if CHECK_SAMPLER_HOMING:
+    GPIO.setup(SCALES["north"]["sampler_homing_gpio_port"], GPIO.IN,
+               pull_up_down=GPIO.PUD_UP)  # Button GPIO23  Rakoraf1 (Scales 1)
+    GPIO.setup(SCALES["south"]["sampler_homing_gpio_port"], GPIO.IN,
+               pull_up_down=GPIO.PUD_UP)  # Button GPIO24  Rakoraf2 (Scales 2)
 
 
 class PlatesSet:

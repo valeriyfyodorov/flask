@@ -8,10 +8,14 @@ from .config import (
     PlatesSet, SCALES,
     DEBUG_WITH_DUMMY_SCALES, SCALES_NAME_FOR_ID,
     IMAGES_DIRECTORY, TEMP_INVOICE_IMG_FILE,
-    TEMP_PLATE_IMG_FILE_FRONT, TEMP_PLATE_IMG_FILE_REAR
+    TEMP_PLATE_IMG_FILE_FRONT, TEMP_PLATE_IMG_FILE_REAR, CHECK_SAMPLER_HOMING, MAC_OS
 )
 from .vision import recognizePlate, readRtspImage
 from .picam import captureInvoiceToFile
+if MAC_OS:
+    from . import GPIO
+else:
+    import RPi.GPIO as GPIO
 
 
 def getPlatesNumbers(scalesName, weight=1000):
@@ -39,6 +43,16 @@ def getPlatesNumbers(scalesName, weight=1000):
 
 
 def getWeightKg(scalesName):
+    # wait for sampler home port to be free
+    if CHECK_SAMPLER_HOMING:
+        sampler_port = SCALES[scalesName]['sampler_homing_gpio_port']
+        print('Checking sampler GPIO port ', sampler_port)
+        sampler_port_occupied = GPIO.input(sampler_port)
+        while sampler_port_occupied:
+            print('Waiting for sampler home port sensor, cannot use scales')
+            time.sleep(1)
+            sampler_port_occupied = GPIO.input(sampler_port)
+    # continue with modbus to measure weight
     c = ModbusClient()
     c.host(SCALES[scalesName]["modbus"]["host"])
     c.port(SCALES[scalesName]["modbus"]["port"])
