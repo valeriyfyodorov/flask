@@ -44,6 +44,7 @@ def getPlatesNumbers(scalesName, weight=1000):
 
 def getWeightKg(scalesName):
     # wait for sampler home port to be free
+    print("Check of saple readiness is enabled:", CHECK_SAMPLER_HOMING)
     if CHECK_SAMPLER_HOMING:
         sampler_port = SCALES[scalesName]['sampler_homing_gpio_port']
         print('Checking sampler GPIO port ', sampler_port)
