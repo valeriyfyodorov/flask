@@ -44,6 +44,15 @@ def getPlatesNumbers(scalesName, weight=1000):
 
 def getWeightKg(scalesName):
     # modbus to measure weight
+    result = readWeightFromModBus(scalesName)
+    if result > 100 and CHECK_SAMPLER_HOMING:
+        # check if was delay caused by sampler position not at home
+        if (delayedForSamplerCheck(scalesName)):
+            result = readWeightFromModBus(scalesName)
+    return result
+
+
+def readWeightFromModBus(scalesName):
     c = ModbusClient()
     c.host(SCALES[scalesName]["modbus"]["host"])
     c.port(SCALES[scalesName]["modbus"]["port"])
@@ -60,8 +69,6 @@ def getWeightKg(scalesName):
             if len(regs) > 1:
                 print(f"regs[0]:{regs[0]}, regs[1]:{regs[1]}")
                 result = int(regs[0]) + 65536 * int(regs[1])
-                # str_weight = regs[0]
-    # result = int(str_weight)
     if c.is_open():
         c.close()  # close connection on every weight request
     if result == 0 and DEBUG_WITH_DUMMY_SCALES:
@@ -69,10 +76,6 @@ def getWeightKg(scalesName):
             result = 44000
         if scalesName == "south":
             result = 9000
-    if result > 100 and CHECK_SAMPLER_HOMING:
-        if (delayedForSamplerCheck(scalesName)):
-            result = getWeightKg(scalesName)
-    return result
 
 
 def delayedForSamplerCheck(scalesName):
