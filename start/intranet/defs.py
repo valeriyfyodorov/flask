@@ -43,19 +43,7 @@ def getPlatesNumbers(scalesName, weight=1000):
 
 
 def getWeightKg(scalesName):
-    # wait for sampler home port to be free
-    print("Check of saple readiness is enabled:", CHECK_SAMPLER_HOMING)
-    if CHECK_SAMPLER_HOMING:
-        sampler_port = SCALES[scalesName]['sampler_homing_gpio_port']
-        print('Checking sampler GPIO port ', sampler_port)
-        sampler_port_occupied = GPIO.input(sampler_port)
-        print("sampler_port_occupied = GPIO.input(sampler_port)",
-              sampler_port_occupied)
-        while sampler_port_occupied:
-            print('Waiting for sampler home port sensor, cannot use scales')
-            time.sleep(1)
-            sampler_port_occupied = GPIO.input(sampler_port)
-    # continue with modbus to measure weight
+    # modbus to measure weight
     c = ModbusClient()
     c.host(SCALES[scalesName]["modbus"]["host"])
     c.port(SCALES[scalesName]["modbus"]["port"])
@@ -81,7 +69,29 @@ def getWeightKg(scalesName):
             result = 44000
         if scalesName == "south":
             result = 9000
+    if result > 100:
+        delayForSamplerCheck(scalesName)
+        result = getWeightKg(scalesName)
     return result
+
+
+def delayForSamplerCheck(scalesName):
+    if CHECK_SAMPLER_HOMING:
+        print("Check of sampler readiness is enabled:", CHECK_SAMPLER_HOMING)
+        sampler_port = SCALES[scalesName]['sampler_homing_gpio_port']
+        print('Checking sampler GPIO port ', sampler_port)
+        try:
+            GPIO.setup(sampler_port, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            sampler_port_occupied = GPIO.input(sampler_port)
+            print("sampler_port_occupied = GPIO.input(sampler_port)",
+                  sampler_port_occupied)
+            while sampler_port_occupied:
+                print('Waiting for sampler home port sensor, cannot use scales')
+                time.sleep(1)
+                sampler_port_occupied = GPIO.input(sampler_port)
+        except:
+            print("GPIO exception while reading sampler status")
+            GPIO.cleanup()
 
 
 def readInvoice():

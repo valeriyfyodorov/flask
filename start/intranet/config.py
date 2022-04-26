@@ -120,12 +120,6 @@ SCALES = {
     },
 }
 
-if CHECK_SAMPLER_HOMING:
-    GPIO.setup(SCALES["north"]["sampler_homing_gpio_port"], GPIO.IN,
-               pull_up_down=GPIO.PUD_UP)  # Button GPIO23  Rakoraf1 (Scales 1)
-    GPIO.setup(SCALES["south"]["sampler_homing_gpio_port"], GPIO.IN,
-               pull_up_down=GPIO.PUD_UP)  # Button GPIO24  Rakoraf2 (Scales 2)
-
 
 class PlatesSet:
     def __init__(self, front="", rear=""):
