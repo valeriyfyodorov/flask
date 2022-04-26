@@ -89,7 +89,7 @@ def delayedForSamplerCheck(scalesName):
         sampler_port_occupied = GPIO.input(sampler_port)
         print("sampler_port_occupied = GPIO.input(sampler_port)",
               sampler_port_occupied)
-        result = not sampler_port_occupied
+        result = sampler_port_occupied
         while sampler_port_occupied:
             print('Waiting for sampler home port sensor, cannot use scales')
             time.sleep(1)
