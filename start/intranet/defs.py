@@ -76,6 +76,7 @@ def readWeightFromModBus(scalesName):
             result = 44000
         if scalesName == "south":
             result = 9000
+    return result
 
 
 def delayedForSamplerCheck(scalesName):
