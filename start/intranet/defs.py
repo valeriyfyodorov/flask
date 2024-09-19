@@ -42,13 +42,13 @@ def getPlatesNumbers(scalesName, weight=1000):
     return plates
 
 
-def getWeightKg(scalesName):
+def getWeightKg(scalesName, check_sampler=False):
     # modbus to measure weight
     result = readWeightFromModBus(scalesName)
     if result > 100 and CHECK_SAMPLER_HOMING:
-        # check if was delay caused by sampler position not at home
-        if (delayedForSamplerCheck(scalesName)):
-            result = readWeightFromModBus(scalesName)
+        # check if was delay caused by sampler position not at home (waiting in loop)
+        if check_sampler: delayedForSamplerCheck(scalesName)
+        result = readWeightFromModBus(scalesName)
     return result
 
 

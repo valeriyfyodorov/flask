@@ -5,8 +5,9 @@ from flask import render_template, request, url_for, redirect
 from .settings import vocabulary
 from .helpers import defaultEn, queryfromArgs, jsonDictFromUrl, splitDictInto3, switchBothTrafficLight
 from start.intranet.defs import (
-    readInvoice, archivePlates, archiveInvoice, archiveCargoImage
+    readInvoice, archivePlates, archiveInvoice, archiveCargoImage, getWeightKg
 )
+from start.intranet.config import SCALES
 
 
 @app.route('/invoice')
@@ -14,7 +15,9 @@ def invoice():
     print(f"entering invoice def {time.strftime('%H:%M:%S')}")
     lng = defaultEn(request.args.get('lng'), vocabulary)
     voc = vocabulary[lng]["invoice"]
-    query = queryfromArgs(request.args)
+    query = queryfromArgs(request.args, excludeKeysList=["wkg"])
+    scale = "north" if (query["sc"] == str(SCALES["north"]["id"])) else "south" 
+    query = query + f"&wkg={getWeightKg(scaleName=scale, check_sampler=True)}"
     print(f"loading invoices page {time.strftime('%H:%M:%S')}")
     return render_template('disch_in/invoice.html', title='Scan invoice or CMR', voc=voc, query=query)
 
