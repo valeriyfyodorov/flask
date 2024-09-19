@@ -42,11 +42,11 @@ TEMP_INVOICE_IMG_FILE = IMAGES_DIRECTORY + 'invoice.jpg'
 TEMP_PLATE_IMG_FILE_FRONT = IMAGES_DIRECTORY + 'front.jpg'
 TEMP_PLATE_IMG_FILE_REAR = IMAGES_DIRECTORY + 'rear.jpg'
 
-SERVER_URL = "http://al.amgs.me/autoweight/"
-SERVER_API_URL = "http://al.amgs.me/apijson.ashx?key=gd3784h67hxgugb"
+DB_SERVER_URL = "https://backup.amgs.me/autoweight/"
+DB_SERVER_API_URL = "http://amgs.me/apijson.ashx?key=gd3784h67hxgugb"
 
 ALPR_API_TOKEN = 'Token 702d66a3f614a31139fefd757892acfb85771ee7'
-ALPR_URL = 'https://api.platerecognizer.com/v1/plate-reader'
+ALPR_URL = 'https://backup.platerecognizer.com/v1/plate-reader'
 
 SCALES_NAME_FOR_ID = {"2": "north", "1": "south"}
 TRAFFIC_LIGHT_API_URL = "http://192.168.21.82:8123/api/services/mqtt/publish"
